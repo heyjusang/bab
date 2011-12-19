@@ -1,0 +1,2 @@
+class BabController < ApplicationController
+end
