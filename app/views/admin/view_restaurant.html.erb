@@ -1,0 +1,13 @@
+<%= @restaurant.resname %>
+
+<%= link_to("new menu", :action => "new_menu", :id => @restaurant.id ) %>
+
+<% @menus.each do |menu| %>
+    <%= menu.menuname %>
+    <%= menu.price %>
+    <%= menu.like %>
+    <%= menu.dislike %>
+    <%= link_to("edit menu", :action => "edit_menu", :id => menu.id) %>
+    <%= link_to("destroy", :action => "destroy_menu", :id => menu.id) %>
+
+<% end %>
