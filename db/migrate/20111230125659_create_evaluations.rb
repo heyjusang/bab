@@ -7,6 +7,7 @@ class CreateEvaluations < ActiveRecord::Migration
       t.integer :taste
       t.integer :amount
       t.integer :service
+      t.string :review
       t.timestamps
     end
   end

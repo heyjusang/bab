@@ -1,7 +1,184 @@
-/*
- * This is a manifest file that'll automatically include all the stylesheets available in this directory
- * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
- * the top of the compiled file, but it's generally better to create a new file per style scope.
- *= require_self
- *= require_tree . 
-*/
+body {
+    background : #E2E2E2;
+    margin : 0;
+    padding : 0;
+    font-family : Dotum, sans-serif;
+}
+a {
+    text-decoration : none;
+}
+#header {
+    width : 1024px;
+    height : 100px;
+    background : #c8c8c8;
+    position : relative;
+    margin-left : auto;
+    margin-right : auto;
+    margin-top : 5px;
+}
+#logobox{
+    position : absolute;
+    width : 200px;
+    height :90px;
+    margin-left : 5px;
+    top : 5px;
+}
+
+#searchbox{
+    position : absolute;
+    width : 400px;
+    height : 90px;
+    margin-left : 210px;
+    top: 5px;
+}
+.searchtext{
+    border : #ff8200 3px solid;
+    width : 300px;
+    height : 30px;
+    padding : 0px;
+    position : absolute;
+    bottom : 10px;
+    font-size : 15px;
+}
+.searchbtn{
+    border : #ff8200 3px solid;
+    border-left : 0px;
+    width : 60px;
+    height : 36px;
+    position : absolute;
+    bottom : 10px;
+    left : 306px;
+    font-size : 15px;
+    background : #ff8200;
+    color : white;
+}
+#userbox{
+    position : absolute;
+    width : 300px;
+    height : 90px;
+    margin-left : 719px;
+    top: 5px;
+
+
+}
+
+
+
+#blackbox {
+    width : 1024px;
+    height : 20px;
+    background : black;
+    position : relative;
+    margin-left : auto;
+    margin-right : auto;
+}
+
+#blackbox p {
+    color : white;
+    margin : 0;
+    font-size : 11px;
+    text-align : right;
+}
+#content {
+    width : 1024px;
+    position : relative;
+    margin-left : auto;
+    margin-right : auto;
+    margin-top : 5px;
+}
+#left_content{
+    width : 510px;
+    height : 650px;
+    background : #c8c8c8;
+    float : left;
+}
+
+#panelbox {
+}
+
+.panel_ul {
+    list-style-type: none;
+    padding : 0px;
+    margin : 5px 0px 0px 5px;
+
+}
+
+.panel_li {
+    float : left;
+    background : #ff8200;
+    margin-right : 2px;
+    width : 100px;
+    height : 20px;
+}
+.panel_li a {
+    color : white;
+    font-size : 15px;
+    margin-left : 5px; 
+}
+#left_item{
+    background : white;
+    width : 500px;
+    height : 620px;
+    margin-left : 5px;
+    margin-top : 25px;
+}
+
+
+
+
+
+
+
+
+
+
+#right_content{
+    width : 510px;
+    height : 650px;
+    background : #c8c8c8;
+    float : left;
+    margin-left : 4px;
+}
+
+#right_item{
+    background : white;
+    width : 500px;
+    height : 620px;
+    margin-left : 5px;
+    margin-top : 25px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#footer{
+    width : 1024px;
+    height : 100px;
+    position : relative;
+    margin-left : auto;
+    margin-right : auto;
+    top : 655px;
+    border-top : #c8c8c8 solid 1px;
+
+
+}
+
+
+
+
+
+
+

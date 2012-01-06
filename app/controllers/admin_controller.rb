@@ -1,4 +1,5 @@
 class AdminController < ApplicationController
+layout nil
 #####for restaurant#####
     def index
         @restaurants = Restaurant.all

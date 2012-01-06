@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20111230130113) do
     t.integer  "taste"
     t.integer  "amount"
     t.integer  "service"
+    t.string   "review"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
