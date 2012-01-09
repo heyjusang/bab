@@ -10,8 +10,8 @@ class UserController < ApplicationController
 
         if user.save
             session[:user_id] = user.id
-            
-            flash[:notice] = " "
+            redirect_to "/bab/index"
+            flash[:notice] = "welcome!"
 
         else
             flash[:notice] = " "
@@ -29,12 +29,18 @@ class UserController < ApplicationController
         else
             if user.password == params[:user][:password]
                 session[:user_id] = user.id
+                redirect_to "/bab/index"
                 
             else
                 redirect_to :back
                 flash[:notice] = " "
             end
         end
+    end
+
+    def logout
+       session[:user_id] = nil
+       redirect_to "/bab/index"
     end
 
 

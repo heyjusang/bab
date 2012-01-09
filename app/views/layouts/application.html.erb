@@ -6,6 +6,13 @@
             <%= stylesheet_link_tag    "application" %>
             <%= javascript_include_tag "application" %>
             <%= csrf_meta_tags %>
+
+
+            <% if flash[:notice] -%>
+                <script type= "text/javascript">
+                    alert('<%= flash[:notice] %> ');
+                </script>
+            <% end %>
     </head>
     <body>
 
@@ -22,12 +29,43 @@
             </div>
 
             <div id="userbox">
+                <% if session[:user_id].nil? %>
+
+                    <div id="signin">
+                        <%= form_for(:user, :url => {:controller => "user" , :action => "login"}) do |f| %>
+                            <table>
+                                <tr>
+                                    <td>Id</td>
+                                    <td>Password</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><%= f.text_field :username, :class => "signintext" %></td>
+                                    <td><%= f.password_field :password, :class => "signintext" %></td>
+                                    <td><%= submit_tag("login" ,{:class=>"signinbtn"}) %></td>
+                                </tr>
+                                <tr>
+                                <td colspan="3"><input type="button" class="signupPop" value="아직 회원이 아니세요?"></td>
+                                </tr>
+                            </table>
+                        <% end %>
+
+                    </div>
+
+                <% else %>
+                        <div id = "current_userbox">
+                            <%= @current_user.username %> 님 환영합니다.</br>
+                            <%= link_to "logout", :action => "logout", :controller => "user" %>
+                        </div>
+
+
+                <% end %>
 
             </div>
 
         </div>
         <div id ="blackbox">
-            <p>Powered by devlee</p>
+            <p>developed by devlee</p>
         </div>
         <div id ="content">
 
@@ -44,6 +82,7 @@
                  </div>
             </div>
             <div id="right_content">
+            <p>designed by devlee</p>
                 <div id="right_item">
                     <%= yield :right %>
                 </div>
@@ -52,7 +91,46 @@
         </div>
 
         <div id ="footer">
+            <p>powered by devlee</p>
 
         </div>
+
+
+        <div id="popupContact">
+            <div id="signup">
+                <div id="orangebox"> 
+                    Join Us! 
+                    <p id="popupContactClose">x</p>
+                </div>
+                <%= form_for(:user, :url => {:controller => "user", :action => "create" }) do |f| %>
+                    <table>
+                        <tr>
+                            <td>ID :</td>
+                            <td><%= f.text_field :username, :class => "signuptext" %></td>
+                        </tr>
+                        <tr>
+                            <td>mail :</td>
+                            <td><%= f.text_field :mailname, :class => "signuptext" %> @snu.ac.kr</td>
+                        </tr>
+                        <tr>
+                            <td>password :</td>
+                            <td><%= f.password_field :password, :class => "signuptext" %></td>
+                        </tr>
+                        <tr>
+                            <td>Re :</td>
+                            <td><%= f.password_field :password_confirmation, :class => "signuptext" %></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><%= submit_tag("Join!", :class=> "signupbtn") %></td>
+                        </tr>
+                    </table>
+                <% end %>
+            </div>
+        </div>
+        <div id="backgroundPopup"></div>
+
+
+
+
     </body>
 </html>
