@@ -1,0 +1,69 @@
+<%= content_for :head do %>
+<% end %>
+
+
+<%= content_for :right do %>
+
+    <%= form_for(@evaluation, :url => {:action => "create_ev", :res_id => params[:res_id]}) do |evaluation| %>
+            taste
+            <select name="evaluation[taste]" class="rating">
+                <option value="0">Put a Curse</option>
+                <option value="1">Very Poor</option>
+                <option value="2">Poor</option>
+                <option value="3">Bad</option>
+                <option value="4">Not Bad</option>
+                <option value="5">Average</option>
+                <option value="6">Fine</option>
+                <option value="7">Good</option>
+                <option value="8">Very Good</option>
+                <option value="9">Great</option>
+                <option value="10">Perfect</option>
+            </select>
+            speed
+            <select name="evaluation[speed]" class="rating">
+                <option value="0">Put a Curse</option>
+                <option value="1">Very Poor</option>
+                <option value="2">Poor</option>
+                <option value="3">Bad</option>
+                <option value="4">Not Bad</option>
+                <option value="5">Average</option>
+                <option value="6">Fine</option>
+                <option value="7">Good</option>
+                <option value="8">Very Good</option>
+                <option value="9">Great</option>
+                <option value="10">Perfect</option>
+            </select>
+            amount
+            <select name="evaluation[amount]" class="rating">
+                <option value="0">Put a Curse</option>
+                <option value="1">Very Poor</option>
+                <option value="2">Poor</option>
+                <option value="3">Bad</option>
+                <option value="4">Not Bad</option>
+                <option value="5">Average</option>
+                <option value="6">Fine</option>
+                <option value="7">Good</option>
+                <option value="8">Very Good</option>
+                <option value="9">Great</option>
+                <option value="10">Perfect</option>
+            </select>
+            service
+            <select name="evaluation[service]" class="rating">
+                <option value="0">Put a Curse</option>
+                <option value="1">Very Poor</option>
+                <option value="2">Poor</option>
+                <option value="3">Bad</option>
+                <option value="4">Not Bad</option>
+                <option value="5">Average</option>
+                <option value="6">Fine</option>
+                <option value="7">Good</option>
+                <option value="8">Very Good</option>
+                <option value="9">Great</option>
+                <option value="10">Perfect</option>
+            </select>
+            comment : <%= evaluation.text_field :review%>
+
+        <%= submit_tag("submit") %>
+    <% end %>
+
+<% end %>

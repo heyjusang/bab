@@ -1,0 +1,148 @@
+
+
+#res_profile{
+    margin : 5px;
+    top : 5px;
+    position : relative;
+}
+#res_profile table{
+    border-spacing : 0px;
+    border-collapse : collapse;
+}
+#res_profile td{
+    height : 30px;
+    border : 1px solid #bdbabd;
+    font-size : 13px;
+
+}
+
+.table_name {
+    background : black;
+    color : white;
+    width :  490px;
+    font-weight : bold;
+}
+.table_image{
+    width : 120px;
+}
+
+.table_ev_list{
+    width : 70px;
+}
+
+.table_row1{
+    background : #f7f7f7;
+}
+
+
+#supplement_box{
+    width : 490px;
+    height : 80px;
+    position : relative;
+    margin : 20px 5px 0px 5px;
+}
+
+#ev_link {
+    width : 240px;
+    height : 60px;
+    position : absolute;
+    background : #ff8200;
+    text-align : center;
+}
+#menu_link {
+    width : 240px;
+    height : 60px;
+    background : black;
+    position : absolute;
+    left : 250px;
+    text-align : center;
+}
+
+.view_res_link {
+    color : white;
+    font-size : 30px;
+    position : relative;
+    top : 10px;
+    margin : 0px;
+    cursor : pointer;
+}
+#review_box{
+    margin : 5px;
+    position : relative;
+}
+#review_box table{
+    border-spacing : 0px;
+    border-collapse : collapse;
+}
+#review_box td{
+    font-size : 13px;
+    border : 1px solid #bdbabd;
+}
+.table_name2{
+    background : #ff8200;
+    height : 30px;
+    width : 490px;
+    color : white;
+    font-weight : bold;
+}
+
+.table_name2 a{
+    color : white;
+    font-weight : bold;
+    font-size : 10px;
+    position : absolute;
+    left : 460px;
+    top : 20px;
+}
+
+#review_td {
+    height : 60px;
+}
+
+#menuContact{
+    display:none;
+    height : 800px;
+    width : 690px;
+    background : white;
+    z-index :2;
+
+}
+
+#orangebox_menu{
+    background : #ff8200;
+    color : white;
+    font-size : 25px;
+    font-weight : bolder;
+    width : 690px;
+    height : 32px;
+}
+
+#menupane table{
+    border-left : #ff8200 solid 3px;
+    margin : 2px;
+    border-spacing : 0px;
+    border-collapse : collapse;
+    font-size : 13px;
+    float : left;
+}
+.menu_table1{
+    background : #f7f7f7;
+}
+
+.menu_table_col1{
+    width : 140px;
+    height : 20px;
+
+}
+
+.menu_table_col2{
+    width : 78px;
+}
+
+
+
+
+
+
+
+
