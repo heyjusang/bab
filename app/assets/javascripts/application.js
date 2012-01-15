@@ -4,63 +4,72 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 //
-//= require jquery
-//= require jquery_ujs
-//= require_tree .
+//require jquery
+//=require jquery_ujs
+//require_tree .
 
 
 
 
-/////////////////////popup-signup
+/////////////////////popup
 
-var popupStatus =0;
+ popupStatus = 0;
 
-function loadPopup(){
+function loadPopup(popUp){
     if(popupStatus==0){
         $("#backgroundPopup").css({
             "opacity":"0.7"
         });
         $("#backgroundPopup").fadeIn("slow");
-        $("#popupContact").fadeIn("slow");
+        $(popUp).fadeIn("slow");
             popupStatus=1;
     }
 }
 
-function disablePopup(){
+function disablePopup(popUp){
     if(popupStatus==1){
         $("#backgroundPopup").fadeOut("slow");
-        $("#popupContact").fadeOut("slow");
+        $(popUp).fadeOut("slow");
         popupStatus = 0;
     }
 }
 
-function centerPopup(){
+function centerPopup(popUp){
 
     var windowWidth = document.documentElement.clientWidth;
     var windowHeight = document.documentElement.clientHeight;
-    var popupHeight = $("#popupContact").height();
-    var popupWidth = $("#popupContact").width();
-    $("#popupContact").css({
+    var popupHeight = $(popUp).height();
+    var popupWidth = $(popUp).width();
+    $(popUp).css({
         "position" : "absolute",
         "top" : windowHeight/2-popupHeight/2,
         "left" : windowWidth/2-popupWidth/2
     });
 }
-
+////////////////////////////////////////////////////
 
 $(document).ready(function(){
+        
+/////////////////////////////////////////////////////////////////
     $(".signupPop").click(function(){
-        centerPopup();
-        loadPopup();
+        centerPopup('#signupContact');
+        loadPopup('#signupContact');
     });
 
     $("#popupContactClose").click(function(){
-        disablePopup();
+        disablePopup('#signupContact');
     });
     $(document).keydown(function(e){
         if(e.keyCode==27 && popupStatus==1){
-            disablePopup();
+            disablePopup('#signupContact');
         }
     });
+/////////////////////////////////////////////////////////////
+
+
+
+
+
+
 });
 

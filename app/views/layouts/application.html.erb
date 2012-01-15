@@ -4,7 +4,11 @@
         <title>Bab</title>
             <%= yield :head %>
             <%= stylesheet_link_tag    "application" %>
+            <%= stylesheet_link_tag    "view_res" %>
+            <%= javascript_include_tag "jquery-1.7.1.min.js" %>
+            <%= javascript_include_tag "jquery-ui-1.8.17.custom.min.js" %>
             <%= javascript_include_tag "application" %>
+            <%= javascript_include_tag "ajax.js" %>
             <%= csrf_meta_tags %>
 
 
@@ -82,7 +86,7 @@
                  </div>
             </div>
             <div id="right_content">
-            <p>designed by devlee</p>
+            <p class="design">designed by devlee</p>
                 <div id="right_item">
                     <%= yield :right %>
                 </div>
@@ -96,7 +100,7 @@
         </div>
 
 
-        <div id="popupContact">
+        <div id="signupContact">
             <div id="signup">
                 <div id="orangebox"> 
                     Join Us! 

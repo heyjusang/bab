@@ -173,7 +173,7 @@ a {
     float : left;
     margin-left : 4px;
 }
-#right_content p{
+.design{
     color : white;
     margin : 0;
     font-size : 11px;
@@ -186,6 +186,7 @@ a {
     height : 620px;
     margin-left : 5px;
     margin-top : 12px;
+    position : absolute;
 
 }
 
@@ -222,14 +223,14 @@ a {
 
 
 
-#popupContact{
+#signupContact{
     display:none;
     height : 400px;
     width : 400px;
     background : white;
     z-index : 2;
 }
-#popupContactClose{
+#popupContactClose, #popupContactClose1{
     position :absolute;
     font-size : 20px;
     top : 0px;
@@ -270,7 +271,7 @@ a {
     background : #ff8200;
     color : white;
     font-size : 30px;
-    font-weight : bolder;;
+    font-weight : bolder;
     width : 400px;
     height : 30px;
 }

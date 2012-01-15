@@ -11,8 +11,11 @@ layout nil
 
     def create_restaurant
         restaurant = Restaurant.new(params[:restaurant])
-        restaurant.point = 0
-        restaurant.count = 0
+        restaurant.tastepoint = 5
+        restaurant.speedpoint = 5
+        restaurant.amountpoint = 5
+        restaurant.servicepoint = 5
+        restaurant.count = 1
 
         restaurant.save
 

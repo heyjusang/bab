@@ -13,14 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20111230130113) do
 
-  create_table "comments", :force => true do |t|
-    t.text     "content"
-    t.integer  "user_id"
-    t.integer  "restaurant_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "evaluations", :force => true do |t|
     t.integer  "restaurant_id"
     t.integer  "user_id"
@@ -55,10 +47,14 @@ ActiveRecord::Schema.define(:version => 20111230130113) do
   create_table "restaurants", :force => true do |t|
     t.string   "resname"
     t.integer  "phone"
-    t.integer  "point"
+    t.integer  "tastepoint"
+    t.integer  "speedpoint"
+    t.integer  "servicepoint"
+    t.integer  "amountpoint"
     t.integer  "count"
     t.text     "resinfo"
     t.integer  "restype"
+    t.string   "imageurl"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-
+    skip_before_filter :check_login
     def new
         @user = User.new
         @note = flash[:notice]

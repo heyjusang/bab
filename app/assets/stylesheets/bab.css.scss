@@ -3,12 +3,96 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+a {
+        color : black;
+        font-weight : bold;
+}
 
+.tablebox{
+    width : 490px;
+}
+.bestres_table {
+    float : left;
+    width : 240px;
+    position : relative;
+    top : 5px;
+    left : 5px;
+    margin : 2px;
+    border-spacing : 0px;
+    border-collapse : collapse;
+    tr {
+        font-size : 13px;
+        text-align : center;
+        height : 25px;
+    }
+    .row2{
+        background : #ff8200;
+        color : white;
+        font-weight : bold;
+        border : #ff8200 1px solid;
+    }
+    .row1{
+        background : #f7f7f7;
+    }
 
+    .rank{
+        border : #bdbabd 1px solid;
+        
+    }
+    .name{
+        border : #bdbabd 1px solid;
+    }
+    .point{
+        border : #bdbabd 1px solid;
+    }
+}
 
+#new_res_table{
+    border-spacing : 0px;
+    border-collapse : collapse;
+    position : relative;
+    margin-left : 6px;
+    top : 6px;
 
+    td {
+        border : #bdbabd 1px solid;
+        width : 482px;
+        height : 25px;
+        font-size : 13px;
+    }
+    .row2 td{
+        background : #ff7200;
+        color : white;
+        border : #ff7200 1px solid;
+    }
+    .row0 {
+        background : #f7f7f7;
+    }
+}
 
+#new_ev_table{
+    border-spacing : 0px;
+    border-collapse : collapse;
+    position : relative;
+    margin-left : 6px;
+    top : 10px;
 
+    td {
+        border : #bdbabd 1px solid;
+        width : 482px;
+        height : 46px;
+        font-size : 13px;
+    }
+    .row2 td {
+        background : #ff7200;
+        color : white;
+        height : 25px;
+        border : #ff7200 1px solid;
+    }
+    .row1{
+        background : #f7f7f7;
+    }
+}
 
 
 
