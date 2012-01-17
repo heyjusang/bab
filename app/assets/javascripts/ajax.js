@@ -1,8 +1,70 @@
-
 function showRes(id){
     $.getJSON('/bab/view_res?res_id=' + id, resProfile)
 }
+function evRes(id){
+    $.getJSON('/evaluate/new_ev?res_id=' +id, resEvaluation)
+}
+function goodMenu(id){
+    $.getJSON('/evaluate/good_menu?menu_id=' +id, likeThisMenu)
 
+}
+function badMenu(id){
+    $.getJSON('/evaluate/bad_menu?menu_id=' +id, dislikeThisMenu)
+}
+
+function cancelGoodMenu(id){
+    $.getJSON('/evaluate/cancel_good?menu_id=' +id, cancelLike)
+
+}
+
+function cancelBadMenu(id){
+    $.getJSON('/evaluate/cancel_bad?menu_id=' +id, cancelDislike)
+}
+
+
+////////////////////////////////////
+function likeThisMenu(item){
+    $('#menupane .menu_table'+item.id+' #like_td').html('');
+    $('#menupane .menu_table'+item.id+' #like_count_td').html('');
+    $('#menupane .menu_table'+item.id+' #dislike_td').html('');
+    $('#menupane .menu_table'+item.id+' #dislike_count_td').html('');
+   ///////////////////////////////////////
+    $('#menupane .menu_table'+item.id+' #like_td').append('<a href="#" onclick="cancelGoodMenu('+item.id+');return false;">cancel</a>');
+    $('#menupane .menu_table'+item.id+' #like_count_td').append(item.like);
+    $('#menupane .menu_table'+item.id+' #dislike_td').append('<a href="#" onclick="badMenu('+item.id+');return false;">dislike</a>');
+    $('#menupane .menu_table'+item.id+' #dislike_count_td').append(item.dislike);
+}
+
+function dislikeThisMenu(item){
+    $('#menupane .menu_table'+item.id+' #like_td').html('');
+    $('#menupane .menu_table'+item.id+' #like_count_td').html('');
+    $('#menupane .menu_table'+item.id+' #dislike_td').html('');
+    $('#menupane .menu_table'+item.id+' #dislike_count_td').html('');
+   ///////////////////////////////////////
+    $('#menupane .menu_table'+item.id+' #like_td').append('<a href="#" onclick="goodMenu('+item.id+');return false;">like</a>');
+    $('#menupane .menu_table'+item.id+' #like_count_td').append(item.like);
+    $('#menupane .menu_table'+item.id+' #dislike_td').append('<a href="#" onclick="cancelBadMenu('+item.id+');return false;">cancel</a>');
+    $('#menupane .menu_table'+item.id+' #dislike_count_td').append(item.dislike);
+
+}
+///////////////////////////////////
+function cancelLike(item){
+    $('#menupane .menu_table'+item.id+' #like_td').html('');
+    $('#menupane .menu_table'+item.id+' #like_count_td').html('');
+    /////////////////////////
+    $('#menupane .menu_table'+item.id+' #like_td').append('<a href="#" onclick="goodMenu('+item.id+');return false;">like</a>');
+    $('#menupane .menu_table'+item.id+' #like_count_td').append(item.like);
+
+}
+function cancelDislike(item){
+    $('#menupane .menu_table'+item.id+' #dislike_td').html('');
+    $('#menupane .menu_table'+item.id+' #dislike_count_td').html('');
+   ///////////////////////////////////////
+    $('#menupane .menu_table'+item.id+' #dislike_td').append('<a href="#" onclick="badMenu('+item.id+');return false;">dislike</a>');
+    $('#menupane .menu_table'+item.id+' #dislike_count_td').append(item.dislike);
+
+}
+////////////////////////////////////
 function resProfile(obj){
     $('#right_item').html('');
     $('#menuContact').html('');
@@ -30,10 +92,10 @@ function resProfile(obj){
     $('#res_profile tr:nth-child(6)').append('<td colspan="2" class="table_row1"></td><td rowspan="2"></td>');
     $('#res_profile tr:nth-child(7)').append('<td colspan="2"></td>');
 
-    $('#taste_point').append(obj.restaurant.tastepoint/obj.restaurant.count);
-    $('#speed_point').append(obj.restaurant.speedpoint/obj.restaurant.count);
-    $('#amount_point').append(obj.restaurant.amountpoint/obj.restaurant.count);
-    $('#service_point').append(obj.restaurant.servicepoint/obj.restaurant.count);
+    $('#taste_point').append((obj.restaurant.tastepoint/obj.restaurant.count).toFixed(2));
+    $('#speed_point').append((obj.restaurant.speedpoint/obj.restaurant.count).toFixed(2));
+    $('#amount_point').append((obj.restaurant.amountpoint/obj.restaurant.count).toFixed(2));
+    $('#service_point').append((obj.restaurant.servicepoint/obj.restaurant.count).toFixed(2));
 
     $('#res_profile tr:nth-child(6) td:nth-child(1)').append(obj.restaurant.resname);
     $('#res_profile tr:nth-child(7) td').append(obj.restaurant.phone);
@@ -42,7 +104,7 @@ function resProfile(obj){
     $('#supplement_box').append('<div id="ev_link"></div>');
     $('#supplement_box').append('<div id="menu_link"></div>');
 
-    $('#ev_link').append('<p class="view_res_link">Evaluate</p>');
+    $('#ev_link').append('<a href="#" onclick="evRes('+obj.restaurant.id+');return false;" class="view_res_link">Evaluate</a>');
     $('#menu_link').append('<p class="view_res_link" id="menuPop">Menu</p>');
 
 /////////////////////////////////////////////////////////////////////////
@@ -59,7 +121,7 @@ function resProfile(obj){
     $('#review_box tr:nth-child(3)').append('<td id="review_td" class="table_row1"></td>');
     $('#review_box tr:nth-child(4)').append('<td id="review_td" class="table_row0"></td>');
     for(var i = 0; i < obj.ev_temps.length; i++)  {
-        $('#review_box tr:nth-child('+ (i+2) + ' ) td').append(obj.ev_temps[i].review);
+        $('"#review_box tr:nth-child('+ (i+2) + ' ) td"').append(obj.ev_temps[i].review);
     }
 
 //////////////////////////////////////////////////////////////////////////
@@ -69,7 +131,25 @@ function resProfile(obj){
     $('#menupane').append('<div id="orangebox_menu">Menu-'+obj.restaurant.resname+'<p id="popupContactClose1">x</p></div>');
     
     for(var i = 0; i< obj.menus.length; i++){
-        $('#menupane').append('<table class="menu_table'+i%2+'"><tr><td class="menu_table_col1">'+obj.menus[i].menuname+'</td><td class="menu_table_col2">'+obj.menus[i].like+'</td></tr><td class="menu_table_col1">'+obj.menus[i].price+'</td><td class="menu_table_col2">'+obj.menus[i].dislike+'</td><tr></tr></table>');
+        
+        if(obj.menus[i].goodbad == null){
+            $('#menupane').append('<table class="menu_table'+(obj.menus[i].menu.id)+'"><tr><td class="menu_table_col1">'+obj.menus[i].menu.menuname+'</td><td class="menu_table_col2" id="like_td"><a href="#" onclick="goodMenu('+obj.menus[i].menu.id+');return false;">like</a></td><td class="menu_table_col3" id="like_count_td">'+obj.menus[i].menu.like+'</td></tr><td class="menu_table_col1">'+obj.menus[i].menu.price+'</td><td class="menu_table_col2" id="dislike_td"><a href="#" onclick="badMenu('+obj.menus[i].menu.id+');return false;">dislike</a></td><td class="menu_table_col3" id="dislike_count_td">'+obj.menus[i].menu.dislike+'</td></table>');
+        }
+        else {
+
+
+
+            if(obj.menus[i].goodbad.good == true && obj.menus[i].goodbad.bad == false){
+            $('#menupane').append('<table class="menu_table'+(obj.menus[i].menu.id)+'"><tr><td class="menu_table_col1">'+obj.menus[i].menu.menuname+'</td><td class="menu_table_col2" id="like_td"><a href="#" onclick="cancelGoodMenu('+obj.menus[i].menu.id+');return false;">cancel</a></td><td class="menu_table_col3" id="like_count_td">'+obj.menus[i].menu.like+'</td></tr><td class="menu_table_col1">'+obj.menus[i].menu.price+'</td><td class="menu_table_col2" id="dislike_td"><a href="#" onclick="badMenu('+obj.menus[i].menu.id+');return false;">dislike</a></td><td class="menu_table_col3" id="dislike_count_td">'+obj.menus[i].menu.dislike+'</td></table>');
+            }
+            else if(obj.menus[i].goodbad.bad == true && obj.menus[i].goodbad.good == true){
+            $('#menupane').append('<table class="menu_table'+(obj.menus[i].menu.id)+'"><tr><td class="menu_table_col1">'+obj.menus[i].menu.menuname+'</td><td class="menu_table_col2" id="like_td"><a href="#" onclick="goodMenu('+obj.menus[i].menu.id+');return false;">like</a></td><td class="menu_table_col3" id="like_count_td">'+obj.menus[i].menu.like+'</td></tr><td class="menu_table_col1">'+obj.menus[i].menu.price+'</td><td class="menu_table_col2" id="dislike_td"><a href="#" onclick="cancelBadMenu('+obj.menus[i].menu.id+');return false;">cancel</a></td><td class="menu_table_col3" id="dislike_count_td">'+obj.menus[i].menu.dislike+'</td></table>');
+            }
+            else if(obj.menus[i].goodbad.bad == false && obj.menus[i].goodbad.good == false){
+            $('#menupane').append('<table class="menu_table'+(obj.menus[i].menu.id)+'"><tr><td class="menu_table_col1">'+obj.menus[i].menu.menuname+'</td><td class="menu_table_col2" id="like_td"><a href="#" onclick="goodMenu('+obj.menus[i].menu.id+');return false;">like</a></td><td class="menu_table_col3" id="like_count_td">'+obj.menus[i].menu.like+'</td></tr><td class="menu_table_col1">'+obj.menus[i].menu.price+'</td><td class="menu_table_col2" id="dislike_td"><a href="#" onclick="badMenu('+obj.menus[i].menu.id+');return false;">dislike</a></td><td class="menu_table_col3" id="dislike_count_td">'+obj.menus[i].menu.dislike+'</td></table>');
+            }
+        }
+    
     }
 
 ////////////////////////////////////////////////////////////
@@ -94,6 +174,12 @@ function resProfile(obj){
 
 }
 ///////////////////////////////////////////////////////////////
+
+function resEvaluation(product){
+    $('#right_item').html('');
+    $('#menuContact').html('');
+}
+
 
 
 $(function() {

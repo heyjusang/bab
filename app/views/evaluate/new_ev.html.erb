@@ -1,4 +1,6 @@
 <%= content_for :head do %>
+<%= stylesheet_link_tag    "jquery.rating.css" %>
+<%= javascript_include_tag "jquery.rating.js" %>
 <% end %>
 
 
@@ -6,19 +8,16 @@
 
     <%= form_for(@evaluation, :url => {:action => "create_ev", :res_id => params[:res_id]}) do |evaluation| %>
             taste
-            <select name="evaluation[taste]" class="rating">
-                <option value="0">Put a Curse</option>
-                <option value="1">Very Poor</option>
-                <option value="2">Poor</option>
-                <option value="3">Bad</option>
-                <option value="4">Not Bad</option>
-                <option value="5">Average</option>
-                <option value="6">Fine</option>
-                <option value="7">Good</option>
-                <option value="8">Very Good</option>
-                <option value="9">Great</option>
-                <option value="10">Perfect</option>
-            </select>
+            <input name="evaluation[taste]" type="radio" class="star {split:2}" value="1"/>
+            <input name="evaluation[taste]" type="radio" class="star {split:2}" value="2"/>
+            <input name="evaluation[taste]" type="radio" class="star {split:2}" value="3"/>
+            <input name="evaluation[taste]" type="radio" class="star {split:2}" value="4"/>
+            <input name="evaluation[taste]" type="radio" class="star {split:2}" value="5"/>
+            <input name="evaluation[taste]" type="radio" class="star {split:2}" value="6"/>
+            <input name="evaluation[taste]" type="radio" class="star {split:2}" value="7"/>
+            <input name="evaluation[taste]" type="radio" class="star {split:2}" value="8"/>
+            <input name="evaluation[taste]" type="radio" class="star {split:2}" value="9"/>
+            <input name="evaluation[taste]" type="radio" class="star {split:2}" value="10"/>
             speed
             <select name="evaluation[speed]" class="rating">
                 <option value="0">Put a Curse</option>

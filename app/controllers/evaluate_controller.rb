@@ -17,6 +17,7 @@ class EvaluateController < ApplicationController
 
         @evaluation = Evaluation.new
 
+
     end
 
     def create_ev
@@ -44,73 +45,90 @@ class EvaluateController < ApplicationController
 
     def good_menu
         user = User.find(session[:user_id])
-        goodbad = Goodbad.find(params[:gb_id])
+        if Goodbad.first( :conditions => ['user_id = ? and menu_id =?', session[:user_id], params[:menu_id]])
+        goodbad =  Goodbad.first( :conditions => ['user_id = ? and menu_id =?', session[:user_id], params[:menu_id]])
         menu = Menu.find(params[:menu_id])
-        goodbad.men_id = menu.id
+        else
+        goodbad = Goodbad.new
+        goodbad.good = false
+        goodbad.bad = false
+        menu = Menu.find(params[:menu_id])
+        goodbad.menu_id = menu.id
         goodbad.user_id = user.id
-
-        goodbad.good = 1
-
-        if goodbad.bad == 1
-            goodbad.bad = 0
-            menu.dislike = menu.dislike - 1
         end
+        if goodbad.good == false
+            goodbad.good = true
 
-        menu.like = menu.like + 1
+            if goodbad.bad == true
+                goodbad.bad = false
+                menu.dislike = menu.dislike - 1
+            end
 
+            menu.like = menu.like + 1
+        end
         goodbad.save
         menu.save
 
+        render :json => menu
 
     end
 
     def bad_menu
         user = User.find(session[:user_id])
-        goodbad = Goodbad.find(params[:gb_id])
+        if Goodbad.first( :conditions => ['user_id = ? and menu_id =?', session[:user_id], params[:menu_id]])
+        goodbad =  Goodbad.first( :conditions => ['user_id = ? and menu_id =?', session[:user_id], params[:menu_id]])
         menu = Menu.find(params[:menu_id])
-        goodbad.men_id = menu.id
+        else
+        goodbad = Goodbad.new
+        goodbad.good = false
+        goodbad.bad = false
+        menu = Menu.find(params[:menu_id])
+        goodbad.menu_id = menu.id
         goodbad.user_id = user.id
-
-        goodbad.bad = 1
-
-        if goodbad.good ==1
-            goodbad.good = 0
-            menu.like = menu.like - 1
         end
+    
+        if goodbad.bad == false
+        goodbad.bad = true
 
-        menu.dislike = menu.dislike +1
+            if goodbad.good == true
+                goodbad.good = false
+                menu.like = menu.like - 1
+            end
+
+            menu.dislike = menu.dislike + 1
+        end
 
         goodbad.save
         menu.save
+
+        render :json => menu
     end
 
     def cancel_good
         user = User.find(session[:user_id])
-        goodbad = Goodbad.find(params[:gb_id])
+        goodbad = Goodbad.first(:conditions => ['user_id = ? and menu_id = ?', session[:user_id], params[:menu_id]])
         menu = Menu.find(params[:menu_id])
-        goodbad.men_id = menu.id
-        goodbad.user_id = user.id
-
-        goodbad.good = 0
+        if goodbad.good == true
+        goodbad.good = false
         menu.like = menu.like - 1
-
+        end
         goodbad.save
         menu.save
+        render :json => menu
 
     end
 
     def cancel_bad
         user = User.find(session[:user_id])
-        goodbad = Goodbad.find(params[:gb_id])
+        goodbad = Goodbad.first(:conditions => ['user_id =? and menu_id =?', session[:user_id], params[:menu_id]])
         menu = Menu.find(params[:menu_id])
-        goodbad.men_id = menu.id
-        goodbad.user_id = user.id
-
-        goodbad.bad = 0
+        if goodbad.bad == true
+        goodbad.bad = false
         menu.dislike = menu.dislike - 1
-
+        end
         goodbad.save
         menu.save
+        render :json => menu
 
     end
 

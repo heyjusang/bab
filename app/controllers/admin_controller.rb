@@ -57,7 +57,6 @@ layout nil
         menu.restaurant_id = restaurant.id
 
         menu.save
-
         redirect_to :action => "view_restaurant", :id => menu.restaurant_id
     end
 
@@ -73,6 +72,7 @@ layout nil
 
     def destroy_menu
         menu = Menu.destroy(params[:id])
+        goodbad = Goodbad.destroy(params[:id])
 
         redirect_to :action => "view_restaurant", :id => menu.restaurant_id
     end

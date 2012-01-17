@@ -102,7 +102,7 @@
 #menuContact{
     display:none;
     height : 800px;
-    width : 690px;
+    width : 695px;
     background : white;
     z-index :2;
 
@@ -113,7 +113,7 @@
     color : white;
     font-size : 25px;
     font-weight : bolder;
-    width : 690px;
+    width : 695px;
     height : 32px;
 }
 
@@ -124,8 +124,6 @@
     border-collapse : collapse;
     font-size : 13px;
     float : left;
-}
-.menu_table1{
     background : #f7f7f7;
 }
 
@@ -136,9 +134,11 @@
 }
 
 .menu_table_col2{
-    width : 78px;
+    width : 53px;
 }
-
+.menu_table_col3{
+    width : 25px;
+}
 
 
 

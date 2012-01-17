@@ -42,7 +42,7 @@ function centerPopup(popUp){
     var popupWidth = $(popUp).width();
     $(popUp).css({
         "position" : "absolute",
-        "top" : windowHeight/2-popupHeight/2,
+        "top" : "20px",
         "left" : windowWidth/2-popupWidth/2
     });
 }
