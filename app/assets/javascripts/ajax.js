@@ -68,6 +68,7 @@ function cancelDislike(item){
 function resProfile(obj){
     $('#right_item').html('');
     $('#menuContact').html('');
+    $('#menuContact').remove();
 ///////////////////////////////////////////////////////////////
     $('#right_item').append('<div id="res_profile"></div>');
     $('#right_item').append('<div id="supplement_box"></div>');
@@ -92,11 +93,26 @@ function resProfile(obj){
     $('#res_profile tr:nth-child(6)').append('<td colspan="2" class="table_row1"></td><td rowspan="2"></td>');
     $('#res_profile tr:nth-child(7)').append('<td colspan="2"></td>');
 
-    $('#taste_point').append((obj.restaurant.tastepoint/obj.restaurant.count).toFixed(2));
-    $('#speed_point').append((obj.restaurant.speedpoint/obj.restaurant.count).toFixed(2));
-    $('#amount_point').append((obj.restaurant.amountpoint/obj.restaurant.count).toFixed(2));
-    $('#service_point').append((obj.restaurant.servicepoint/obj.restaurant.count).toFixed(2));
-
+    $('#taste_point').append('<div id="prog_taste"></div>');
+    $('#speed_point').append('<div id="prog_speed"></div>');
+    $('#amount_point').append('<div id="prog_amount"></div>');
+    $('#service_point').append('<div id="prog_service"></div>');
+    $('#prog_taste').progressbar({
+        value : 10*((obj.restaurant.tastepoint/obj.restaurant.count).toFixed(2))
+        });
+    $('#prog_speed').progressbar({
+        value : 10*((obj.restaurant.speedpoint/obj.restaurant.count).toFixed(2))
+        });
+    $('#prog_amount').progressbar({
+        value : 10*((obj.restaurant.amountpoint/obj.restaurant.count).toFixed(2))
+        });
+    $('#prog_service').progressbar({
+        value : 10*((obj.restaurant.servicepoint/obj.restaurant.count).toFixed(2))
+        });
+    $('#prog_taste').append('<p>'+(obj.restaurant.tastepoint/obj.restaurant.count).toFixed(2)+'</p>');
+    $('#prog_speed').append('<p>'+(obj.restaurant.speedpoint/obj.restaurant.count).toFixed(2)+'</p>');
+    $('#prog_amount').append('<p>'+(obj.restaurant.amountpoint/obj.restaurant.count).toFixed(2)+'</p>');
+    $('#prog_service').append('<p>'+(obj.restaurant.servicepoint/obj.restaurant.count).toFixed(2)+'</p>');
     $('#res_profile tr:nth-child(6) td:nth-child(1)').append(obj.restaurant.resname);
     $('#res_profile tr:nth-child(7) td').append(obj.restaurant.phone);
 

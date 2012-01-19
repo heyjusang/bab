@@ -34,6 +34,24 @@
     background : #f7f7f7;
 }
 
+.ui-progressbar {
+    border : 1px solid #bdbabd;
+    height : 20px;
+}
+.ui-progressbar p {
+    margin-top : 3px;
+    position : absolute;
+    right : 8px;       
+}
+.ui-progressbar-value {
+    height : 20px;
+    background : #ff8200;
+    float : left;
+}
+
+
+
+
 
 #supplement_box{
     width : 490px;
