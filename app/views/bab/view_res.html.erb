@@ -1,75 +1,80 @@
-<%= content_for :head do %>
-<%= stylesheet_link_tag :"view_res.css" %>
-<% end %>
-
-<%= content_for :right do %>
-
-
-    <div id="res_profile">
-        <table>
-            <tr>
-                <td colspan="3" class="table_name">Restaurant Information</td>
-            </tr>
-            <tr>
-                <td rowspan="4" class="table_image">dd</td>
-                <td class="table_row1">taste</td>
-                <td id="taste_point"><%= @restaurant.tastepoint/@restaurant.count %></td>
-            </tr>
-            <tr>
-                <td class="table_ev_list">speed</td>
-                <td class="table_row1" id="speed_point"><%= @restaurant.speedpoint/@restaurant.count %></td>
-            </tr>
-            <tr>
-                <td class="table_row1">amount</td>
-                <td id="amount_point"><%= @restaurant.amountpoint/@restaurant.count %></td>
-            </tr>
-            <tr>
-                <td>service</td>
-                <td class="table_row1" id="service_point"><%= @restaurant.servicepoint/@restaurant.count %></td>
-            </tr>
-            <tr>
-                <td colspan="2" class="table_row1"><%= @restaurant.resname %></td>
-                <td rowspan="2"><%= @restaurant.resinfo %></td>
-            </tr>
-            <tr>
-                <td colspan="2"><%= @restaurant.phone %></td>
-            </tr>
-        </table>
-    </div>
-
-
-
-    <div id="supplement_box">
-        <div  id="ev_link">
-            <%= link_to "evaluate", {:controller => "evaluate", :action => "new_ev", :res_id => params[:id]}, :class => "view_res_link" %> 
+<div id="res_profile">
+  <table>
+    <tr>
+      <td colspan="3" class="table_name">Restaurant Information</td>
+    </tr>
+    <tr>
+      <td rowspan="4" class="table_image"</td>
+      <td class="table_row1">taste</td>
+      <td id="taste_point">
+        <div id="prog_taste">
         </div>
-        <div id="menu_link">
-            <%= link_to "menu", {:action =>"veiw_menu" , :res_id => params[:id] }, :class => "view_res_link" %>
+      </td>
+    </tr>
+    <tr>
+      <td class="table_ev_list">speed</td>
+      <td class="table_row1" id="speed_point">
+        <div id="prog_speed">
         </div>
-    </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="table_row1">amount</td>
+      <td id="amount_point">
+        <div id="prog_amount">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>service</td>
+      <td class="table_row1" id="service_point">
+        <div id="prog_service">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="table_row1"></td>
+      <td rowspan="2"></td>
+    </tr>
+    <tr>
+      <td colspan="2"></td>
+    </tr>
 
 
-    <div id="review_box">
-        <table>
-            <tr>
-                <td class="table_name2">New Comment <%= link_to "More", {:action=>"more_comment", :id => params[:id]} %></td>
-            </tr>
-           <% @ev_temps.each_with_index do |ev, i| %>
-            <tr>
-                <td  id ="review_td" class="table_row<%=i%2 %>"><%= ev.review %></td>
-            </tr>
-           <% end %>
-        </table>
-
-
-    </div>
+  </table>
 
 
 
 
+</div>
 
 
+<div id="supplement_box">
+  <div id="ev_link">
+  </div>
+  <div id="menu_link">
+  </div>
+
+</div>
 
 
+<div id="review_box">
+  <table>
+    <tr>
+      <td class="table_name2">
+        New Comment
+        <a href="#">More</a>
+      </td>
+    </tr>
+    <tr>
+      <td id="review_td" class="table_row0"></td>
+    </tr>
+    <tr>
+      <td id="review_td" class="table_row1"></td>
+    </tr>
+    <tr>
+      <td id="review_td" class="table_row0"></td>
+    </tr>
+  </table>
 
-<% end %>
+</div>

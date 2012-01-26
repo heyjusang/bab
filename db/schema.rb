@@ -46,14 +46,14 @@ ActiveRecord::Schema.define(:version => 20111230130113) do
 
   create_table "restaurants", :force => true do |t|
     t.string   "resname"
-    t.integer  "phone"
-    t.integer  "tastepoint"
-    t.integer  "speedpoint"
-    t.integer  "servicepoint"
-    t.integer  "amountpoint"
+    t.string   "phone"
+    t.decimal  "tastepoint",   :precision => 3, :scale => 2
+    t.decimal  "speedpoint",   :precision => 3, :scale => 2
+    t.decimal  "servicepoint", :precision => 3, :scale => 2
+    t.decimal  "amountpoint",  :precision => 3, :scale => 2
     t.integer  "count"
     t.text     "resinfo"
-    t.integer  "restype"
+    t.string   "restype"
     t.string   "imageurl"
     t.datetime "created_at"
     t.datetime "updated_at"

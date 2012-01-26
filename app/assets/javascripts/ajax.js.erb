@@ -1,0 +1,234 @@
+function showRes(id){
+    //$.getJSON('/bab/view_res?res_id=' + id, resProfile)
+    location.href = '/#/bab/view?res_id=' + id;
+  $('#right_item').html('');
+  $('#menuContact').html('');
+  $('#menuContact').remove();
+
+  $.ajax({
+    url: '/bab/view_test?res_id=' + id,
+    type : 'POST',
+    dataType : 'html',
+    async : false,
+    success: function(data){
+      $('#right_item').html(data);
+      resProfile();
+    }
+
+
+  });
+
+}
+
+function evRes(id){
+
+    location.href = '/#/bab/evaluate?res_id=' + id;
+    $('#right_item').html('');
+    $('#menuContact').html('');
+    $('#menuContact').remove();
+
+    $.ajax({
+      url: '/evaluate/new_ev?res_id=' + id,
+      type : 'POST',
+      dataType : 'html',
+      async : false,
+      success:function(data) {
+        $('#right_item').html(data);
+        prepareSliders();
+
+      }
+    });
+
+}
+function goodMenu(id){
+    $.getJSON('/evaluate/good_menu?menu_id=' +id, likeThisMenu)
+
+}
+function badMenu(id){
+    $.getJSON('/evaluate/bad_menu?menu_id=' +id, dislikeThisMenu)
+}
+
+function cancelGoodMenu(id){
+    $.getJSON('/evaluate/cancel_good?menu_id=' +id, cancelLike)
+
+}
+
+function cancelBadMenu(id){
+    $.getJSON('/evaluate/cancel_bad?menu_id=' +id, cancelDislike)
+}
+////////////////////////////////////
+function prepareSliders() {
+  var default_options = {
+    range : "min",
+    max : 10,
+    min : 0,
+    value : 0,
+    animate : true,
+    orientation : "horizontal"};
+
+    $('#taste_slide').slider(
+      $.extend(default_options,
+        {
+          slide : function(event, ui) {
+            $('#p_taste_point').val(ui.value);
+          }
+        }
+      )
+    );
+
+    $('#speed_slide').slider(
+      $.extend(default_options,
+        {
+          slide : function(event, ui){
+            $('#p_speed_point').val(ui.value);
+          }
+        }
+      )
+    );
+
+
+    $('#amount_slide').slider(
+      $.extend(default_options,
+        {
+          slide : function(event, ui){
+            $('#p_amount_point').val(ui.value);
+          }
+        }
+      )
+    );
+
+
+
+    $('#service_slide').slider(
+      $.extend(default_options,
+        {
+          slide : function(event, ui){
+            $('#p_service_point').val(ui.value);
+          }
+        }
+      )
+    );
+
+
+}
+
+
+
+////////////////////////////////////
+function likeThisMenu(item){
+    $('#menupane .menu_table'+item.id+' #like_td').html('');
+    $('#menupane .menu_table'+item.id+' #like_count_td').html('');
+    $('#menupane .menu_table'+item.id+' #dislike_td').html('');
+    $('#menupane .menu_table'+item.id+' #dislike_count_td').html('');
+   ///////////////////////////////////////
+    $('#menupane .menu_table'+item.id+' #like_td').append('<a href="#" onclick="cancelGoodMenu('+item.id+');return false;">cancel</a>');
+    $('#menupane .menu_table'+item.id+' #like_count_td').append(item.like);
+    $('#menupane .menu_table'+item.id+' #dislike_td').append('<a href="#" onclick="badMenu('+item.id+');return false;">dislike</a>');
+    $('#menupane .menu_table'+item.id+' #dislike_count_td').append(item.dislike);
+}
+
+function dislikeThisMenu(item){
+    $('#menupane .menu_table'+item.id+' #like_td').html('');
+    $('#menupane .menu_table'+item.id+' #like_count_td').html('');
+    $('#menupane .menu_table'+item.id+' #dislike_td').html('');
+    $('#menupane .menu_table'+item.id+' #dislike_count_td').html('');
+   ///////////////////////////////////////
+    $('#menupane .menu_table'+item.id+' #like_td').append('<a href="#" onclick="goodMenu('+item.id+');return false;">like</a>');
+    $('#menupane .menu_table'+item.id+' #like_count_td').append(item.like);
+    $('#menupane .menu_table'+item.id+' #dislike_td').append('<a href="#" onclick="cancelBadMenu('+item.id+');return false;">cancel</a>');
+    $('#menupane .menu_table'+item.id+' #dislike_count_td').append(item.dislike);
+
+}
+///////////////////////////////////
+function cancelLike(item){
+    $('#menupane .menu_table'+item.id+' #like_td').html('');
+    $('#menupane .menu_table'+item.id+' #like_count_td').html('');
+    /////////////////////////
+    $('#menupane .menu_table'+item.id+' #like_td').append('<a href="#" onclick="goodMenu('+item.id+');return false;">like</a>');
+    $('#menupane .menu_table'+item.id+' #like_count_td').append(item.like);
+
+}
+function cancelDislike(item){
+    $('#menupane .menu_table'+item.id+' #dislike_td').html('');
+    $('#menupane .menu_table'+item.id+' #dislike_count_td').html('');
+   ///////////////////////////////////////
+    $('#menupane .menu_table'+item.id+' #dislike_td').append('<a href="#" onclick="badMenu('+item.id+');return false;">dislike</a>');
+    $('#menupane .menu_table'+item.id+' #dislike_count_td').append(item.dislike);
+
+}
+//////////////////////////////////////
+
+
+
+////////////////////////////////////
+function resProfile(){
+  
+  $('#prog_taste').progressbar({
+    value : 10*($('#prog_taste p').text())
+  });
+  $('#prog_speed').progressbar({
+    value : 10*($('#prog_speed p').text())
+  });
+  $('#prog_amount').progressbar({
+    value : 10*($('#prog_amount p').text())
+  });
+  $('#prog_service').progressbar({
+    value : 10*($('#prog_service p').text())
+  });
+ //////////////////////////////////////////////////////////
+    $("#menuPop").click(function(){
+            centerPopup('#menuContact');
+            loadPopup('#menuContact');
+        });
+        $("#popupContactClose1").click(function(){
+            disablePopup('#menuContact');
+        });
+        $('html').keydown(function(e){
+                if(e.keyCode==27 && popupStatus==1){
+                    $('#backgroundPopup').fadeOut("slow");
+                    $('#menuContact').fadeOut("slow");
+                    popupStatus = 0;
+                } 
+        });
+
+
+
+
+}
+///////////////////////////////////////////////////////////////
+
+function resEvaluation(product){
+    $('#right_item').html('');
+    $('#menuContact').html('');
+}
+
+$(function(){
+  var hash = window.location.hash;
+  
+  if (hash != ""){
+    var args = hash.substr(1).split("?");
+    var command = args[0].split("/")[2];
+    var res_id = args[1].split("=")[1];
+
+    if (command == "view"){
+      showRes(res_id);
+    }
+    if (command == "evaluate"){
+      evRes(res_id);  
+    }
+
+
+  } 
+});
+
+/*    var hash= window.location.hash;
+    var args = hash.substr(1).split(";");
+
+    var arg = args[0];
+    var command = arg.split("=")[0];
+    var res_id = arg.split("=")[1];
+
+    if (command == "show") {
+    }
+*/
+

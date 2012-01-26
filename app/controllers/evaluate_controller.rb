@@ -15,13 +15,21 @@ class EvaluateController < ApplicationController
         end
 
 
+        @restaurant = Restaurant.find(params[:res_id])
         @evaluation = Evaluation.new
+        render :layout => false
+
 
 
     end
 
     def create_ev
         evaluation = Evaluation.new(params[:evaluation])
+
+        if (evaluation.taste>=0 && evaluation.taste<=10)&&(evaluation.speed>=0 && evaluation.speed<=10)&&(evaluation.amount>=0 && evaluation.amount<=10) && (evaluation.service>=0 && evaluation.service<=10)
+
+
+
         restaurant = Restaurant.find(params[:res_id])
         user = User.find(session[:user_id])
         evaluation.restaurant_id = restaurant.id
@@ -38,7 +46,13 @@ class EvaluateController < ApplicationController
         restaurant.save
 
 
-        redirect_to  :controller => "bab", :action => "view_res", :id => params[:res_id] 
+        redirect_to  :controller => "bab", :action => "index"
+
+        else
+
+
+        end
+
 
     end
 

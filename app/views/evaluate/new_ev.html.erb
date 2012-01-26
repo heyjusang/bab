@@ -1,68 +1,52 @@
-<%= content_for :head do %>
-<%= stylesheet_link_tag    "jquery.rating.css" %>
-<%= javascript_include_tag "jquery.rating.js" %>
-<% end %>
-
-
-<%= content_for :right do %>
-
+        <p id="title">Evaluate - <%= @restaurant.resname %></p>
+    
     <%= form_for(@evaluation, :url => {:action => "create_ev", :res_id => params[:res_id]}) do |evaluation| %>
-            taste
-            <input name="evaluation[taste]" type="radio" class="star {split:2}" value="1"/>
-            <input name="evaluation[taste]" type="radio" class="star {split:2}" value="2"/>
-            <input name="evaluation[taste]" type="radio" class="star {split:2}" value="3"/>
-            <input name="evaluation[taste]" type="radio" class="star {split:2}" value="4"/>
-            <input name="evaluation[taste]" type="radio" class="star {split:2}" value="5"/>
-            <input name="evaluation[taste]" type="radio" class="star {split:2}" value="6"/>
-            <input name="evaluation[taste]" type="radio" class="star {split:2}" value="7"/>
-            <input name="evaluation[taste]" type="radio" class="star {split:2}" value="8"/>
-            <input name="evaluation[taste]" type="radio" class="star {split:2}" value="9"/>
-            <input name="evaluation[taste]" type="radio" class="star {split:2}" value="10"/>
-            speed
-            <select name="evaluation[speed]" class="rating">
-                <option value="0">Put a Curse</option>
-                <option value="1">Very Poor</option>
-                <option value="2">Poor</option>
-                <option value="3">Bad</option>
-                <option value="4">Not Bad</option>
-                <option value="5">Average</option>
-                <option value="6">Fine</option>
-                <option value="7">Good</option>
-                <option value="8">Very Good</option>
-                <option value="9">Great</option>
-                <option value="10">Perfect</option>
-            </select>
-            amount
-            <select name="evaluation[amount]" class="rating">
-                <option value="0">Put a Curse</option>
-                <option value="1">Very Poor</option>
-                <option value="2">Poor</option>
-                <option value="3">Bad</option>
-                <option value="4">Not Bad</option>
-                <option value="5">Average</option>
-                <option value="6">Fine</option>
-                <option value="7">Good</option>
-                <option value="8">Very Good</option>
-                <option value="9">Great</option>
-                <option value="10">Perfect</option>
-            </select>
-            service
-            <select name="evaluation[service]" class="rating">
-                <option value="0">Put a Curse</option>
-                <option value="1">Very Poor</option>
-                <option value="2">Poor</option>
-                <option value="3">Bad</option>
-                <option value="4">Not Bad</option>
-                <option value="5">Average</option>
-                <option value="6">Fine</option>
-                <option value="7">Good</option>
-                <option value="8">Very Good</option>
-                <option value="9">Great</option>
-                <option value="10">Perfect</option>
-            </select>
-            comment : <%= evaluation.text_field :review%>
+    
+        <table class="ev_table">
+            <tr>
+                <td class="ev_table_name" colspan="2">taste</td>
+            </tr>
+            <tr>
+                <td><div id="taste_slide"></div></td>
+                <td class="ev_table_point"><%= evaluation.text_field :taste, :class => "ev_point_field", :id => "p_taste_point", :readonly => "readonly",:value => "0" %></td>
+            </tr>
+        </table>
+        <table class="ev_table">
+            <tr>
+                <td class="ev_table_name" colspan="2">speed</td>
+            </tr>
+            <tr>
+                <td><div id="speed_slide"></div></td>
+                <td class="ev_table_point"><%= evaluation.text_field :speed, :class => "ev_point_field",:id => "p_speed_point", :readonly => "readonly",:value => "0" %></td>
+            </tr>
+        </table>
+        <table class="ev_table">
+            <tr>
+                <td class="ev_table_name" colspan="2">amount</td>
+            </tr>
+            <tr>
+                <td><div id="amount_slide"></div></td>
+                <td class="ev_table_point"><%= evaluation.text_field :amount, :class => "ev_point_field",:id => "p_amount_point", :readonly => "readonly",:value => "0" %></td>
+            </tr>
+        </table>
+        <table class="ev_table">
+            <tr>
+                <td class="ev_table_name" colspan="2">service</td>
+            </tr>
+            <tr>
+                <td><div id="service_slide"></div></td>
+                <td class="ev_table_point"><%= evaluation.text_field :service, :class => "ev_point_field",:id => "p_service_point", :readonly => "readonly",:value => "0" %></td>
+            </tr>
+        </table>
 
-        <%= submit_tag("submit") %>
+            
+        <table class="ev_table">
+            <tr>
+                <td class="ev_table_name" colspan="2">review</td>
+            </tr>
+            <tr>
+                <td class="ev_table_content"><%= evaluation.text_area :review %></td>
+            </tr>
+        </table>
+        <%= submit_tag "submit!", :id=>"ev_submit" %>
     <% end %>
-
-<% end %>
