@@ -45,8 +45,11 @@
                 <td class="ev_table_name" colspan="2">review</td>
             </tr>
             <tr>
-                <td class="ev_table_content"><%= evaluation.text_area :review %></td>
+              <td class="ev_table_content">
+                <%= evaluation.text_area :review %>
+                <div id="countinfo">0/140</div>
+              </td>
             </tr>
-        </table>
+          </table>
         <%= submit_tag "submit!", :id=>"ev_submit" %>
     <% end %>

@@ -95,11 +95,69 @@ a {
         background : #f7f7f7;
     }
 }
+#resultview{
+  width : 500px;
+  height : 540px;
+  overflow : auto;
+}
+.result_table {
+  border-spacing : 0px;
+  border-collapse : collapse;
+  border : #bdbabd 1px solid;
+  margin-top : 5px;
+  position : relative;
+  margin-left : auto;
+  margin-right : auto;
+}
 
+.result_img_td {
+  width : 100px;
+  height : 100px;
 
+}
+.result_resname_td{
+  width : 320px;
+  text-align : right;
+  font-weight : bold;
+  font-size : 15px;
+  border-bottom : 1px solid #bdbabd;
+  height : 30px;
+}
+.result_resinfo_td{
+  word-break : break-all;
+  font-size : 13px;
+  height : 60px;
+  border-bottom : 1px solid #bdbabd;
+}
+.result_respoint_td{
+  font-size : 13px;
+  text-align : right;
+  height : 28px;
+  span {
+  color : #ff7200;
+  font-weight : bold;
 
-
-
-
-
-
+  }
+}
+.pagination a, .pagination span, .pagination em{
+  display :none;
+}
+.moreview{
+  position : relative;
+  margin-left : auto;
+  margin-right : auto;
+  width : 450px;
+  height : 40px;
+  margin-top : 10px;
+  border-radius : 5px;
+  border : 1px solid #ddd;
+  background : #dfdfdf;
+  box-shadow : 2px 2px 2px rgba(50,50,50,0.4);
+  text-align : center;
+  font-size : 25px;
+  padding-top : 10px;
+}
+a.next_page{
+ display : block; 
+ color : #444;
+}

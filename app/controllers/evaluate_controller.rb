@@ -24,36 +24,41 @@ class EvaluateController < ApplicationController
     end
 
     def create_ev
-        evaluation = Evaluation.new(params[:evaluation])
+      evaluation = Evaluation.new(params[:evaluation])
+
+      if (evaluation.review.length<10) || (evaluation.review.length>100)
+        redirect_to :back, :notice => "dd" 
+      else
+
 
         if (evaluation.taste>=0 && evaluation.taste<=10)&&(evaluation.speed>=0 && evaluation.speed<=10)&&(evaluation.amount>=0 && evaluation.amount<=10) && (evaluation.service>=0 && evaluation.service<=10)
 
 
 
-        restaurant = Restaurant.find(params[:res_id])
-        user = User.find(session[:user_id])
-        evaluation.restaurant_id = restaurant.id
-        evaluation.user_id = user.id
+          restaurant = Restaurant.find(params[:res_id])
+          user = User.find(session[:user_id])
+          evaluation.restaurant_id = restaurant.id
+          evaluation.user_id = user.id
 
 
-        restaurant.count = restaurant.count + 1
-        restaurant.tastepoint = restaurant.tastepoint + evaluation.taste
-        restaurant.speedpoint = restaurant.speedpoint + evaluation.speed
-        restaurant.amountpoint = restaurant.amountpoint + evaluation.amount
-        restaurant.servicepoint = restaurant.servicepoint + evaluation.service
+          restaurant.count = restaurant.count + 1
+          restaurant.tastepoint = restaurant.tastepoint + evaluation.taste
+          restaurant.speedpoint = restaurant.speedpoint + evaluation.speed
+          restaurant.amountpoint = restaurant.amountpoint + evaluation.amount
+          restaurant.servicepoint = restaurant.servicepoint + evaluation.service
 
-        evaluation.save
-        restaurant.save
+          evaluation.save
+          restaurant.save
 
 
-        redirect_to  :controller => "bab", :action => "index"
+          redirect_to  :controller => "bab", :action => "index"
 
         else
-
+          redirect_to :back
 
         end
 
-
+      end
     end
 
 

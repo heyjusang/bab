@@ -32,6 +32,15 @@ class BabController < ApplicationController
 
   end
 
+  def search
+    if params[:search].nil?
+      @results = Restaurant.find(:all).paginate(:page => params[:page], :per_page => 4)
+    else
+      @results = Restaurant.where('resname LIKE ? ',"%#{params[:search]}%").paginate(:page => params[:page], :per_page => 4)
+    end
+      render :layout => false
+  end
+
   def more_comment
   end
 

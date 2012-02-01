@@ -9,16 +9,15 @@
     <%= stylesheet_link_tag    "evaluate" %>
     <%= javascript_include_tag "jquery-1.7.1.min.js" %>
     <%= javascript_include_tag "jquery-ui-1.8.17.custom.min.js" %>
+    <%= javascript_include_tag "jquery.infinitescroll.js" %>
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag "ajax.js.erb" %>
     <%= csrf_meta_tags %>
-
-
-    <% if flash[:notice] -%>
-    <script type= "text/javascript">
-      alert('<%= flash[:notice] %> ');
-    </script>
-    <% end -%>
+    <% if flash[:notice] %>
+      <script type="text/javascript">
+        alert("<%= flash[:notice] %>");
+      </script>
+    <% end %>
   </head>
   <body>
 
@@ -28,8 +27,8 @@
       </div>
 
       <div id="searchbox">
-        <form action ='/bab/search'>
-          <input name="query" type="text" class="searchtext" value="black dragon river" onfocus="this.value='';"/>
+        <form action ='#' name="searchform" onsubmit="searchRes();return false;">
+          <input name="search" type="text" class="searchtext" value="black dragon river" onfocus="this.value='';"/>
           <input type="submit" value="search" class="searchbtn" />
         </form>
       </div>

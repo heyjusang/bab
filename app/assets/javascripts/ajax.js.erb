@@ -35,11 +35,60 @@ function evRes(id){
       success:function(data) {
         $('#right_item').html(data);
         prepareSliders();
-
+        reviewCount();
       }
     });
 
 }
+
+function searchRes(){
+
+  
+  $('#left_item').html('');
+  $.ajax({
+    url: '/bab/search?&search=' + searchform.search.value,
+    type : 'GET',
+    dataType : 'html',
+    async : false,
+    success: function(data) {
+      $('#left_item').html(data);
+      
+      $("a.next_page").wrap('<div class="moreview" />');
+    
+  searchScroll();
+    }
+
+  });
+}
+
+function searchScroll(){
+  $('#resultview').infinitescroll({
+
+    navSelector : "div.pagination",
+    nextSelector : "div.pagination a.next_page",
+    itemSelector : "#resultview table",
+    donetext : "더 이상 검색결과가 없습니다.",
+  });
+  $(window).unbind('.infscr'); 
+  $("a.next_page").click(function(){
+    $(document).trigger('retrieve.infscr');
+    $(".pagination").css({
+      "display" : ""
+    });
+    return false;
+  });
+  $(document).ajaxError(function(e,xhr,opt){
+    if (xhr.status == 404)
+      $('div.moreview').remove();
+});
+
+
+}
+
+
+
+
+
 function goodMenu(id){
     $.getJSON('/evaluate/good_menu?menu_id=' +id, likeThisMenu)
 
@@ -111,7 +160,42 @@ function prepareSliders() {
 
 
 }
+function reviewCount(){
 
+  $('#evaluation_review').keyup(function(){
+    var text = $('#evaluation_review').val();
+    var textlength = text.length;
+
+
+
+
+    if (textlength > 140 ){
+
+      $('#countinfo').html('140/140');
+      $('#evaluation_review').val(text.substr(0,140));
+    }
+    else{
+
+      if(textlength < 10){
+        $('#countinfo').html('10글자 이상 써주세요^^ '+textlength+'/140');
+        $('#countinfo').css({
+          "color" : "red"
+        })
+
+      }
+
+
+      else{
+
+        $('#countinfo').html(textlength+'/140');
+        $('#countinfo').css({
+          "color" : "black"
+        })
+      }
+
+    }
+  });
+}
 
 
 ////////////////////////////////////
@@ -201,10 +285,16 @@ function resEvaluation(product){
     $('#right_item').html('');
     $('#menuContact').html('');
 }
+//////////////////////////////////////////////////////////////
 
+
+///////////////////////////////////////////////////////////////
 $(function(){
+
+
+
   var hash = window.location.hash;
-  
+
   if (hash != ""){
     var args = hash.substr(1).split("?");
     var command = args[0].split("/")[2];
@@ -218,17 +308,7 @@ $(function(){
     }
 
 
-  } 
+  }
 });
 
-/*    var hash= window.location.hash;
-    var args = hash.substr(1).split(";");
-
-    var arg = args[0];
-    var command = arg.split("=")[0];
-    var res_id = arg.split("=")[1];
-
-    if (command == "show") {
-    }
-*/
 

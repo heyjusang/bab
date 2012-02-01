@@ -2,7 +2,6 @@ class UserController < ApplicationController
     skip_before_filter :check_login
     def new
         @user = User.new
-        @note = flash[:notice]
     end
 
     def create
@@ -10,12 +9,10 @@ class UserController < ApplicationController
 
         if user.save
             session[:user_id] = user.id
-            redirect_to "/bab/index"
-            flash[:notice] = "welcome!"
+            redirect_to "/bab/index", :notice => "welcome"
 
         else
-            flash[:notice] = " "
-            redirect_to :back
+            redirect_to :back, :notice => "dd"
         end
     end
 
@@ -23,8 +20,8 @@ class UserController < ApplicationController
         user = User.first(:conditions => {:username => params[:user][:username]})
 
         if user.nil?
-            redirect_to :back
-            flash[:notice] = " "
+            redirect_to :back, :notice => "dd"
+            
 
         else
             if user.password == params[:user][:password]
@@ -32,8 +29,8 @@ class UserController < ApplicationController
                 redirect_to "/bab/index"
                 
             else
-                redirect_to :back
-                flash[:notice] = " "
+                redirect_to :back, :notice => "dd"
+          
             end
         end
     end

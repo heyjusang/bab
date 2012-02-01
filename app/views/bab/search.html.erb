@@ -1,0 +1,19 @@
+<div id="resultview">
+  <% @results.each do |res| %>
+    <table class="result_table">
+      <tr>
+        <td rowspan="3" class="result_img_td"></td>
+        <td class="result_resname_td"><%= res.resname %> </td>
+      </tr>
+      <tr>
+        <td class="result_resinfo_td"><%= res.resinfo %></td>
+      </tr>
+      <tr>
+        <td class="result_respoint_td"><span>taste :</span> <%= res.tastepoint/res.count %> <span>speed :</span> <%=res.speedpoint/res.count %> <span>amount :</span> <%= res.amountpoint/res.count %> <span>service :</span> <%= res.servicepoint/res.count %> </td>
+      </tr>
+
+    </table>
+
+  <% end %>
+</div>
+<%= will_paginate @results,{:next_label => 'More'} %>
