@@ -10,6 +10,7 @@
     <%= javascript_include_tag "jquery-1.7.1.min.js" %>
     <%= javascript_include_tag "jquery-ui-1.8.17.custom.min.js" %>
     <%= javascript_include_tag "jquery.infinitescroll.js" %>
+    <%= javascript_include_tag "jquery.tinyscrollbar.min.js" %>
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag "ajax.js.erb" %>
     <%= csrf_meta_tags %>
@@ -28,7 +29,7 @@
 
       <div id="searchbox">
         <form action ='#' name="searchform" onsubmit="searchRes();return false;">
-          <input name="search" type="text" class="searchtext" value="black dragon river" onfocus="this.value='';"/>
+          <input name="search" type="text" class="searchtext"/>
           <input type="submit" value="search" class="searchbtn" />
         </form>
       </div>
@@ -78,7 +79,7 @@
         <div id="panelbox">
           <ul class="panel_ul">
             <li class="panel_li"><a href="">Home</a></li>
-            <li class="panel_li"><a href="">Search</a></li>
+            <li class="panel_li"><%= link_to_function("search", "searchRes()") %></li>
             <li class="panel_li"><a href="">Select</a></li>
           </ul>
         </div>

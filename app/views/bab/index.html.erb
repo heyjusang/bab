@@ -14,7 +14,7 @@
         <tr class="row<%= i%2 %>">
             <td class="rank"><%= i+1 %>
             <td class="name"><%= link_to_function(restaurant.resname, "showRes(#{restaurant.id})")  %> </td>
-            <td class="point"><%= (restaurant.tastepoint/restaurant.count).round(1) unless restaurant.count == 0 %> </td>
+            <td class="point"><%= ((restaurant.tastepoint).round(1)/(restaurant.count).round(1)).round(1) %> </td>
         </tr>
         <% end %>
     </table>
@@ -26,7 +26,7 @@
         <tr class="row<%= i%2 %>">
             <td class="rank"><%= i+1 %></td>
             <td class="name"><%= link_to_function(restaurant.resname, "showRes(#{restaurant.id})") %></td>
-            <td class="point"><%= (restaurant.speedpoint/restaurant.count).round(1) unless restaurant.count == 0 %></td>
+            <td class="point"><%= ((restaurant.speedpoint).round(1)/(restaurant.count).round(1)).round(1) %></td>
         </tr>
         <% end %>
     </table>
@@ -38,7 +38,7 @@
         <tr class="row<%= i%2 %>">
             <td class="rank"><%= i+1 %></td>
             <td class="name"><%= link_to_function(restaurant.resname, "showRes(#{restaurant.id})") %></td>
-            <td class="point"><%= (restaurant.amountpoint/restaurant.count).round(1) unless restaurant.count == 0 %></td>
+            <td class="point"><%= ((restaurant.amountpoint).round(1)/(restaurant.count).round(1)).round(1) %></td>
         </tr>
         <% end %>
     </table>
@@ -50,7 +50,7 @@
         <tr class="row<%= i%2 %>">
             <td class="rank"><%= i+1 %></td>
             <td class="name"><%= link_to_function(restaurant.resname, "showRes(#{restaurant.id})") %></td>
-            <td class="point"><%= (restaurant.servicepoint/restaurant.count).round(1) unless restaurant.count == 0 %></td>
+            <td class="point"><%= ((restaurant.servicepoint).round(1)/(restaurant.count).round(1)).round(1) %></td>
         </tr>
         <% end %>
     </table>

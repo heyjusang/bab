@@ -8,6 +8,7 @@
       <td class="table_row1">taste</td>
       <td id="taste_point">
         <div id="prog_taste">
+          <p><%= ((@restaurant.tastepoint).round(1)/(@restaurant.count).round(1)).round(1) %></p>
         </div>
       </td>
     </tr>
@@ -15,6 +16,7 @@
       <td class="table_ev_list">speed</td>
       <td class="table_row1" id="speed_point">
         <div id="prog_speed">
+          <p><%= ((@restaurant.speedpoint).round(1)/(@restaurant.count).round(1)).round(1) %></p>
         </div>
       </td>
     </tr>
@@ -22,6 +24,7 @@
       <td class="table_row1">amount</td>
       <td id="amount_point">
         <div id="prog_amount">
+          <p><%= ((@restaurant.amountpoint).round(1)/(@restaurant.count).round(1)).round(1) %></p>
         </div>
       </td>
     </tr>
@@ -29,15 +32,16 @@
       <td>service</td>
       <td class="table_row1" id="service_point">
         <div id="prog_service">
+          <p><%= ((@restaurant.servicepoint).round(1)/(@restaurant.count).round(1)).round(1) %></p>
         </div>
       </td>
     </tr>
     <tr>
-      <td colspan="2" class="table_row1"></td>
-      <td rowspan="2"></td>
+      <td colspan="2" class="table_row1"><%= @restaurant.resname %></td>
+      <td rowspan="2"><%= @restaurant.resinfo %></td>
     </tr>
     <tr>
-      <td colspan="2"></td>
+      <td colspan="2"><%= @restaurant.phone %></td>
     </tr>
 
 
@@ -51,8 +55,10 @@
 
 <div id="supplement_box">
   <div id="ev_link">
+    <%= link_to_function("evaluate", "evRes(#{@restaurant.id})", :class => "view_res_link")  %>
   </div>
   <div id="menu_link">
+    <p class="view_res_link" id="menuPop">Menu</p>
   </div>
 
 </div>
@@ -66,15 +72,110 @@
         <a href="#">More</a>
       </td>
     </tr>
-    <tr>
-      <td id="review_td" class="table_row0"></td>
-    </tr>
-    <tr>
-      <td id="review_td" class="table_row1"></td>
-    </tr>
-    <tr>
-      <td id="review_td" class="table_row0"></td>
-    </tr>
+    <% @ev_temps.each_with_index do |ev, i| %>
+      <% if ev.review.nil? %>
+        <tr>
+          <td id="review_td" class="table_row<%= i%2 %>"></td>
+        </tr>
+      <% else %>
+        <tr>
+          <td id="review_td" class="table_row<%= i%2 %>"><%= ev.review %></td>
+        </tr>
+      <% end %>
+    <% end %>
   </table>
 
 </div>
+
+
+<div id="menuContact">
+  <div id="menupane">
+    <div id="orangebox_menu">Menu-<%= @restaurant.resname %> 
+      <p id="popupContactClose1">x</p>
+    </div>
+    <% @menus_all.each do |dish| %>
+      <% if dish['goodbad'].nil? %>
+        <table class="menu_table<%= dish['menu'].id %>">
+          <tr>
+            <td class="menu_table_col1"><%= dish['menu'].menuname %></td>
+            <td class="menu_table_col2" id="like_td">
+              <%= link_to_function("like", "goodMenu(#{dish['menu'].id})") %>
+            </td>
+            <td class="menu_table_col3" id="like_count_td"><%= dish['menu'].like %></td>
+          </tr>
+          <tr>
+            <td class="menu_table_col1"><%= dish['menu'].price %></td>
+            <td class="menu_table_col2" id="dislike_td">
+              <%= link_to_function("dislike", "badMenu(#{dish['menu'].id})") %>
+            </td>
+            <td class="menu_table_col3" id="dislike_count_td"><%= dish['menu'].dislike %></td>
+          </tr>
+        </table>
+      <% else %>
+        <% if dish['goodbad'].good == true && dish['goodbad'].bad == false %>
+          <table class="menu_table<%= dish['menu'].id %>">
+            <tr>
+              <td class="menu_table_col1"><%= dish['menu'].menuname %></td>
+              <td class="menu_table_col2" id="like_td">
+                <%= link_to_function("cancel", "cancelGoodMenu(#{dish['menu'].id})") %>
+              </td>
+              <td class="menu_table_col3" id="like_count_td"><%= dish['menu'].like %></td>
+            </tr>
+            <tr>
+              <td class="menu_table_col1"><%= dish['menu'].price %></td>
+              <td class="menu_table_col2" id="dislike_td">
+                <%= link_to_function("dislike", "badMenu(#{dish['menu'].id})") %>
+              </td>
+              <td class="menu_table_col3" id="dislike_count_td"><%= dish['menu'].dislike %></td>
+            </tr>
+          </table>
+
+        <% elsif dish['goodbad'].bad == true && dish['goodbad'].good == false %>
+          <table class="menu_table<%= dish['menu'].id %>">
+            <tr>
+              <td class="menu_table_col1"><%= dish['menu'].menuname %></td>
+              <td class="menu_table_col2" id="like_td">
+                <%= link_to_function("like", "goodMenu(#{dish['menu'].id})") %>
+              </td>
+              <td class="menu_table_col3" id="like_count_td"><%= dish['menu'].like %></td>
+            </tr>
+            <tr>
+              <td class="menu_table_col1"><%= dish['menu'].price %></td>
+              <td class="menu_table_col2" id="dislike_td">
+                <%= link_to_function("cancel", "cancelBadMenu(#{dish['menu'].id})") %>
+              </td>
+              <td class="menu_table_col3" id="dislike_count_td"><%= dish['menu'].dislike %></td>
+            </tr>
+          </table>
+
+        <% elsif dish['goodbad'].bad == false && dish['goodbad'].good == false %>
+          <table class="menu_table<%= dish['menu'].id %>">
+            <tr>
+              <td class="menu_table_col1"><%= dish['menu'].menuname %></td>
+              <td class="menu_table_col2" id="like_td">
+                <%= link_to_function("like", "goodMenu(#{dish['menu'].id})") %>
+              </td>
+              <td class="menu_table_col3" id="like_count_td"><%= dish['menu'].like %></td>
+            </tr>
+            <tr>
+              <td class="menu_table_col1"><%= dish['menu'].price %></td>
+              <td class="menu_table_col2" id="dislike_td">
+                <%= link_to_function("dislike", "badMenu(#{dish['menu'].id})") %>
+              </td>
+              <td class="menu_table_col3" id="dislike_count_td"><%= dish['menu'].dislike %></td>
+            </tr>
+          </table>
+
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+

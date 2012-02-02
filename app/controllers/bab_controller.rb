@@ -12,7 +12,7 @@ class BabController < ApplicationController
     @new_evaluations = Evaluation.order('created_at desc limit 3')
 
   end  
-  def view_test
+  def view_res
     @restaurant = Restaurant.find(params[:res_id])
     @ev_temps = Evaluation.find(:all, :order => "created_at desc", :conditions => ['restaurant_id = ?', params[:res_id]], :limit => 3)
     @menus = Menu.where(:restaurant_id => params[:res_id])

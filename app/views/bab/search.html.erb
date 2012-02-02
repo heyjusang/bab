@@ -1,19 +1,25 @@
 <div id="resultview">
+  <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+  
+  <div class="viewport">
+    <div class="overview">
   <% @results.each do |res| %>
     <table class="result_table">
       <tr>
         <td rowspan="3" class="result_img_td"></td>
-        <td class="result_resname_td"><%= res.resname %> </td>
+        <td class="result_resname_td"><%= link_to_function(res.resname, "showRes(#{res.id})") %></td>
       </tr>
       <tr>
         <td class="result_resinfo_td"><%= res.resinfo %></td>
       </tr>
       <tr>
-        <td class="result_respoint_td"><span>taste :</span> <%= res.tastepoint/res.count %> <span>speed :</span> <%=res.speedpoint/res.count %> <span>amount :</span> <%= res.amountpoint/res.count %> <span>service :</span> <%= res.servicepoint/res.count %> </td>
+        <td class="result_respoint_td"><span>taste :</span> <%= ((res.tastepoint).round(1)/(res.count).round(1)).round(1) %> <span>speed :</span> <%= ((res.speedpoint).round(1)/(res.count).round(1)).round(1) %> <span>amount :</span> <%= ((res.amountpoint).round(1)/(res.count).round(1)).round(1) %> <span>service :</span> <%= ((res.servicepoint).round(1)/(res.count).round(1)).round(1) %> </td>
       </tr>
 
     </table>
 
   <% end %>
+  </div>
+</div>
 </div>
 <%= will_paginate @results,{:next_label => 'More'} %>

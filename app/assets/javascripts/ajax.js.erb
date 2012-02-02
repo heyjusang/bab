@@ -1,13 +1,12 @@
 function showRes(id){
-    //$.getJSON('/bab/view_res?res_id=' + id, resProfile)
-    location.href = '/#/bab/view?res_id=' + id;
+    //location.href = '/#/bab/view?res_id=' + id;
   $('#right_item').html('');
   $('#menuContact').html('');
   $('#menuContact').remove();
 
   $.ajax({
-    url: '/bab/view_test?res_id=' + id,
-    type : 'POST',
+    url: '/bab/view_res?res_id=' + id,
+    type : 'GET',
     dataType : 'html',
     async : false,
     success: function(data){
@@ -22,7 +21,7 @@ function showRes(id){
 
 function evRes(id){
 
-    location.href = '/#/bab/evaluate?res_id=' + id;
+    //location.href = '/#/bab/evaluate?res_id=' + id;
     $('#right_item').html('');
     $('#menuContact').html('');
     $('#menuContact').remove();
@@ -54,27 +53,32 @@ function searchRes(){
       $('#left_item').html(data);
       
       $("a.next_page").wrap('<div class="moreview" />');
-    
-  searchScroll();
+      $('#resultview').tinyscrollbar();
+      searchScroll();
     }
 
   });
 }
 
 function searchScroll(){
-  $('#resultview').infinitescroll({
+  $('.overview').infinitescroll({
 
     navSelector : "div.pagination",
     nextSelector : "div.pagination a.next_page",
     itemSelector : "#resultview table",
     donetext : "더 이상 검색결과가 없습니다.",
   });
-  $(window).unbind('.infscr'); 
+  $(window).unbind('.infscr');
   $("a.next_page").click(function(){
     $(document).trigger('retrieve.infscr');
     $(".pagination").css({
       "display" : ""
-    });
+  });
+    $('.overview').ajaxComplete(function(){
+
+      $('#resultview').tinyscrollbar_update('bottom');
+  });
+
     return false;
   });
   $(document).ajaxError(function(e,xhr,opt){

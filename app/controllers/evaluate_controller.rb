@@ -2,7 +2,7 @@ class EvaluateController < ApplicationController
 
 
     def new_ev
-        if  Evaluation.first(:conditions => ['user_id = ? and restaurant_id = ?',session[:user_id],params[:res_id]])
+        if  (Evaluation.first(:conditions => ['user_id = ? and restaurant_id = ?',session[:user_id],params[:res_id]]))
             temp_ev = Evaluation.first(:conditions => ['user_id = ? and restaurant_id = ?',session[:user_id],params[:res_id]])
             restaurant = Restaurant.find(params[:res_id])
             restaurant.count = restaurant.count - 1
