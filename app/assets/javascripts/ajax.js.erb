@@ -36,6 +36,17 @@ function selectRes(){
 }
 function selectResult(){
 
+  $.ajax({
+    url : '/bab/select_result?priority_1=' + sel_form.priority_1.value + '&priority_2=' + sel_form.priority_2.value + '&priority_3=' + sel_form.priority_3.value + '&priority_4=' + sel_form.priority_4.value + '&taste_level=' + sel_form.taste_level.value + '&speed_level=' + sel_form.speed_level.value + '&amount_level=' + sel_form.amount_level.value + '&service_level=' + sel_form.service_level.value + '&chinese=' + sel_form.chinese.value + '&pizza=' + sel_form.pizza.value + '&chicken=' + sel_form.chicken.value + '&dosirak=' + sel_form.dosirak.value + '&etc=' + sel_form.etc.value  ,
+    type : 'POST',
+    dataType : 'html',
+    async : false,
+    success : function(data){
+      $('#left_item').html('');
+      $('#left_item').html(data);
+  }
+});
+
 }
 
 

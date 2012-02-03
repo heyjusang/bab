@@ -1,4 +1,4 @@
-<%= form_tag( {:controller => "bab", :action => "select_result"}, :method => "get", :class => "select_form") do %>
+<%= form_tag( "#",:onsubmit => "selectResult();return false;",:name => "sel_form", :method => "post", :class => "select_form") do %>
 
 <div id="priority" class="clearfix"> 
   <ul id="priority_sortable">
