@@ -1,0 +1,61 @@
+<%= form_tag( {:controller => "bab", :action => "select_result"}, :method => "get", :class => "select_form") do %>
+
+<div id="priority" class="clearfix"> 
+  <ul id="priority_sortable">
+    <li class="ui-state-default">taste</li>
+    <li class="ui-state-default">speed</li>
+    <li class="ui-state-default">amount</li>
+    <li class="ui-state-default">service</li>
+  </ul>
+  <%= hidden_field_tag :priority_1, "taste", { :class => "priority_text", :id => "priority_text_1"} %>
+  <%= hidden_field_tag :priority_2, "speed", { :class => "priority_text", :id => "priority_text_2"} %>
+  <%= hidden_field_tag :priority_3, "amount", { :class => "priority_text", :id => "priority_text_3"} %>
+  <%= hidden_field_tag :priority_4, "service", { :class => "priority_text", :id => "priority_text_4"} %>
+</div>
+<div id="select_level">
+  <div id="taste_level" class="level_box">
+    taste
+    <div id="taste_level_slider">
+    </div>
+    <%= hidden_field_tag :taste_level, "1",{ :class => "level_point", :id => "taste_level_point"}  %>
+  </div>
+  <div id="speed_level"class="level_box">
+    speed
+    <div id="speed_level_slider">
+    </div>
+    <%= hidden_field_tag :speed_level, "1",{ :class => "level_point", :id => "speed_level_point"}  %>
+  </div>
+  <div id="amount_level"class="level_box">
+    amount
+    <div id="amount_level_slider">
+    </div>
+    <%= hidden_field_tag :amount_level, "1",{ :class => "level_point", :id => "amount_level_point"}  %>
+  </div>
+  <div id="service_level"class="level_box">
+    service
+    <div id="service_level_slider">
+    </div>
+    <%= hidden_field_tag :service_level, "1",{ :class => "level_point", :id => "service_level_point"}  %>
+  </div>
+</div>
+
+<div id="select_type">
+  <%= check_box_tag(:chinese) %>
+  <%= label_tag(:chinese, "중식") %>
+  <%= check_box_tag(:pizza) %>
+  <%= label_tag(:pizza, "피자") %>
+  <%= check_box_tag(:chicken) %>
+  <%= label_tag(:chicken, "치킨") %>
+  <%= check_box_tag(:dosirak) %>
+  <%= label_tag(:dosirak, "도시락") %>
+  <%= check_box_tag(:etc) %>
+  <%= label_tag(:etc, "기타") %>
+
+</div>
+
+
+
+<%= submit_tag("Submit") %>
+
+
+<% end %>

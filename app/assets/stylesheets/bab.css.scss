@@ -1,8 +1,18 @@
 // Place all the styles related to the bab controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+ 
+.clearfix {
+  display:height inline-block;
+}
 a {
         color : black;
         font-weight : bold;
@@ -168,4 +178,48 @@ a {
 a.next_page{
  display : block; 
  color : #444;
+}
+
+#priority{
+  width : 500px;
+  height : 40px;
+  padding-top : 10px;
+}
+
+#priority_sortable{
+  list-style-type : none;
+  margin : 0;
+  padding : 0;
+  li{
+    margin : 0px 5px 5px 5px;
+    padding : 5px;
+    font-size : 13px;
+    height : 1.5em;
+    cursor : pointer;
+    width : 100px;
+    float : left;
+  }
+}
+
+#select_level{
+  position : relative;
+  width : 480px;
+  height : 200px;
+  margin-left : auto;
+  margin-right : auto;
+  clear : both;
+}
+.priority_text{
+  display :none;
+}
+.level_box {
+  float : left;
+  width : 235px;
+  height : 90px;
+}
+.level_point{
+  display : none;
+}
+#taste_level_slider,#speed_level_slider,#amount_level_slider,#service_level_slider{
+  width : 220px;
 }

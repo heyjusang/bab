@@ -19,6 +19,85 @@ function showRes(id){
 
 }
 
+function selectRes(){
+  $('#left_item').html('');
+
+  $.ajax({
+    url : '/bab/select',
+    type : 'POST',
+    dataType : 'html',
+    async : false,
+    success:function(data){
+      $('#left_item').html(data);
+      selectSetting();
+    }
+  });
+
+}
+function selectResult(){
+
+}
+
+
+function selectSetting(){
+  $('#taste_level_slider').slider({
+    max : 2,
+    step : 1,
+    value : 1,
+    slide : function(event, ui){
+      $("#taste_level_point").val(ui.value);
+    }
+  });
+  $('#speed_level_slider').slider({
+    max : 2,
+    step : 1,
+    value : 1,
+    slide : function(event, ui){
+      $("#speed_level_point").val(ui.value);
+    }
+  });
+  $('#amount_level_slider').slider({
+    max : 2,
+    step : 1,
+    value : 1,
+    slide : function(event, ui){
+      $("#amount_level_point").val(ui.value);
+    }
+  });
+  $('#service_level_slider').slider({
+    max : 2,
+    step : 1,
+    value : 1,
+    slide : function(event, ui){
+      $("#service_level_point").val(ui.value);
+    }
+  });
+
+  $('#priority_sortable').sortable({
+    placeholder : "ui-state-highlight",
+    cursor : "pointer",
+    stop : function(event, ui){
+    var text_1 =  $('ul#priority_sortable li:nth-child(1)').text();
+    var text_2 =  $('ul#priority_sortable li:nth-child(2)').text();
+    var text_3 =  $('ul#priority_sortable li:nth-child(3)').text();
+    var text_4 =  $('ul#priority_sortable li:nth-child(4)').text();
+      $('#priority_text_1').val(text_1);
+      $('#priority_text_2').val(text_2);
+      $('#priority_text_3').val(text_3);
+      $('#priority_text_4').val(text_4);
+
+
+    }
+  });
+  $('#priority_sortable').disableSelection();
+
+
+
+
+
+}
+
+
 function evRes(id){
 
     //location.href = '/#/bab/evaluate?res_id=' + id;

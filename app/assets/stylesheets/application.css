@@ -131,6 +131,7 @@ td {
 }
 
 #panelbox {
+  height:20px;
 }
 
 .panel_ul {
@@ -157,7 +158,7 @@ td {
     width : 500px;
     height : 620px;
     margin-left : 5px;
-    margin-top : 25px;
+    margin-top : 0px;
 }
 
 

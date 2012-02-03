@@ -16,9 +16,7 @@ layout nil
         restaurant.amountpoint = 5
         restaurant.servicepoint = 5
         restaurant.count = 1
-
         restaurant.save
-
         redirect_to :action => "index"
     end
     
