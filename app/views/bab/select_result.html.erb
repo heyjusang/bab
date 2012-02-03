@@ -1,1 +1,37 @@
-<%= @final_sel.resname %>
+<div id="recommend">
+  <div id="recommend_text">
+    Recommend Restaurant
+  </div>
+  <div id="recommend_img">
+    <img src="" alt="<%= @final_sel.resname %>" /> 
+  </div>
+  <div id="recommend_name">
+    <%= link_to_function(@final_sel.resname, "showRes(#{@final_sel.id})") %> 
+  </div>
+  <div id="recommend_info">
+    <%= @final_sel.resinfo %>
+  </div>
+  <div id="recommend_point">
+    <span>맛 :</span> <%= ((@final_sel.tastepoint).round(1)/(@final_sel.count).round(1)).round(1) %> <span>속도 :</span> <%= ((@final_sel.speedpoint).round(1)/(@final_sel.count).round(1)).round(1) %> <span>양 :</span> <%= ((@final_sel.amountpoint).round(1)/(@final_sel.count).round(1)).round(1) %> <span>서비스 :</span> <%= ((@final_sel.servicepoint).round(1)/(@final_sel.count).round(1)).round(1) %> 
+  </div>
+</div>
+
+<div id="select_role">
+    <div id="role_name">역할분담</div>
+    <div id="role_bar">
+    <%= form_tag("#", :onsubmit => "addCandidate();return false;", :name => "role_form", :method => "get", :class => "role_form") do %>
+      <%= text_field_tag :candidate,"" ,{:placeholder => "후보자등록", :id => "candidate"} %>
+      <%= submit_tag("추가", :id => "can_submit") %>
+    <% end %>
+    <div id="decide_btn">
+      Go!
+    </div>
+  </div>
+
+  <div id="candidate_list">
+  
+  
+  </div>
+
+
+</div>
