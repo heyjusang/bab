@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111230130113) do
+ActiveRecord::Schema.define(:version => 20120204092152) do
 
   create_table "evaluations", :force => true do |t|
     t.integer  "restaurant_id"
@@ -40,6 +40,13 @@ ActiveRecord::Schema.define(:version => 20111230130113) do
     t.integer  "like"
     t.integer  "dislike"
     t.integer  "restaurant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "recommendations", :force => true do |t|
+    t.string   "date"
+    t.integer  "res_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

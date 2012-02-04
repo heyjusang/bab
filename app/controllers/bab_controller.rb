@@ -1,6 +1,9 @@
 # encoding : UTF-8
 class BabController < ApplicationController
   def index
+    
+  end
+  def main
 
     @taste_restaurants = Restaurant.order('tastepoint/count desc limit 5')
     @speed_restaurants = Restaurant.order('speedpoint/count desc limit 5')
@@ -10,7 +13,7 @@ class BabController < ApplicationController
     @new_restaurants = Restaurant.order('created_at desc limit 3')
 
     @new_evaluations = Evaluation.order('created_at desc limit 3')
-
+    render :layout => nil
   end  
   def view_res
     @restaurant = Restaurant.find(params[:res_id])
@@ -43,6 +46,30 @@ class BabController < ApplicationController
   end
 
   def select
+
+    render :layout => false
+  end
+  def today_res
+    date = Time.now.year.to_s + Time.now.month.to_s + Time.now.day.to_s
+
+    r = Recommendation.find_by_date(date)
+
+    if r.nil?
+      index = Restaurant.count
+      res_id = rand(index)
+      new_r = Recommendation.new
+      new_r.date = date
+      new_r.res_id = res_id
+      new_r.save
+      
+      @today_res = Restaurant.find(res_id)
+    else
+      @today_res = Restaurant.find(r.res_id)
+    end
+
+
+
+
 
     render :layout => false
   end

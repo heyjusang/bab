@@ -70,7 +70,31 @@ function addCandidate(){
   
   
 }
+function mainPage(){
+  $('#left_item').html('');
+  $('#right_item').html('');
+  $.ajax({
+    url : '/bab/main',
+    type : 'GET',
+    dataType : 'html',
+    async : false,
+    success:function(data){
+      $('#left_item').html(data);
+    }
+  });
+  $.ajax({
+    url : '/bab/today_res',
+    type : 'GET',
+    dataType : 'html',
+    async : false,
+    success:function(data){
+      $('#right_item').html(data);
+    }
+  });
 
+
+
+}
 function selectSetting(){
   $('#taste_level_slider').slider({
     max : 2,
@@ -405,9 +429,7 @@ function resEvaluation(product){
 
 ///////////////////////////////////////////////////////////////
 $(function(){
-
-
-
+  window.onload = mainPage();
   var hash = window.location.hash;
 
   if (hash != ""){

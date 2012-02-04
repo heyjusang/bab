@@ -1,0 +1,17 @@
+<div id="today">
+  <div id="today_text">
+    Recommend Restaurant
+  </div>
+  <div id="today_img">
+    <img src="" alt="<%= @today_res.resname %>" /> 
+  </div>
+  <div id="today_name">
+    <%= link_to_function(@today_res.resname, "showRes(#{@today_res.id})") %> 
+  </div>
+  <div id="today_info">
+    <%= @today_res.resinfo %>
+  </div>
+  <div id="today_point">
+    <span>맛 :</span> <%= ((@today_res.tastepoint).round(1)/(@today_res.count).round(1)).round(1) %> <span>속도 :</span> <%= ((@today_res.speedpoint).round(1)/(@today_res.count).round(1)).round(1) %> <span>양 :</span> <%= ((@today_res.amountpoint).round(1)/(@today_res.count).round(1)).round(1) %> <span>서비스 :</span> <%= ((@today_res.servicepoint).round(1)/(@today_res.count).round(1)).round(1) %> 
+  </div>
+</div>

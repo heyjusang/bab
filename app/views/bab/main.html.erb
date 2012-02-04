@@ -1,0 +1,81 @@
+
+
+
+<div id = "bestres" class="tablebox">
+    <table class="bestres_table" id="taste_best">
+        <tr class="row2">
+            <td colspan="3">Best - taste</td>
+        </tr>
+        <% @taste_restaurants.each_with_index do |restaurant, i| %>
+        <tr class="row<%= i%2 %>">
+            <td class="rank"><%= i+1 %>
+            <td class="name"><%= link_to_function(restaurant.resname, "showRes(#{restaurant.id})")  %> </td>
+            <td class="point"><%= ((restaurant.tastepoint).round(1)/(restaurant.count).round(1)).round(1) %> </td>
+        </tr>
+        <% end %>
+    </table>
+    <table class="bestres_table" id="speed_best">
+        <tr class="row2">
+            <td colspan="3">Best - speed</td>
+        </tr>
+        <% @speed_restaurants.each_with_index do |restaurant, i| %>
+        <tr class="row<%= i%2 %>">
+            <td class="rank"><%= i+1 %></td>
+            <td class="name"><%= link_to_function(restaurant.resname, "showRes(#{restaurant.id})") %></td>
+            <td class="point"><%= ((restaurant.speedpoint).round(1)/(restaurant.count).round(1)).round(1) %></td>
+        </tr>
+        <% end %>
+    </table>
+    <table class="bestres_table" id="amount_best">
+        <tr class="row2">
+            <td colspan="3">Best - amount</td>
+        </tr>
+        <% @amount_restaurants.each_with_index do |restaurant, i| %>
+        <tr class="row<%= i%2 %>">
+            <td class="rank"><%= i+1 %></td>
+            <td class="name"><%= link_to_function(restaurant.resname, "showRes(#{restaurant.id})") %></td>
+            <td class="point"><%= ((restaurant.amountpoint).round(1)/(restaurant.count).round(1)).round(1) %></td>
+        </tr>
+        <% end %>
+    </table>
+    <table class="bestres_table" id="service_best">
+        <tr class="row2">
+            <td colspan="3">Best - service</td>
+        </tr>
+        <% @service_restaurants.each_with_index do |restaurant, i| %>
+        <tr class="row<%= i%2 %>">
+            <td class="rank"><%= i+1 %></td>
+            <td class="name"><%= link_to_function(restaurant.resname, "showRes(#{restaurant.id})") %></td>
+            <td class="point"><%= ((restaurant.servicepoint).round(1)/(restaurant.count).round(1)).round(1) %></td>
+        </tr>
+        <% end %>
+    </table>
+</div>
+
+<div id ="new_res_notice" class="tablebox">
+    <table id="new_res_table">
+        <tr class="row2">
+            <td>new restaurant!</td>
+        </tr>
+        <% @new_restaurants.each_with_index do |restaurant, j| %>
+            <tr class="row<%= j%2 %>">
+                <td><%= link_to_function(restaurant.resname, "showRes(#{restaurant.id})") %>이 추가되었습니다. </td>
+            </tr>
+        <% end %>
+    </table>
+</div>
+
+<div id="new_ev_notice" class="tablebox">
+    <table id="new_ev_table">
+        <tr class = "row2">
+            <td>new evaluation! </td>
+        </tr>
+        <% @new_evaluations.each_with_index do |evaluation, k| %>
+        <tr class = "row<%= k%2 %>">
+            <td><%= link_to_function(evaluation.restaurant.resname,"showRes(#{evaluation.restaurant_id})") %> - <%= evaluation.review %> </td>
+        <% end %>
+    </table>
+</div>
+
+
+
