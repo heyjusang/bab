@@ -38,7 +38,10 @@
     </tr>
     <tr>
       <td colspan="2" class="table_row1"><%= @restaurant.resname %></td>
-      <td rowspan="2"><%= @restaurant.resinfo %></td>
+      <td rowspan="2" id="view_res_info">
+        <p><%= @menu_view_res.first.menuname %>이 제일 잘 나갑니다.</p>
+        <%= @restaurant.resinfo %>
+      </td>
     </tr>
     <tr>
       <td colspan="2"><%= @restaurant.phone %></td>

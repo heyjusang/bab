@@ -13,6 +13,7 @@
 .clearfix {
   display:height inline-block;
 }
+
 a {
         color : black;
         font-weight : bold;
@@ -408,6 +409,11 @@ a.next_page{
   margin-top : 5px;
   margin-left : 5px;
   border-top : 1px solid #708090;
+  p{
+    margin : 0px;
+    color : red;
+    text-align : center;
+  }
 
 }
 
@@ -555,10 +561,10 @@ a.next_page{
 }
 #today_text{
   width : 400px;
-  height : 30px;
+  height : 35px;
   padding-top : 1px;
   text-align : center;
-  font-size : 20px;
+  font-size : 25px;
   font-weight : bold;
   color : #ff8200;
 }
@@ -589,12 +595,16 @@ a.next_page{
   margin-top : 10px;
   margin-left : 10px;
   border-top : 1px solid #708090;
-
+  p{
+    margin : 0px;
+    color : red;
+    text-align : center;
+  }
 }
 
 #today_point{
   width : 400px;
-  height : 30px;
+  height : 25px;
   font-size : 13px;
   text-align : center;
   span{

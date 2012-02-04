@@ -19,7 +19,7 @@ class BabController < ApplicationController
     @restaurant = Restaurant.find(params[:res_id])
     @ev_temps = Evaluation.find(:all, :order => "created_at desc", :conditions => ['restaurant_id = ?', params[:res_id]], :limit => 3)
     @menus = Menu.where(:restaurant_id => params[:res_id])
-
+    @menu_view_res = @menus.sort_by{"|m| (m.like-m.dislike)"}.first(1)
     @menus_all = []
     @menus.each do |m|
       menu = {}
@@ -66,7 +66,8 @@ class BabController < ApplicationController
     else
       @today_res = Restaurant.find(r.res_id)
     end
-
+    @today_menus = Menu.where(:restaurant_id => @today_res.id)
+    @menu_today_res = @today_menus.sort_by{"|m| (m.like-m.dislike)"}.first(1)
 
 
 
@@ -92,8 +93,8 @@ class BabController < ApplicationController
     if (params[:etc] == "1")
       @selected.concat(Restaurant.where('restype = ?', '기타'))
     end
-    if (@selected.count == "0")
-      @selected = Restaurant.find(:all)
+    if (@selected.count == 0)
+      @selected.concat(Restaurant.all)
     end
 ######################################################
 ############################priority select###########
@@ -132,6 +133,8 @@ class BabController < ApplicationController
     end 
 ######################################################
     @final_sel = filtering_4.sample
+    @final_menus = Menu.where(:restaurant_id => @final_sel.id)
+    @menu_final_res = @final_menus.sort_by{"|m| (m.like-m.dislike)"}.first(1)
     render :layout => false
   end
 

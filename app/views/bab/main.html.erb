@@ -1,14 +1,14 @@
 
 
 
-<div id = "bestres" class="tablebox">
+<div id = "bestres" class="tablebox clearfix">
     <table class="bestres_table" id="taste_best">
         <tr class="row2">
             <td colspan="3">Best - taste</td>
         </tr>
         <% @taste_restaurants.each_with_index do |restaurant, i| %>
         <tr class="row<%= i%2 %>">
-            <td class="rank"><%= i+1 %>
+            <td class="rank"><%= i+1 %></td>
             <td class="name"><%= link_to_function(restaurant.resname, "showRes(#{restaurant.id})")  %> </td>
             <td class="point"><%= ((restaurant.tastepoint).round(1)/(restaurant.count).round(1)).round(1) %> </td>
         </tr>
@@ -72,7 +72,8 @@
         </tr>
         <% @new_evaluations.each_with_index do |evaluation, k| %>
         <tr class = "row<%= k%2 %>">
-            <td><%= link_to_function(evaluation.restaurant.resname,"showRes(#{evaluation.restaurant_id})") %> - <%= evaluation.review %> </td>
+          <td><%= link_to_function(evaluation.restaurant.resname,"showRes(#{evaluation.restaurant_id})") %> - <%= evaluation.review %> </td>
+        </tr>
         <% end %>
     </table>
 </div>

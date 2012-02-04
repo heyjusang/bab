@@ -26,6 +26,11 @@
 .table_image{
     width : 120px;
 }
+#view_res_info p{
+    margin : 0px;
+    color : red;
+    text-align : center;
+}
 
 .table_ev_list{
     width : 70px;

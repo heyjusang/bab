@@ -35,9 +35,16 @@ function selectRes(){
 
 }
 function selectResult(){
-
+  var query_arr =[];
+  $("input.type").each(function(i,elem){
+    var aaa = $(elem).attr('id');
+    if ($(elem).attr('checked')) {
+      query_arr.push( aaa + "=1");
+    }
+  });
+  var query_string = query_arr.join("&");
   $.ajax({
-    url : '/bab/select_result?priority_1=' + sel_form.priority_1.value + '&priority_2=' + sel_form.priority_2.value + '&priority_3=' + sel_form.priority_3.value + '&priority_4=' + sel_form.priority_4.value + '&taste_level=' + sel_form.taste_level.value + '&speed_level=' + sel_form.speed_level.value + '&amount_level=' + sel_form.amount_level.value + '&service_level=' + sel_form.service_level.value + '&chinese=' + sel_form.chinese.value + '&pizza=' + sel_form.pizza.value + '&chicken=' + sel_form.chicken.value + '&dosirak=' + sel_form.dosirak.value + '&etc=' + sel_form.etc.value  ,
+    url : '/bab/select_result?priority_1=' + $('#priority_text_1').val() + '&priority_2=' + $('#priority_text_2').val() + '&priority_3=' + $('#priority_text_3').val() + '&priority_4=' + $('#priority_text_4').val() + '&taste_level=' + $('#taste_level_point').val() + '&speed_level=' + $('#speed_level_point').val() + '&amount_level=' + $('#amount_level_point').val() + '&service_level=' + $('#service_level_point').val() + '&' + query_string,
     type : 'POST',
     dataType : 'html',
     async : false,
@@ -50,7 +57,7 @@ function selectResult(){
 }
 
 function addCandidate(){
-  $('#candidate_list').append('<div class="people">'+ role_form.candidate.value  +'</div>');
+  $('#candidate_list').append('<div class="people">'+ $('#candidate').val()  +'</div>');
   $('#candidate').val('');
   }
 
@@ -180,7 +187,7 @@ function searchRes(){
   
   $('#left_item').html('');
   $.ajax({
-    url: '/bab/search?&search=' + searchform.search.value,
+    url: '/bab/search?&search=' + $('.searchtext').val(),
     type : 'GET',
     dataType : 'html',
     async : false,
@@ -430,7 +437,11 @@ function resEvaluation(product){
 ///////////////////////////////////////////////////////////////
 $(function(){
   window.onload = mainPage();
+  
+  
+  
   var hash = window.location.hash;
+
 
   if (hash != ""){
     var args = hash.substr(1).split("?");
