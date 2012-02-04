@@ -89,10 +89,10 @@
 
 
 <div id="menuContact">
-  <div id="menupane">
     <div id="orangebox_menu">Menu-<%= @restaurant.resname %> 
       <p id="popupContactClose1">x</p>
     </div>
+  <div id="menupane">
     <% @menus_all.each do |dish| %>
       <% if dish['goodbad'].nil? %>
         <table class="menu_table<%= dish['menu'].id %>">

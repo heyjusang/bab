@@ -11,13 +11,16 @@ td {
     word-break : break-all;
 }
 #header {
-    width : 1024px;
+    width : 1028px;
     height : 100px;
     background : #c8c8c8;
     position : relative;
     margin-left : auto;
     margin-right : auto;
     margin-top : 5px;
+    border : 1px solid #c8c8c8;
+    border-top-left-radius : 5px;
+    border-top-right-radius : 5px;
 }
 #logobox{
     position : absolute;
@@ -35,16 +38,19 @@ td {
     top: 5px;
 }
 .searchtext{
-    border : #ff8200 3px solid;
+    border : #41627e 3px solid;
     width : 300px;
     height : 30px;
     padding : 0px;
     position : absolute;
     bottom : 10px;
     font-size : 15px;
+    border-top-left-radius : 5px;
+    border-bottom-left-radius : 5px;
+    box-shadow : 2px 2px 2px rgba(50, 50, 50, 0.4);
 }
 .searchbtn{
-    border : #ff8200 3px solid;
+    border : #41627e 3px solid;
     border-left : 0px;
     width : 60px;
     height : 36px;
@@ -52,8 +58,11 @@ td {
     bottom : 10px;
     left : 306px;
     font-size : 15px;
-    background : #ff8200;
+    background : #41627e;
     color : white;
+    border-top-right-radius : 5px;
+    border-bottom-right-radius : 5px;
+    box-shadow : 2px 2px 2px rgba(50, 50, 50, 0.4);
 }
 #userbox{
     position : absolute;
@@ -65,7 +74,7 @@ td {
 }
 #userbox td {
     font-size : 12px;
-    color : #ff8200;
+    color : #41627e;
 }
 
 #current_userbox {
@@ -78,18 +87,22 @@ td {
     border : 0;
 }
 .signintext {
-    border : #ff8200 2px solid;
+    border : #41627e 2px solid;
     width : 90px;
     height : 12px;
     font-size : 10px;
+    border-radius : 5px;
+    box-shadow : 1px 1px 1px rgba(50, 50, 50, 0.4);
 }
 .signinbtn {
     border : 0px;
-    background : #ff8200;
+    background : #41627e;
     width : 40px;
     height : 18px;
     font-size 10px;
     color : white;
+    border-radius : 5px;
+    box-shadow : 1px 1px 1px rgba(50, 50, 50, 0.4);
 }
 .signupPop {
     color : #ff4500;
@@ -102,12 +115,16 @@ td {
 
 
 #blackbox {
-    width : 1024px;
+    width : 1028px;
     height : 20px;
     background : black;
     position : relative;
     margin-left : auto;
     margin-right : auto;
+    border : 1px solid black;
+    border-bottom-right-radius : 5px;
+    border-bottom-left-radius : 5px;
+    box-shadow : 2px 2px 2px rgba(50, 50, 50, 0.4);
 }
 
 #blackbox p {
@@ -117,7 +134,7 @@ td {
     text-align : right;
 }
 #content {
-    width : 1024px;
+    width : 1028px;
     position : relative;
     margin-left : auto;
     margin-right : auto;
@@ -128,6 +145,9 @@ td {
     height : 650px;
     background : #c8c8c8;
     float : left;
+    border : 1px solid #c8c8c8;
+    border-radius : 5px;
+    box-shadow : 2px 2px 2px rgba(50, 50, 50, 0.4);
 }
 
 #panelbox {
@@ -143,10 +163,13 @@ td {
 
 .panel_li {
     float : left;
-    background : #ff8200;
+    background : #41627e;
     margin-right : 2px;
     width : 100px;
     height : 20px;
+    border-top-left-radius : 5px;
+    border-top-right-radius : 5px;
+    text-align : center;
 }
 .panel_li a {
     color : white;
@@ -159,7 +182,10 @@ td {
     height : 620px;
     margin-left : 5px;
     margin-top : 0px;
+    border-radius : 3px;
+    border-top-left-radius : 0px;
 }
+
 
 
 
@@ -176,6 +202,9 @@ td {
     background : #c8c8c8;
     float : left;
     margin-left : 4px;
+    border : 1px solid #c8c8c8;
+    border-radius : 5px;
+    box-shadow : 2px 2px 2px rgba(50, 50, 50, 0.4);
 }
 .design{
     color : white;
@@ -191,7 +220,7 @@ td {
     margin-left : 5px;
     margin-top : 12px;
     position : absolute;
-
+    border-radius : 3px;
 }
 
 
@@ -256,13 +285,13 @@ td {
     font-size :12px;
 }
 .signuptext{
-    border : #ff8200 2px solid;
+    border : #41627e 2px solid;
     width : 120px;
     height : 20px;
 }
 
 .signupbtn{
-    background : #ff8200;
+    background : #41627e;
     color : white;
     font-size : 15px;
     height : 20px;
@@ -272,7 +301,7 @@ td {
 
 }
 #orangebox {
-    background : #ff8200;
+    background : #41627e;
     color : white;
     font-size : 30px;
     font-weight : bolder;

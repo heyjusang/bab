@@ -49,6 +49,27 @@ function selectResult(){
 
 }
 
+function addCandidate(){
+  $('#candidate_list').append('<div class="people">'+ role_form.candidate.value  +'</div>');
+  $('#candidate').val('');
+  }
+
+  function selectRole(){
+    $('#decide_btn').remove();
+    $('.role_form').remove();
+  randomElements = jQuery('#candidate_list .people').get().sort(function(){
+    return Math.round(Math.random())-0.5
+  }).slice(0,2)
+  $(randomElements).attr("id","cleaner_people");
+  randomCasher = jQuery('#candidate_list #cleaner_people').get().sort(function(){
+    return Math.round(Math.random())-0.5
+  }).slice(0,1)
+  $(randomCasher).attr("id","casher_people");
+  $('#cleaner_people').append('<span id="cleaner">뒷정리</span>');
+  $('#casher_people').append('<span id="casher">회계</span>');
+  
+  
+}
 
 function selectSetting(){
   $('#taste_level_slider').slider({

@@ -5,8 +5,9 @@ class UserController < ApplicationController
     end
 
     def create
+        params[:user][:password] = Digest::SHA256.hexdigest(params[:user][:password])
+        params[:user][:password_confirmation] = Digest::SHA256.hexdigest(params[:user][:password_confirmation])
         user = User.new(params[:user])
-
         if user.save
             session[:user_id] = user.id
             redirect_to "/bab/index", :notice => "welcome"
@@ -17,6 +18,7 @@ class UserController < ApplicationController
     end
 
     def login
+        params[:user][:password] = Digest::SHA256.hexdigest(params[:user][:password])
         user = User.first(:conditions => {:username => params[:user][:username]})
 
         if user.nil?

@@ -23,7 +23,7 @@
       <%= text_field_tag :candidate,"" ,{:placeholder => "후보자등록", :id => "candidate"} %>
       <%= submit_tag("추가", :id => "can_submit") %>
     <% end %>
-    <div id="decide_btn">
+    <div id="decide_btn" onclick="selectRole();return false;">
       Go!
     </div>
   </div>

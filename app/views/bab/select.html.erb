@@ -1,11 +1,12 @@
 <%= form_tag( "#",:onsubmit => "selectResult();return false;",:name => "sel_form", :method => "post", :class => "select_form") do %>
 
-<div id="priority" class="clearfix"> 
+  <div id="priority" class="clearfix"> 
+    <span id="priority_span">우선순위</span>
   <ul id="priority_sortable">
-    <li class="ui-state-default">taste</li>
-    <li class="ui-state-default">speed</li>
-    <li class="ui-state-default">amount</li>
-    <li class="ui-state-default">service</li>
+    <li class="ui-state-default" id="first_sortable">맛</li>
+    <li class="ui-state-default">속도</li>
+    <li class="ui-state-default">양</li>
+    <li class="ui-state-default">서비스</li>
   </ul>
   <%= hidden_field_tag :priority_1, "taste", { :class => "priority_text", :id => "priority_text_1"} %>
   <%= hidden_field_tag :priority_2, "speed", { :class => "priority_text", :id => "priority_text_2"} %>
@@ -13,49 +14,98 @@
   <%= hidden_field_tag :priority_4, "service", { :class => "priority_text", :id => "priority_text_4"} %>
 </div>
 <div id="select_level">
-  <div id="taste_level" class="level_box">
-    taste
-    <div id="taste_level_slider">
+  <span id="level_span">기준</span>
+  <div id="level_container">
+    <div id="taste_level" class="level_box">
+      맛
+      <hr />
+      <table>
+        <tr>
+          <td id="bong">봉사</td>
+          <td id="gae">개척</td>
+          <td id="an">안전</td>
+        </tr>
+      </table>
+      <div id="taste_level_slider">
+      </div>
+      <%= hidden_field_tag :taste_level, "1",{ :class => "level_point", :id => "taste_level_point"}  %>
     </div>
-    <%= hidden_field_tag :taste_level, "1",{ :class => "level_point", :id => "taste_level_point"}  %>
-  </div>
-  <div id="speed_level"class="level_box">
-    speed
-    <div id="speed_level_slider">
+    <div id="speed_level"class="level_box">
+      속도
+      <hr />
+      <table>
+        <tr>
+          <td id="bong">봉사</td>
+          <td id="gae">개척</td>
+          <td id="an">안전</td>
+        </tr>
+      </table>
+      <div id="speed_level_slider">
+      </div>
+      <%= hidden_field_tag :speed_level, "1",{ :class => "level_point", :id => "speed_level_point"}  %>
     </div>
-    <%= hidden_field_tag :speed_level, "1",{ :class => "level_point", :id => "speed_level_point"}  %>
-  </div>
-  <div id="amount_level"class="level_box">
-    amount
-    <div id="amount_level_slider">
+    <div id="amount_level"class="level_box">
+      양
+      <hr />
+      <table>
+        <tr>
+          <td id="bong">봉사</td>
+          <td id="gae">개척</td>
+          <td id="an">안전</td>
+        </tr>
+      </table>
+      <div id="amount_level_slider">
+      </div>
+      <%= hidden_field_tag :amount_level, "1",{ :class => "level_point", :id => "amount_level_point"}  %>
     </div>
-    <%= hidden_field_tag :amount_level, "1",{ :class => "level_point", :id => "amount_level_point"}  %>
-  </div>
-  <div id="service_level"class="level_box">
-    service
-    <div id="service_level_slider">
+    <div id="service_level"class="level_box">
+      서비스
+      <hr />
+      <table>
+        <tr>
+          <td id="bong">봉사</td>
+          <td id="gae">개척</td>
+          <td id="an">안전</td>
+        </tr>
+      </table>
+      <div id="service_level_slider">
+      </div>
+      <%= hidden_field_tag :service_level, "1",{ :class => "level_point", :id => "service_level_point"}  %>
     </div>
-    <%= hidden_field_tag :service_level, "1",{ :class => "level_point", :id => "service_level_point"}  %>
   </div>
 </div>
 
 <div id="select_type">
+  <span id="type_span">
+    타입
+  </span>
+  <div id="type_box">
+    <div class="type_check">
   <%= check_box_tag(:chinese) %>
   <%= label_tag(:chinese, "중식") %>
+    </div>
+    <div class="type_check">
   <%= check_box_tag(:pizza) %>
   <%= label_tag(:pizza, "피자") %>
+    </div>
+    <div class="type_check">
   <%= check_box_tag(:chicken) %>
   <%= label_tag(:chicken, "치킨") %>
+    </div>
+    <div class="type_check">
   <%= check_box_tag(:dosirak) %>
   <%= label_tag(:dosirak, "도시락") %>
+    </div>
+    <div class="type_check">
   <%= check_box_tag(:etc) %>
   <%= label_tag(:etc, "기타") %>
-
+    </div>
+  </div>
 </div>
 
 
 
-<%= submit_tag("Submit") %>
+<%= submit_tag("Submit", :id => "select_submit") %>
 
 
 <% end %>
