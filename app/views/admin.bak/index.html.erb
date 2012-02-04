@@ -1,0 +1,19 @@
+<%= link_to("new restaurant", :action => "new_restaurant") %>
+
+<% @restaurants.each do |res| %>
+
+    <%= res.id %>
+    <%= link_to(res.resname, :action => "view_restaurant", :id => res.id) %>
+    <%= res.phone %>
+    <%= res.resinfo %>
+    <%= res.count %>
+    <%= res.tastepoint %>
+    <%= res.speedpoint %>
+    <%= res.amountpoint %>
+    <%= res.servicepoint %>
+    <%= res.restype %>
+    <%= link_to("destroy", :action => "destroy_restaurant", :id => res.id) %>
+
+<% end %>
+
+

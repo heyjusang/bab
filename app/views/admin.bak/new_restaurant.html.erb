@@ -1,0 +1,15 @@
+<%= form_for(@restaurant, :url => {:action => "create_restaurant"}) do |res| %>
+name : <%= res.text_field :resname %>
+phone : <%= res.text_field :phone %>
+information : <%= res.text_field :resinfo %>
+
+<select name="restaurant[restype]">
+    <option value="중식">중식</option>
+    <option value="도시락">도시락</option>
+    <option value="치킨">치킨</option>
+    <option value="피자">피자</option>
+    <option value="기타">기타</option>
+</select>
+
+<%= submit_tag("submit") %>
+<% end %>

@@ -1,4 +1,12 @@
 Bab::Application.routes.draw do
+  namespace :admin do
+  match '/' => 'admin#index'
+  match 'login' => 'auth#login'
+  match 'logout' => 'auth#logout'
+  match 'authorize' => 'auth#authorize'
+end
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
