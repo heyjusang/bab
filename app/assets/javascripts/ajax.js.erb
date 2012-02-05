@@ -1,5 +1,5 @@
 function showRes(id){
-    //location.href = '/#/bab/view?res_id=' + id;
+
   $('#right_item').html('');
   $('#menuContact').html('');
   $('#menuContact').remove();
@@ -12,10 +12,37 @@ function showRes(id){
     success: function(data){
       $('#right_item').html(data);
       resProfile();
+      changeRightHash("view_res", id);
     }
-
-
   });
+
+}
+function changeLeftHash(obj){
+  var args = window.location.hash.split('/');
+  if (args[2] == undefined){
+    var arg3 = "";
+  }
+  else{
+    var arg3 = args[2];
+  }
+
+  var newHash = '/#/' + obj + '/' + arg3;
+
+  location.href = newHash;
+}
+function changeRightHash(obj,id){
+  var args = window.location.hash.split('/');
+  if (args[1] == undefined){
+    var arg2 = "main";
+  }
+  else{
+    var arg2 = args[1];
+  }
+
+  var newHash = '/#/'+ arg2 + '/' + obj + '=' + id; 
+
+  location.href = newHash;
+
 
 }
 
@@ -30,6 +57,7 @@ function selectRes(){
     success:function(data){
       $('#left_item').html(data);
       selectSetting();
+      changeLeftHash("select"); 
     }
   });
 
@@ -51,19 +79,19 @@ function selectResult(){
     success : function(data){
       $('#left_item').html('');
       $('#left_item').html(data);
-  }
-});
+    }
+  });
 
 }
 
 function addCandidate(){
   $('#candidate_list').append('<div class="people">'+ $('#candidate').val()  +'</div>');
   $('#candidate').val('');
-  }
+}
 
-  function selectRole(){
-    $('#decide_btn').remove();
-    $('.role_form').remove();
+function selectRole(){
+  $('#decide_btn').remove();
+  $('.role_form').remove();
   randomElements = jQuery('#candidate_list .people').get().sort(function(){
     return Math.round(Math.random())-0.5
   }).slice(0,2)
@@ -74,12 +102,11 @@ function addCandidate(){
   $(randomCasher).attr("id","casher_people");
   $('#cleaner_people').append('<span id="cleaner">뒷정리</span>');
   $('#casher_people').append('<span id="casher">회계</span>');
-  
-  
+
+
 }
 function mainPage(){
   $('#left_item').html('');
-  $('#right_item').html('');
   $.ajax({
     url : '/bab/main',
     type : 'GET',
@@ -89,6 +116,7 @@ function mainPage(){
       $('#left_item').html(data);
     }
   });
+  $('#right_item').html('');
   $.ajax({
     url : '/bab/today_res',
     type : 'GET',
@@ -99,8 +127,33 @@ function mainPage(){
     }
   });
 
+}
+function showMain(){
+  $('#left_item').html('');
+  $.ajax({
+    url : '/bab/main',
+    type : 'GET',
+    dataType : 'html',
+    async : false,
+    success:function(data){
+      $('#left_item').html(data);
 
+      changeLeftHash("main");
+    }
 
+  });
+}
+function todayRes(){
+  $('#right_item').html('');
+  $.ajax({
+    url : '/bab/today_res',
+    type : 'GET',
+    dataType : 'html',
+    async : false,
+    success:function(data){
+      $('#right_item').html(data);
+    }
+  });
 }
 function selectSetting(){
   $('#taste_level_slider').slider({
@@ -140,10 +193,10 @@ function selectSetting(){
     placeholder : "ui-state-highlight",
     cursor : "pointer",
     stop : function(event, ui){
-    var text_1 =  $('ul#priority_sortable li:nth-child(1)').text();
-    var text_2 =  $('ul#priority_sortable li:nth-child(2)').text();
-    var text_3 =  $('ul#priority_sortable li:nth-child(3)').text();
-    var text_4 =  $('ul#priority_sortable li:nth-child(4)').text();
+      var text_1 =  $('ul#priority_sortable li:nth-child(1)').text();
+      var text_2 =  $('ul#priority_sortable li:nth-child(2)').text();
+      var text_3 =  $('ul#priority_sortable li:nth-child(3)').text();
+      var text_4 =  $('ul#priority_sortable li:nth-child(4)').text();
       $('#priority_text_1').val(text_1);
       $('#priority_text_2').val(text_2);
       $('#priority_text_3').val(text_3);
@@ -163,40 +216,49 @@ function selectSetting(){
 
 function evRes(id){
 
-    //location.href = '/#/bab/evaluate?res_id=' + id;
-    $('#right_item').html('');
-    $('#menuContact').html('');
-    $('#menuContact').remove();
+  //location.href = '/#/bab/evaluate?res_id=' + id;
+  $('#right_item').html('');
+  $('#menuContact').html('');
+  $('#menuContact').remove();
 
-    $.ajax({
-      url: '/evaluate/new_ev?res_id=' + id,
-      type : 'POST',
-      dataType : 'html',
-      async : false,
-      success:function(data) {
-        $('#right_item').html(data);
-        prepareSliders();
-        reviewCount();
-      }
-    });
+  $.ajax({
+    url: '/evaluate/new_ev?res_id=' + id,
+    type : 'POST',
+    dataType : 'html',
+    async : false,
+    success:function(data) {
+      $('#right_item').html(data);
+      prepareSliders();
+      reviewCount();
+      changeRightHash("view_res", id);
+    }
+  });
 
 }
 
-function searchRes(){
+function searchRes(keyword){
 
-  
+  if (keyword == null){
+    var text = $('.searchtext').val();
+
+  }
+  else {
+    var text = keyword;
+  }
+
   $('#left_item').html('');
   $.ajax({
-    url: '/bab/search?&search=' + $('.searchtext').val(),
+    url: '/bab/search?&search=' + text, 
     type : 'GET',
     dataType : 'html',
     async : false,
     success: function(data) {
       $('#left_item').html(data);
-      
+
       $("a.next_page").wrap('<div class="moreview" />');
       $('#resultview').tinyscrollbar();
       searchScroll();
+      changeLeftHash("search?" + text);
     }
 
   });
@@ -215,18 +277,18 @@ function searchScroll(){
     $(document).trigger('retrieve.infscr');
     $(".pagination").css({
       "display" : ""
-  });
+    });
     $('.overview').ajaxComplete(function(){
 
       $('#resultview').tinyscrollbar_update('bottom');
-  });
+    });
 
     return false;
   });
   $(document).ajaxError(function(e,xhr,opt){
     if (xhr.status == 404)
       $('div.moreview').remove();
-});
+  });
 
 
 }
@@ -236,20 +298,20 @@ function searchScroll(){
 
 
 function goodMenu(id){
-    $.getJSON('/evaluate/good_menu?menu_id=' +id, likeThisMenu)
+  $.getJSON('/evaluate/good_menu?menu_id=' +id, likeThisMenu)
 
 }
 function badMenu(id){
-    $.getJSON('/evaluate/bad_menu?menu_id=' +id, dislikeThisMenu)
+  $.getJSON('/evaluate/bad_menu?menu_id=' +id, dislikeThisMenu)
 }
 
 function cancelGoodMenu(id){
-    $.getJSON('/evaluate/cancel_good?menu_id=' +id, cancelLike)
+  $.getJSON('/evaluate/cancel_good?menu_id=' +id, cancelLike)
 
 }
 
 function cancelBadMenu(id){
-    $.getJSON('/evaluate/cancel_bad?menu_id=' +id, cancelDislike)
+  $.getJSON('/evaluate/cancel_bad?menu_id=' +id, cancelDislike)
 }
 ////////////////////////////////////
 function prepareSliders() {
@@ -346,44 +408,44 @@ function reviewCount(){
 
 ////////////////////////////////////
 function likeThisMenu(item){
-    $('#menupane .menu_table'+item.id+' #like_td').html('');
-    $('#menupane .menu_table'+item.id+' #like_count_td').html('');
-    $('#menupane .menu_table'+item.id+' #dislike_td').html('');
-    $('#menupane .menu_table'+item.id+' #dislike_count_td').html('');
-   ///////////////////////////////////////
-    $('#menupane .menu_table'+item.id+' #like_td').append('<a href="#" onclick="cancelGoodMenu('+item.id+');return false;">cancel</a>');
-    $('#menupane .menu_table'+item.id+' #like_count_td').append(item.like);
-    $('#menupane .menu_table'+item.id+' #dislike_td').append('<a href="#" onclick="badMenu('+item.id+');return false;">dislike</a>');
-    $('#menupane .menu_table'+item.id+' #dislike_count_td').append(item.dislike);
+  $('#menupane .menu_table'+item.id+' #like_td').html('');
+  $('#menupane .menu_table'+item.id+' #like_count_td').html('');
+  $('#menupane .menu_table'+item.id+' #dislike_td').html('');
+  $('#menupane .menu_table'+item.id+' #dislike_count_td').html('');
+  ///////////////////////////////////////
+  $('#menupane .menu_table'+item.id+' #like_td').append('<a href="#" onclick="cancelGoodMenu('+item.id+');return false;">cancel</a>');
+  $('#menupane .menu_table'+item.id+' #like_count_td').append(item.like);
+  $('#menupane .menu_table'+item.id+' #dislike_td').append('<a href="#" onclick="badMenu('+item.id+');return false;">dislike</a>');
+  $('#menupane .menu_table'+item.id+' #dislike_count_td').append(item.dislike);
 }
 
 function dislikeThisMenu(item){
-    $('#menupane .menu_table'+item.id+' #like_td').html('');
-    $('#menupane .menu_table'+item.id+' #like_count_td').html('');
-    $('#menupane .menu_table'+item.id+' #dislike_td').html('');
-    $('#menupane .menu_table'+item.id+' #dislike_count_td').html('');
-   ///////////////////////////////////////
-    $('#menupane .menu_table'+item.id+' #like_td').append('<a href="#" onclick="goodMenu('+item.id+');return false;">like</a>');
-    $('#menupane .menu_table'+item.id+' #like_count_td').append(item.like);
-    $('#menupane .menu_table'+item.id+' #dislike_td').append('<a href="#" onclick="cancelBadMenu('+item.id+');return false;">cancel</a>');
-    $('#menupane .menu_table'+item.id+' #dislike_count_td').append(item.dislike);
+  $('#menupane .menu_table'+item.id+' #like_td').html('');
+  $('#menupane .menu_table'+item.id+' #like_count_td').html('');
+  $('#menupane .menu_table'+item.id+' #dislike_td').html('');
+  $('#menupane .menu_table'+item.id+' #dislike_count_td').html('');
+  ///////////////////////////////////////
+  $('#menupane .menu_table'+item.id+' #like_td').append('<a href="#" onclick="goodMenu('+item.id+');return false;">like</a>');
+  $('#menupane .menu_table'+item.id+' #like_count_td').append(item.like);
+  $('#menupane .menu_table'+item.id+' #dislike_td').append('<a href="#" onclick="cancelBadMenu('+item.id+');return false;">cancel</a>');
+  $('#menupane .menu_table'+item.id+' #dislike_count_td').append(item.dislike);
 
 }
 ///////////////////////////////////
 function cancelLike(item){
-    $('#menupane .menu_table'+item.id+' #like_td').html('');
-    $('#menupane .menu_table'+item.id+' #like_count_td').html('');
-    /////////////////////////
-    $('#menupane .menu_table'+item.id+' #like_td').append('<a href="#" onclick="goodMenu('+item.id+');return false;">like</a>');
-    $('#menupane .menu_table'+item.id+' #like_count_td').append(item.like);
+  $('#menupane .menu_table'+item.id+' #like_td').html('');
+  $('#menupane .menu_table'+item.id+' #like_count_td').html('');
+  /////////////////////////
+  $('#menupane .menu_table'+item.id+' #like_td').append('<a href="#" onclick="goodMenu('+item.id+');return false;">like</a>');
+  $('#menupane .menu_table'+item.id+' #like_count_td').append(item.like);
 
 }
 function cancelDislike(item){
-    $('#menupane .menu_table'+item.id+' #dislike_td').html('');
-    $('#menupane .menu_table'+item.id+' #dislike_count_td').html('');
-   ///////////////////////////////////////
-    $('#menupane .menu_table'+item.id+' #dislike_td').append('<a href="#" onclick="badMenu('+item.id+');return false;">dislike</a>');
-    $('#menupane .menu_table'+item.id+' #dislike_count_td').append(item.dislike);
+  $('#menupane .menu_table'+item.id+' #dislike_td').html('');
+  $('#menupane .menu_table'+item.id+' #dislike_count_td').html('');
+  ///////////////////////////////////////
+  $('#menupane .menu_table'+item.id+' #dislike_td').append('<a href="#" onclick="badMenu('+item.id+');return false;">dislike</a>');
+  $('#menupane .menu_table'+item.id+' #dislike_count_td').append(item.dislike);
 
 }
 //////////////////////////////////////
@@ -392,7 +454,7 @@ function cancelDislike(item){
 
 ////////////////////////////////////
 function resProfile(){
-  
+
   $('#prog_taste').progressbar({
     value : 10*($('#prog_taste p').text())
   });
@@ -405,21 +467,21 @@ function resProfile(){
   $('#prog_service').progressbar({
     value : 10*($('#prog_service p').text())
   });
- //////////////////////////////////////////////////////////
-    $("#menuPop").click(function(){
-            centerPopup('#menuContact');
-            loadPopup('#menuContact');
-        });
-        $("#popupContactClose1").click(function(){
-            disablePopup('#menuContact');
-        });
-        $('html').keydown(function(e){
-                if(e.keyCode==27 && popupStatus==1){
-                    $('#backgroundPopup').fadeOut("slow");
-                    $('#menuContact').fadeOut("slow");
-                    popupStatus = 0;
-                } 
-        });
+  //////////////////////////////////////////////////////////
+  $("#menuPop").click(function(){
+    centerPopup('#menuContact');
+    loadPopup('#menuContact');
+  });
+  $("#popupContactClose1").click(function(){
+    disablePopup('#menuContact');
+  });
+  $('html').keydown(function(e){
+    if(e.keyCode==27 && popupStatus==1){
+      $('#backgroundPopup').fadeOut("slow");
+      $('#menuContact').fadeOut("slow");
+      popupStatus = 0;
+    } 
+  });
 
 
 
@@ -428,35 +490,72 @@ function resProfile(){
 ///////////////////////////////////////////////////////////////
 
 function resEvaluation(product){
-    $('#right_item').html('');
-    $('#menuContact').html('');
+  $('#right_item').html('');
+  $('#menuContact').html('');
 }
 //////////////////////////////////////////////////////////////
+function detectHash(){
+  var hash = window.location.hash;
+  if (hash != ""){
+    //not index
+    var args = hash.split("/");
+    var command = args[1];
+    var left = command.split("?")[0];
+    //left
+    if (left == "search"){
+      //search
+      var keyword = command.split("?")[1];
 
+      searchRes(keyword);
+    }
+    else if(left == "main"){
+      //main
+      showMain();
+    }
+    else if( left == "select"){
+      //select
+      selectRes(); 
+    }
+    //right
+    if ( args[2] != ""){
+      //view_res, ev_res
+      var options = args[2].split("&");
+      var right = options[0].split("=")[0];
+      var right_id = options[0].split("=")[1];
+
+      if (right == "view_res"){
+        //view_res
+        showRes(right_id);
+      }
+      else if ( right == "ev_res"){
+        //ev_res
+        evRes(right_id);
+      }
+
+    }
+    else{
+      //today_res
+      todayRes();
+    }
+
+  }
+  else {
+    mainPage();
+  }
+  ///////////////
+
+
+
+}
 
 ///////////////////////////////////////////////////////////////
 $(function(){
-  window.onload = mainPage();
-  
-  
-  
-  var hash = window.location.hash;
+  //////////////////////////////////////////////
+  detectHash();
+  $(window).bind('hashchange', function() {
+    detectHash();
+  });
 
-
-  if (hash != ""){
-    var args = hash.substr(1).split("?");
-    var command = args[0].split("/")[2];
-    var res_id = args[1].split("=")[1];
-
-    if (command == "view"){
-      showRes(res_id);
-    }
-    if (command == "evaluate"){
-      evRes(res_id);  
-    }
-
-
-  }
 });
 
 
