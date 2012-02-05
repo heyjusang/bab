@@ -136,9 +136,14 @@ a {
 }
 
 .result_img_td {
-  width : 90px;
-  height : 100px;
-
+  width : 117px;
+  height : 110px;
+  .search_image{
+    width : 100px;
+    height : 100px;
+    margin-top : 2px;
+    margin-left : 2px;
+  }
 }
 .result_resname_td{
   width : 330px;

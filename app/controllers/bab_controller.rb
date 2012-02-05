@@ -55,13 +55,16 @@ class BabController < ApplicationController
     r = Recommendation.find_by_date(date)
 
     if r.nil?
+      if (Restaurant.count == 0)
+      index = 1
+      else
       index = Restaurant.count
-      res_id = rand(index)
+      end
+      res_id = rand(index) + 1
       new_r = Recommendation.new
       new_r.date = date
       new_r.res_id = res_id
       new_r.save
-      
       @today_res = Restaurant.find(res_id)
     else
       @today_res = Restaurant.find(r.res_id)
@@ -101,7 +104,9 @@ class BabController < ApplicationController
    p1 = params[:priority_1] 
    p2 = params[:priority_2] 
    p3 = params[:priority_3] 
-   p4 = params[:priority_4] 
+   p4 = params[:priority_4]
+
+
      
     if (params["#{p1}_level"] == "0")
       filtering_1 = @selected.sort_by{"|f1| (f1.#{p1}point/f1.count)"}.first(10)
