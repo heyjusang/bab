@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def require_login
     unless logged_in?
-      render :partial =>"deny_access"
+       render :partial =>"deny_access"
     end
   end
 

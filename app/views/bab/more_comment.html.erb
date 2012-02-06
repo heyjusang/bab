@@ -1,0 +1,11 @@
+<div id="comment_bar">
+  Comment
+</div>
+<div id="comment_container">
+
+  <% @ev_all.each do |f| %>
+    <div class="comment_wrapper">
+      <%= f.review %>
+    </div>
+  <% end %>
+</div>

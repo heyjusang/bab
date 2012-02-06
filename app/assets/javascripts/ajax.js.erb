@@ -1,13 +1,14 @@
 function contactPage(){
-  $.ajax({
-    url : '/bab/new_contact',
-    type : 'GET',
-    dataType : 'html',
-    async : false,
-    success: function(data){
-   $('#left_item').html(''); 
-   $('#left_item').html(data);
-   changeLeftHash("contact");
+  changeLeftHash("contact");
+} 
+function loadContactPage(){  $.ajax({
+  url : '/bab/new_contact',
+  type : 'GET',
+  dataType : 'html',
+  async : false,
+  success: function(data){
+    $('#left_item').html(''); 
+    $('#left_item').html(data);
   }
 
 
@@ -18,20 +19,21 @@ function contactPage(){
 
 
 function showRes(id){
+  changeRightHash("view_res", id);
+}
 
-
+function loadShowRes(id){
   $.ajax({
     url: '/bab/view_res?res_id=' + id,
     type : 'GET',
     dataType : 'html',
     async : false,
     success: function(data){
-  $('#right_item').html('');
-  $('#menuContact').html('');
-  $('#menuContact').remove();
+      $('#right_item').html('');
+      $('#menuContact').html('');
+      $('#menuContact').remove();
       $('#right_item').html(data);
       resProfile();
-      changeRightHash("view_res", id);
     }
   });
 
@@ -67,16 +69,18 @@ function changeRightHash(obj,id){
 
 function selectRes(){
 
+  changeLeftHash("select");
+}
+function loadSelectRes(){  
   $.ajax({
     url : '/bab/select',
     type : 'POST',
     dataType : 'html',
     async : false,
     success:function(data){
-  $('#left_item').html('');
+      $('#left_item').html('');
       $('#left_item').html(data);
       selectSetting();
-      changeLeftHash("select"); 
     }
   });
 
@@ -135,7 +139,7 @@ function mainPage(){
     dataType : 'html',
     async : false,
     success:function(data){
-  $('#left_item').html('');
+      $('#left_item').html('');
       $('#left_item').html(data);
     }
   });
@@ -145,22 +149,40 @@ function mainPage(){
     dataType : 'html',
     async : false,
     success:function(data){
-    $('#right_item').html('');
+      $('#right_item').html('');
       $('#right_item').html(data);
     }
-});
+  });
+}
+function moreComment(index){
+  changeRightHash('more_comment',index);
+}
+function loadMoreComment(index){
+  $.ajax({
+    url : '/bab/more_comment?res_id=' + index,
+    type : 'GET',
+    dataType : 'html',
+    async : false,
+    success : function(data){
+      $('#right_item').html('');
+      $('#right_item').html(data);
+
+    }
+  });
 }
 function showMain(){
+  changeLeftHash("main");
+}
+function loadShowMain(){
   $.ajax({
     url : '/bab/main',
     type : 'GET',
     dataType : 'html',
     async : false,
     success:function(data){
-  $('#left_item').html('');
+      $('#left_item').html('');
       $('#left_item').html(data);
 
-      changeLeftHash("main");
     }
 
   });
@@ -172,8 +194,8 @@ function todayRes(){
     dataType : 'html',
     async : false,
     success:function(data){
-  $('#right_item').html('');
-  $('#right_item').html(data);
+      $('#right_item').html('');
+      $('#right_item').html(data);
     }
   });
 }
@@ -238,27 +260,39 @@ function selectSetting(){
 
 function evRes(id){
 
-
+  changeRightHash("ev_res", id);
+}
+function loadEvRes(id){
   $.ajax({
     url: '/evaluate/new_ev?res_id=' + id,
     type : 'POST',
     dataType : 'html',
     async : false,
     success:function(data) {
-  $('#right_item').html('');
-  $('#menuContact').html('');
-  $('#menuContact').remove();
+      $('#right_item').html('');
+      $('#menuContact').html('');
+      $('#menuContact').remove();
       $('#right_item').html(data);
       prepareSliders();
       reviewCount();
-      changeRightHash("ev_res", id);
     }
   });
 
 }
 
 function searchRes(keyword){
+  if (keyword == null){
+    var text = $('.searchtext').val();
 
+  }
+  else {
+    var text = keyword;
+  }
+
+
+  changeLeftHash("search?" + text);
+}
+function loadSearchRes(keyword){
   if (keyword == null){
     var text = $('.searchtext').val();
 
@@ -273,13 +307,12 @@ function searchRes(keyword){
     dataType : 'html',
     async : false,
     success: function(data) {
-  $('#left_item').html('');
+      $('#left_item').html('');
       $('#left_item').html(data);
 
       $("a.next_page").wrap('<div class="moreview" />');
       $('#resultview').tinyscrollbar();
       searchScroll();
-      changeLeftHash("search?" + text);
     }
 
   });
@@ -527,34 +560,38 @@ function detectHash(){
       //search
       var keyword = command.split("?")[1];
 
-      searchRes(keyword);
+      loadSearchRes(keyword);
     }
     else if(left == "contact"){
       //contact
-      contactPage();
+      loadContactPage();
     }
     else if(left == "main"){
       //main
-      showMain();
+      loadShowMain();
     }
     else if( left == "select"){
       //select
-      selectRes(); 
+      loadSelectRes(); 
     }
     //right
     if ( args[2] != ""  && args[2] != undefined){
-      //view_res, ev_res
+      //view_res, ev_res,more_comment
       var options = args[2].split("&");
       var right = options[0].split("=")[0];
       var right_id = options[0].split("=")[1];
 
       if (right == "view_res"){
         //view_res
-        showRes(right_id);
+        loadShowRes(right_id);
       }
       else if ( right == "ev_res"){
         //ev_res
-        evRes(right_id);
+        loadEvRes(right_id);
+      }
+      else if( right =="more_comment"){
+        //more_comment
+        loadMoreComment(right_id);
       }
 
     }

@@ -781,6 +781,38 @@ a.next_page{
   }
 }
 
+//more_comment
 
+#comment_bar{
+  width : 400px;
+  margin-top : 10px;
+  margin-left : 50px;
+  height: 25px;
+  background : #41627e;
+  border-radius : 5px;
+  text-align : center;
+  font-size : 14px;
+  color : white;
+  font-weight : bold;
+  padding-top : 5px;
 
+}
 
+#comment_container{
+  width : 390px;
+  margin-top : 20px;
+  height : 500px;
+  overflow-y : scroll;
+  margin-left : 50px;
+  padding : 5px;
+
+}
+
+.comment_wrapper{
+  word-break : break-all;
+  width : 360px;
+  height : 50px;
+  font-size : 13px;
+  border-bottom : 1px solid #41627e;
+  margin-bottom : 5px;
+}

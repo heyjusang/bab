@@ -42,6 +42,12 @@ class BabController < ApplicationController
 
   end
 
+  def more_comment
+    @ev_all = Evaluation.find(:all, :order => "created_at desc", :conditions => ['restaurant_id = ?', params[:res_id]])
+
+    render :layout => false
+
+  end
 
   def search
     if params[:search].nil?
