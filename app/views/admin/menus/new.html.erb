@@ -1,0 +1,19 @@
+<div class="top-bar">
+  <h1>Add Menu</h1>
+</div>
+<div class="table">
+<%= form_for([:admin,@menu]) do |f| %>
+  <%=hidden_field_tag :restaurant_id, params[:id] %>
+
+  name : <%= f.text_field :menuname %><br />
+  price : <%= f.text_field :price %><br />
+  type :
+  <select name="menu[setmenu]">
+    <option value=false>단품</option>
+    <option value=true>세트</option>
+  </select>
+  <br />
+  <%= submit_tag("submit") %>
+
+<% end %>
+</div>

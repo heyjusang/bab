@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20120205071842) do
     t.integer  "like"
     t.integer  "dislike"
     t.integer  "restaurant_id"
+    t.boolean  "setmenu"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -68,7 +69,6 @@ ActiveRecord::Schema.define(:version => 20120205071842) do
     t.integer  "count"
     t.text     "resinfo"
     t.string   "restype"
-    t.string   "imageurl"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

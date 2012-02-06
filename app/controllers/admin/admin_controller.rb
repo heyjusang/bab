@@ -1,11 +1,15 @@
 class Admin::AdminController < ApplicationController
+  
+  skip_before_filter :require_login
   before_filter :is_admin?
 
   layout 'admin'
 
-  def index #dashboard
-    'Dashboard here'
-  end
+   
+
+
+
+
 
   protected
   def init_session(admin_id)

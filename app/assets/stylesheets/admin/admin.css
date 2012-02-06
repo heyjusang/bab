@@ -406,3 +406,8 @@ div.actions {
   padding:15px 5px;
   text-align:right;
 }
+
+#add_res, #add_menu{
+  position : relative;
+  margin-left : 590px; 
+}

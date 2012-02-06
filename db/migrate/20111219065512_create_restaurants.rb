@@ -10,7 +10,6 @@ class CreateRestaurants < ActiveRecord::Migration
       t.integer :count
       t.text :resinfo
       t.string :restype
-      t.string :imageurl
       t.timestamps
     end
   end

@@ -1,0 +1,23 @@
+<div class="top-bar">
+  <h1>Edit Restaurant</h1>
+</div>
+<div class="table">
+  <%= form_for([:admin,@restaurant]) do |f| %>
+    <%= hidden_field_tag :id, params[:id] %>
+
+    name: <%= f.text_field :resname %><br />
+    phone: <%= f.text_field :phone %><br />
+    info : <%= f.text_area :resinfo %><br />
+    type :
+    <select name="restaurant[restype]">
+      <option value="중식">중식</option>
+      <option value="도시락">도시락</option>
+      <option value="치킨">치킨</option>
+      <option value="피자">피자</option>
+      <option value="기타">기타</option>
+
+    </select>
+    <br />
+    <%= submit_tag %>
+  <% end %>
+</div>

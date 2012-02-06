@@ -4,7 +4,17 @@ Bab::Application.routes.draw do
   match 'login' => 'auth#login'
   match 'logout' => 'auth#logout'
   match 'authorize' => 'auth#authorize'
+
+  resources :restaurants do
+  end
+  resources :menus do
+
+  end
+  resources :contacts do
+
+  end
 end
+
 
 
   # The priority is based upon order of creation:

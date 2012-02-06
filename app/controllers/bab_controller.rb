@@ -1,7 +1,9 @@
-# encoding : UTF-8
+#encoding = UTF-8
 class BabController < ApplicationController
+  skip_before_filter :require_login, :only => [:index, :main, :today_res, :search, :select, :select_result]
+
   def index
-    
+
   end
   def main
 
@@ -13,7 +15,7 @@ class BabController < ApplicationController
     @new_restaurants = Restaurant.order('created_at desc limit 3')
 
     @new_evaluations = Evaluation.order('created_at desc limit 3')
-    render :layout => nil
+    render :layout => false
   end  
   def view_res
     @restaurant = Restaurant.find(params[:res_id])
@@ -21,17 +23,22 @@ class BabController < ApplicationController
     @menus = Menu.where(:restaurant_id => params[:res_id])
     @menu_view_res = @menus.sort_by{"|m| (m.like-m.dislike)"}.first(1)
     @menus_all = []
+    @set_all = []
     @menus.each do |m|
       menu = {}
       goodbad = {}
       menu['menu'] = m
       @goodbad = m.goodbads.first(:conditions => ['user_id = ?', session[:user_id]])
       menu['goodbad'] = @goodbad
-      @menus_all << menu
 
+      if m.setmenu == false
+      @menus_all << menu
+      elsif m.setmenu == true
+        @set_all << menu
+      end
     end
 
-      render :layout => false
+    render :layout => false
 
   end
 
@@ -42,7 +49,7 @@ class BabController < ApplicationController
     else
       @results = Restaurant.where('resname LIKE ? ',"%#{params[:search]}%").paginate(:page => params[:page], :per_page => 4)
     end
-      render :layout => false
+    render :layout => false
   end
 
   def select
@@ -55,17 +62,15 @@ class BabController < ApplicationController
     r = Recommendation.find_by_date(date)
 
     if r.nil?
-      if (Restaurant.count == 0)
-      index = 1
-      else
-      index = Restaurant.count
-      end
-      res_id = rand(index) + 1
+      samples = []
+      samples.concat(Restaurant.all)
+      choice = samples.sample
+      res_id = choice.id
       new_r = Recommendation.new
       new_r.date = date
       new_r.res_id = res_id
       new_r.save
-      @today_res = Restaurant.find(res_id)
+      @today_res = choice
     else
       @today_res = Restaurant.find(r.res_id)
     end
@@ -79,7 +84,7 @@ class BabController < ApplicationController
   end
 
   def select_result
-########################################select type##
+    ########################################select type##
     @selected = []
     if (params[:chinese] == "1")
       @selected.concat(Restaurant.where('restype = ? ' , '중식'))
@@ -99,15 +104,15 @@ class BabController < ApplicationController
     if (@selected.count == 0)
       @selected.concat(Restaurant.all)
     end
-######################################################
-############################priority select###########
-   p1 = params[:priority_1] 
-   p2 = params[:priority_2] 
-   p3 = params[:priority_3] 
-   p4 = params[:priority_4]
+    ######################################################
+    ############################priority select###########
+    p1 = params[:priority_1] 
+    p2 = params[:priority_2] 
+    p3 = params[:priority_3] 
+    p4 = params[:priority_4]
 
 
-     
+
     if (params["#{p1}_level"] == "0")
       filtering_1 = @selected.sort_by{"|f1| (f1.#{p1}point/f1.count)"}.first(10)
     elsif (params["#{p1}_level"] == "1")
@@ -136,7 +141,7 @@ class BabController < ApplicationController
     elsif (params["#{p4}_level"] == "2")
       filtering_4 = filtering_3.sort_by{"|f1| -(f1.#{p4}point/f1.count)"}.first(3)
     end 
-######################################################
+    ######################################################
     @final_sel = filtering_4.sample
     @final_menus = Menu.where(:restaurant_id => @final_sel.id)
     @menu_final_res = @final_menus.sort_by{"|m| (m.like-m.dislike)"}.first(1)

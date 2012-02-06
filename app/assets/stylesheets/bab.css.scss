@@ -549,7 +549,16 @@ a.next_page{
     right : 5px
   }
 }
-
+#order_people{
+   border : 1px solid green; 
+  #order{
+    color : green;
+    font-size : 11px;
+    position : absolute;
+    top : 5px;
+    right : 5px
+  }
+}
 ////////////////today/////////////////////////
 #today {
   margin-left : auto;

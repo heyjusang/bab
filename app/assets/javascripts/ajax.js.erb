@@ -1,8 +1,5 @@
 function showRes(id){
 
-  $('#right_item').html('');
-  $('#menuContact').html('');
-  $('#menuContact').remove();
 
   $.ajax({
     url: '/bab/view_res?res_id=' + id,
@@ -10,6 +7,9 @@ function showRes(id){
     dataType : 'html',
     async : false,
     success: function(data){
+  $('#right_item').html('');
+  $('#menuContact').html('');
+  $('#menuContact').remove();
       $('#right_item').html(data);
       resProfile();
       changeRightHash("view_res", id);
@@ -47,7 +47,6 @@ function changeRightHash(obj,id){
 }
 
 function selectRes(){
-  $('#left_item').html('');
 
   $.ajax({
     url : '/bab/select',
@@ -55,6 +54,7 @@ function selectRes(){
     dataType : 'html',
     async : false,
     success:function(data){
+  $('#left_item').html('');
       $('#left_item').html(data);
       selectSetting();
       changeLeftHash("select"); 
@@ -94,48 +94,51 @@ function selectRole(){
   $('.role_form').remove();
   randomElements = jQuery('#candidate_list .people').get().sort(function(){
     return Math.round(Math.random())-0.5
-  }).slice(0,2)
+  }).slice(0,3)
   $(randomElements).attr("id","cleaner_people");
   randomCasher = jQuery('#candidate_list #cleaner_people').get().sort(function(){
     return Math.round(Math.random())-0.5
-  }).slice(0,1)
+  }).slice(0,2)
   $(randomCasher).attr("id","casher_people");
+  randomOrder = jQuery('#candidate_list #casher_people').get().sort(function(){
+    return Math.round(Math.random())-0.5
+  }).slice(0,1)
+  $(randomOrder).attr("id","order_people");
   $('#cleaner_people').append('<span id="cleaner">뒷정리</span>');
   $('#casher_people').append('<span id="casher">회계</span>');
-
+  $('#order_people').append('<span id="order">주문</span>');
 
 }
 function mainPage(){
-  $('#left_item').html('');
   $.ajax({
     url : '/bab/main',
     type : 'GET',
     dataType : 'html',
     async : false,
     success:function(data){
+  $('#left_item').html('');
       $('#left_item').html(data);
     }
   });
-  $('#right_item').html('');
   $.ajax({
     url : '/bab/today_res',
     type : 'GET',
     dataType : 'html',
     async : false,
     success:function(data){
+    $('#right_item').html('');
       $('#right_item').html(data);
     }
-  });
-
+});
 }
 function showMain(){
-  $('#left_item').html('');
   $.ajax({
     url : '/bab/main',
     type : 'GET',
     dataType : 'html',
     async : false,
     success:function(data){
+  $('#left_item').html('');
       $('#left_item').html(data);
 
       changeLeftHash("main");
@@ -144,14 +147,14 @@ function showMain(){
   });
 }
 function todayRes(){
-  $('#right_item').html('');
   $.ajax({
     url : '/bab/today_res',
     type : 'GET',
     dataType : 'html',
     async : false,
     success:function(data){
-      $('#right_item').html(data);
+  $('#right_item').html('');
+  $('#right_item').html(data);
     }
   });
 }
@@ -216,10 +219,6 @@ function selectSetting(){
 
 function evRes(id){
 
-  //location.href = '/#/bab/evaluate?res_id=' + id;
-  $('#right_item').html('');
-  $('#menuContact').html('');
-  $('#menuContact').remove();
 
   $.ajax({
     url: '/evaluate/new_ev?res_id=' + id,
@@ -227,6 +226,9 @@ function evRes(id){
     dataType : 'html',
     async : false,
     success:function(data) {
+  $('#right_item').html('');
+  $('#menuContact').html('');
+  $('#menuContact').remove();
       $('#right_item').html(data);
       prepareSliders();
       reviewCount();
@@ -246,13 +248,13 @@ function searchRes(keyword){
     var text = keyword;
   }
 
-  $('#left_item').html('');
   $.ajax({
     url: '/bab/search?&search=' + text, 
     type : 'GET',
     dataType : 'html',
     async : false,
     success: function(data) {
+  $('#left_item').html('');
       $('#left_item').html(data);
 
       $("a.next_page").wrap('<div class="moreview" />');

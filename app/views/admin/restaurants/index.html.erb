@@ -1,0 +1,31 @@
+<div class="top-bar">
+  <h1>Restaurant</h1>
+</div>
+<%= link_to image_tag("admin/add-icon.gif", :border => 0, :id => "add_res"), new_admin_restaurant_path %>
+<div class="table">
+  <table class="listing" cellpadding="0" cellspacing="0">
+    <tr>
+      <th style="width:40px;">Num</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Infomation</th>
+      <th>type</th>
+      <th>tool</th>
+    </tr>
+    <% @restaurants.each do |res| %>
+    <tr>
+      <td><%= res.id %></td>
+      <td>
+        <%= link_to (res.resname), admin_restaurant_path(:id => res.id), :method => :get %>
+      </td>
+      <td><%= res.phone %></td>
+      <td><%= res.resinfo %></td>
+      <td><%= res.restype %></td>
+      <td>
+        <%= button_to "del",admin_restaurant_path(:id => res.id)  ,{:method => :delete} %>
+        <%= link_to image_tag("admin/edit-icon.gif", :border => 0), edit_admin_restaurant_path(:id => res.id) %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

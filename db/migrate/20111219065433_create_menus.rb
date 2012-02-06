@@ -6,7 +6,7 @@ class CreateMenus < ActiveRecord::Migration
       t.integer :like
       t.integer :dislike
       t.references :restaurant
-
+      t.boolean :setmenu
 
       t.timestamps
     end

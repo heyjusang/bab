@@ -1,4 +1,5 @@
 class UserController < ApplicationController
+    skip_before_filter :require_login
     skip_before_filter :check_login
     def new
         @user = User.new
@@ -10,7 +11,7 @@ class UserController < ApplicationController
         user = User.new(params[:user])
         if user.save
             session[:user_id] = user.id
-            redirect_to "/bab/index", :notice => "welcome"
+            redirect_to "/", :notice => "welcome"
 
         else
             redirect_to :back, :notice => "dd"
@@ -28,7 +29,7 @@ class UserController < ApplicationController
         else
             if user.password == params[:user][:password]
                 session[:user_id] = user.id
-                redirect_to "/bab/index"
+                redirect_to "/"
                 
             else
                 redirect_to :back, :notice => "dd"
@@ -39,7 +40,7 @@ class UserController < ApplicationController
 
     def logout
        session[:user_id] = nil
-       redirect_to "/bab/index"
+       redirect_to "/"
     end
 
 
