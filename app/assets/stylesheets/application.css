@@ -240,9 +240,10 @@ td {
 
 #footer{
     width : 1024px;
-    height : 100px;
+    height : 90px;
     margin-left : auto;
     top : 5px;
+    padding-top : 10px;
     position : relative;
     margin-right : auto;
     border-top : #c8c8c8 solid 1px;

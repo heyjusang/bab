@@ -1,5 +1,5 @@
 class Admin::AdminController < ApplicationController
-  
+  skip_before_filter :check_login  
   skip_before_filter :require_login
   before_filter :is_admin?
 

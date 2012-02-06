@@ -1,0 +1,35 @@
+<div class="contact_bar">
+  개발자 괴롭히기
+</div>
+<div class="contact_info">
+  버그신고,건의사항,개인적인 연락,오..이게 뭐지?,심심풀이,관심,사랑 어느거라도 좋습니다.쓰세요.
+</div>
+
+<div class="contact_wrapper">
+
+  <%= form_for(@contact, :url => {:controller => "bab", :action => "create_contact"}) do |f| %>
+    <div id="title_container" class="clearfix">
+      <span class="con_span1"> 제목</span> 
+      <div id ="title_wrapper">
+        <%= f.text_field(:title, :class => "contact_title") %>
+      </div>
+    </div>
+    <div id="mail_container" class="clearfix">
+      <span class="con_span2"> 메일</span> 
+      <div id="mail_wrapper">
+        <%= f.text_field(:mail, :class => "contact_mail") %>
+      </div>
+    </div>
+    <div class="contact_exp">
+      답장을 원하시거나,개발자의 필력이 궁금하시면 써주세요.
+    </div>
+    <div id="content_container" class="clearfix">
+      <span class="con_span3">내용</span> 
+      <div id="content_wrapper">
+        <%= f.text_area(:content, :class => "contact_content") %>
+      </div>
+    </div>
+    <%= submit_tag("보내기", :class => "contact_submit") %>
+  <% end %>
+
+</div>

@@ -14,8 +14,10 @@
 ActiveRecord::Schema.define(:version => 20120205071842) do
 
   create_table "contacts", :force => true do |t|
+    t.string   "title"
     t.text     "content"
     t.integer  "user_id"
+    t.string   "mail"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

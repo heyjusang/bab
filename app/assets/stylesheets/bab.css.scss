@@ -361,7 +361,7 @@ a.next_page{
   color : white;
   margin-top : 20px;
   margin-left : 200px;
-
+  cursor : pointer;
 }
 
 //////////////////////select_result////////////////
@@ -627,5 +627,124 @@ a.next_page{
   }
 }
 
+/////////contact
 
+.contact_bar{
+  width : 400px;
+  top : 10px;
+  height : 25px;
+  background : #41627e;
+  margin-left : auto;
+  margin-right : auto;
+  position : relative;
+  text-align : center;
+  font-size : 15px;
+  color : white;
+  font-weight : bold;
+  paddingt-top : 5px;
+}
+.contact_info{
+  width : 400px;
+  position : relative;
+  font-size : 11px;
+  height : 30px;
+  margin-top : 15px;
+  margin-left : auto;
+  margin-right : auto;
+  color : #ff7200;
+}
+.contact_wrapper{
+  width : 500px;
+  height : 500px;
+  margin-top : 20px;
 
+}
+#title_container, #mail_container{
+  position : relative;
+  margin-left : auto;
+  margin-right : auto;
+  width : 400px;
+  height : 60px;
+  margin-bottom : 10px;
+
+}
+.contact_exp{
+  width : 320px;
+  height : 12px;
+  position : relative;
+  margin-left : auto;
+  margin-right : auto;
+  padding-left : 80px;
+  color : #ff7200;
+  font-size : 11px;
+  margin-top : -20px;
+  margin-bottom : 10px;
+}
+#content_container{
+  position : relative;
+  margin-left : auto;
+  margin-right : auto;
+  width : 400px;
+  height :300px;
+  margin-bottom : 10px;
+}
+.con_span1, .con_span2, .con_span3{
+  font-size : 12px;
+  width : 60px;
+  margin-left : 5px;
+  height : 30px;
+  text-align : center;
+  font-weight : bold;
+  color : white;
+  float : left;
+  padding-top : 18px;
+  background : #41627e;
+  border-radius : 5px;
+}
+
+#title_wrapper, #mail_wrapper{
+  float : left;
+  width : 325px;
+  margin-left :10px;
+  height : 48px;
+  background : #e6e6e6;
+  border-radius : 5px;
+}
+#content_wrapper{
+  float : left;
+  width : 325px;
+  margin-left :10px;
+  height : 310px;
+  background : #e6e6e6;
+  border-radius : 5px;
+}
+.contact_submit{
+  width : 100px;
+  height : 50px;
+  border-radius : 5px;
+  background : #41627e;
+  border : 0px;
+  font-weight : bold;
+  font-size : 14px;
+  color : white;
+  margin-top : 20px;
+  margin-left : 200px;
+  cursor : pointer;
+}
+.contact_content{
+  resize : none;
+  width : 310px;
+  height : 295px;
+  margin-top : 3px;
+  margin-left : 3px;
+  border : 0px;
+  background : #e6e6e6;
+}
+.contact_title, .contact_mail{
+  width : 310px;
+  height : 30px;
+  margin-left : 5px;
+  margin-top : 5px;
+  border : 0px;
+  background : #e6e6e6;
+}

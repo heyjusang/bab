@@ -1,3 +1,22 @@
+function contactPage(){
+  $.ajax({
+    url : '/bab/new_contact',
+    type : 'GET',
+    dataType : 'html',
+    async : false,
+    success: function(data){
+   $('#left_item').html(''); 
+   $('#left_item').html(data);
+   changeLeftHash("contact");
+  }
+
+
+});
+
+}
+
+
+
 function showRes(id){
 
 
@@ -510,6 +529,10 @@ function detectHash(){
 
       searchRes(keyword);
     }
+    else if(left == "contact"){
+      //contact
+      contactPage();
+    }
     else if(left == "main"){
       //main
       showMain();
@@ -519,7 +542,7 @@ function detectHash(){
       selectRes(); 
     }
     //right
-    if ( args[2] != ""){
+    if ( args[2] != ""  && args[2] != undefined){
       //view_res, ev_res
       var options = args[2].split("&");
       var right = options[0].split("=")[0];

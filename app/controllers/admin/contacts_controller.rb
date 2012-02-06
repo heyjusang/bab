@@ -1,18 +1,21 @@
 class Admin::ContactsController < Admin::AdminController
   def index
-    @contacts = Contact.all
-  end
-  def new
-    @contact = Contact.new
-  end
-  def create
-    contact = Contact.new(params[:contact])
-    contact.user_id = session[:user_id]
-    contact.save
+    @contacts = Contact.order('created_at desc').all
   end
   def destroy
     Contact.new.destroy(params[:id])
 
     redirect_to :action => admin_contacts_path
+  end
+  def show
+
+    @contact = Contact.find(params[:id])
+  end
+
+  def destroy
+    Contact.destroy(params[:id])
+
+    redirect_to :action => admin_contacts_path
+
   end
 end

@@ -147,7 +147,19 @@ class BabController < ApplicationController
     @menu_final_res = @final_menus.sort_by{"|m| (m.like-m.dislike)"}.first(1)
     render :layout => false
   end
+  
+  def new_contact
+    @contact = Contact.new
+    render :layout => false
+  end
 
+  def create_contact
+    contact = Contact.new(params[:contact])
+    contact.user_id = session[:user_id]
+    contact.save
+    
+    redirect_to :action => "index", :controller => "bab" 
+  end
 
 
 

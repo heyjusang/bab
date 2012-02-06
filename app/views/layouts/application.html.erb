@@ -77,8 +77,8 @@
     <div id ="content">
 
       <div id="left_content">
-        <div id="panelbox">
-          <ul class="panel_ul">
+        <div id="panelbox" class="clearfix">
+          <ul class="panel_ul clearfix">
             <li class="panel_li"><%= link_to_function("메인", "showMain()") %></li>
             <li class="panel_li"><%= link_to_function("식당검색", "searchRes()") %></li>
             <li class="panel_li"><%= link_to_function("식당뽑기", "selectRes()") %></li>
@@ -98,6 +98,7 @@
     </div>
 
     <div id ="footer">
+      <%= link_to_function("개발자 괴롭히기", "contactPage()") %>
       <p>powered by deglee</p>
 
     </div>
