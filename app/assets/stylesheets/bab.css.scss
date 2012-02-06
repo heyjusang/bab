@@ -641,7 +641,7 @@ a.next_page{
   font-size : 15px;
   color : white;
   font-weight : bold;
-  paddingt-top : 5px;
+  padding-top : 5px;
 }
 .contact_info{
   width : 400px;
@@ -748,3 +748,39 @@ a.next_page{
   border : 0px;
   background : #e6e6e6;
 }
+
+#denybox{
+  width : 300px;
+  height : 200px;
+  position : relative;
+  margin-left : 100px;
+  margin-top : 200px;
+  border : 1px solid #41627e;
+  #deny_top{
+    position : absolute;
+    top : 0px;
+    height : 30px;
+    width : 100%;
+    background :  #41627e;
+  }
+  #deny_text{
+    width : 100%;
+    height : 30px;
+    text-align : center;
+    margin-top : 90px;
+    font-size : 13px;
+    font-weight : bold;
+  }
+  #deny_bottom{
+    position : absolute;
+    bottom : 0px;
+    height : 30px;
+    width : 100%;
+    background :  #41627e;
+
+  }
+}
+
+
+
+

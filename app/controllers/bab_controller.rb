@@ -1,6 +1,6 @@
 #encoding = UTF-8
 class BabController < ApplicationController
-  skip_before_filter :require_login, :only => [:index, :main, :today_res, :search, :select, :select_result]
+  skip_before_filter :require_login, :only => [:index, :main, :today_res, :search, :select, :select_result, :new_contact, :create_contact, :deny_access]
 
   def index
 
@@ -155,12 +155,14 @@ class BabController < ApplicationController
 
   def create_contact
     contact = Contact.new(params[:contact])
-    contact.user_id = session[:user_id]
+    if session[:user_id].nil?
+      contact.user_id = 1
+    else
+      contact.user_id = session[:user_id]
+    end
+
     contact.save
     
     redirect_to :action => "index", :controller => "bab" 
   end
-
-
-
 end
