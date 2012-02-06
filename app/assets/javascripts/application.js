@@ -64,10 +64,17 @@ $(document).ready(function(){
             disablePopup('#signupContact');
         }
     });
+
+    
 /////////////////////////////////////////////////////////////
 
 
-
+    centerPopup('#loading');
+    $('#loading').ajaxStart(function() {
+      $(this).show();
+      }).ajaxStop(function(){
+      $(this).delay(500).fadeOut(500);
+      });
 
 
 
