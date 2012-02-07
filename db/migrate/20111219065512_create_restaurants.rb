@@ -8,6 +8,7 @@ class CreateRestaurants < ActiveRecord::Migration
       t.integer :servicepoint
       t.integer :amountpoint
       t.integer :count
+      t.has_attached_file :avatar
       t.text :resinfo
       t.string :restype
       t.timestamps

@@ -1,5 +1,6 @@
 <div class="top-bar">
   <h1><%= @restaurant.resname %></h1>
+  <%= image_tag(@restaurant.avatar.url, :size => "50x50") %>
 </div>
 <%= link_to image_tag("admin/add-icon.gif", :border => 0, :id => "add_menu"), new_admin_menu_path(:id => @restaurant.id ) %>
 <div class="table">

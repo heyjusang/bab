@@ -7,8 +7,7 @@
     <table class="result_table">
       <tr>
         <td rowspan="3" class="result_img_td">  
-          <%= image_tag("bag.png", {:class => "search_image"}) %>
-        
+          <%= image_tag(res.avatar.url, {:class => "search_image"}) %>
         </td>
         <td class="result_resname_td"><%= link_to_function(res.resname, "showRes(#{res.id})") %></td>
       </tr>

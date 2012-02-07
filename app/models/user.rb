@@ -11,4 +11,5 @@ class User < ActiveRecord::Base
     has_many :evaluations
     has_many :goodbads
     has_many :contact
+
 end

@@ -3,7 +3,7 @@
   오늘의 추천 식당
   </div>
   <div id="today_img">
-    <img src="" alt="<%= @today_res.resname %>" /> 
+    <%= image_tag(@today_res.avatar.url) %>
   </div>
   <div id="today_name">
     <%= link_to_function(@today_res.resname, "showRes(#{@today_res.id})") %> 

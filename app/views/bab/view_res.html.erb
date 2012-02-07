@@ -6,7 +6,9 @@
       <td colspan="3" class="table_name">Restaurant Information</td>
     </tr>
     <tr>
-      <td rowspan="4" class="table_image"</td>
+      <td rowspan="4" class="table_image">
+        <%= image_tag(@restaurant.avatar.url, {:class => "view_res_img"}) %>
+      </td>
       <td class="table_row1">taste</td>
       <td id="taste_point">
         <div id="prog_taste">

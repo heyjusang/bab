@@ -3,7 +3,7 @@
     Recommend Restaurant
   </div>
   <div id="recommend_img">
-    <img src="" alt="<%= @final_sel.resname %>" /> 
+    <%= image_tag(@final_sel.avatar.url) %>
   </div>
   <div id="recommend_name">
     <%= link_to_function(@final_sel.resname, "showRes(#{@final_sel.id})") %> 
