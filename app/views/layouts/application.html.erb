@@ -22,7 +22,14 @@
     <% end %>
   </head>
   <body>
-
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+              js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1";
+                fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
     <div id="header">
       <div id="logobox">
 
@@ -69,7 +76,7 @@
         <% end %>
 
       </div>
-
+      <div class="fb-like" data-href="http://www.facebook.com/pages/%EB%B0%A5%ED%86%B5/163827883731978" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="arial"></div>
     </div>
     <div id ="blackbox">
     </div>

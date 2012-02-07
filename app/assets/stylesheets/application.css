@@ -10,6 +10,12 @@ a {
 td {
     word-break : break-all;
 }
+
+.fb-like{
+  position : absolute !important;
+  bottom : 0px !important;
+  right : 0px !important;
+}
 #header {
     width : 1028px;
     height : 100px;
