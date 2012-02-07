@@ -30,7 +30,7 @@
 
       <div id="searchbox">
         <form action ='#' placeholder="검색" name="searchform" onsubmit="searchRes();return false;">
-          <input name="search" type="text" class="searchtext"/>
+          <input name="search" type="text" class="searchtext" placeholder="검색"/>
           <input type="submit" value="search" class="searchbtn" />
         </form>
       </div>
@@ -38,32 +38,32 @@
       <div id="userbox">
         <% if session[:user_id].nil? %>
 
-        <div id="signin">
-          <%= form_for(:user, :url => {:controller => "user" , :action => "login"}) do |f| %>
-          <table>
-            <tr>
-              <td>Id</td>
-              <td>Password</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><%= f.text_field :username, :class => "signintext" %></td>
-              <td><%= f.password_field :password, :class => "signintext" %></td>
-              <td><%= submit_tag("login" ,{:class=>"signinbtn"}) %></td>
-            </tr>
-            <tr>
-              <td colspan="3"><input type="button" class="signupPop" value="아직 회원이 아니세요?"></td>
-            </tr>
-          </table>
-          <% end %>
+          <div id="signin">
+            <%= form_for(:user, :url => {:controller => "user" , :action => "login"}) do |f| %>
+              <table>
+                <tr>
+                  <td>Id</td>
+                  <td>Password</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td><%= f.text_field :username, :class => "signintext" %></td>
+                  <td><%= f.password_field :password, :class => "signintext" %></td>
+                  <td><%= submit_tag("login" ,{:class=>"signinbtn"}) %></td>
+                </tr>
+                <tr>
+                  <td colspan="3"><input type="button" class="signupPop" value="아직 회원이 아니세요?"></td>
+                </tr>
+              </table>
+            <% end %>
 
-        </div>
+          </div>
 
         <% else %>
-        <div id = "current_userbox">
-          <%= @current_user.username %> 님 환영합니다.</br>
-          <%= link_to "logout", :action => "logout", :controller => "user" %>
-        </div>
+          <div id = "current_userbox">
+            <%= @current_user.username %> 님 환영합니다.</br>
+            <%= link_to "logout", :action => "logout", :controller => "user" %>
+          </div>
 
 
         <% end %>
@@ -72,7 +72,6 @@
 
     </div>
     <div id ="blackbox">
-      <p>developed by deglee</p>
     </div>
     <div id ="content">
 
@@ -85,21 +84,29 @@
           </ul>
         </div>
         <div id="left_item">
-          <%= yield :left %>
         </div>
       </div>
       <div id="right_content">
-        <p class="design">designed by deglee</p>
         <div id="right_item">
-          <%= yield :right %>
         </div>
       </div>
 
     </div>
 
+
     <div id ="footer">
-      <%= link_to_function("개발자 괴롭히기", "contactPage()") %>
-      <p>powered by deglee</p>
+      <div id ="deglee" class="clearfix">
+        <%= link_to image_tag("facebook.png" ), "http://fb.com/co9901", :target => "_blank" %>
+        <%= link_to image_tag("blog.png"), "http://deglee.tistory.com", :target => "_blank" %>
+
+      </div>
+      <p>
+      | <%= link_to_function("개발자 괴롭히기", "contactPage()") %>
+      | developed by <span>deglee</span> 
+      | I <%= image_tag("heart.png", :size => "10x10") %> <a href="http://wafflestudio.com" target="_blank">wafflestudio</a>
+      | 
+      </p>
+      개발자의 부족한 능력때문에 서비스가 원활하지 않을 수도 있습니다.
 
     </div>
 
@@ -111,35 +118,35 @@
           <p id="popupContactClose">x</p>
         </div>
         <%= form_for(:user, :url => {:controller => "user", :action => "create" }) do |f| %>
-        <table>
-          <tr>
-            <td>ID :</td>
-            <td><%= f.text_field :username, :class => "signuptext" %></td>
-          </tr>
-          <tr>
-            <td>mail :</td>
-            <td><%= f.text_field :mailname, :class => "signuptext" %> @snu.ac.kr</td>
-          </tr>
-          <tr>
-            <td>password :</td>
-            <td><%= f.password_field :password, :class => "signuptext" %></td>
-          </tr>
-          <tr>
-            <td>Re :</td>
-            <td><%= f.password_field :password_confirmation, :class => "signuptext" %></td>
-          </tr>
-          <tr>
-            <td colspan="2"><%= submit_tag("Join!", :class=> "signupbtn") %></td>
-          </tr>
-        </table>
+          <table>
+            <tr>
+              <td>ID :</td>
+              <td><%= f.text_field :username, :class => "signuptext" %></td>
+            </tr>
+            <tr>
+              <td>mail :</td>
+              <td><%= f.text_field :mailname, :class => "signuptext" %> @snu.ac.kr</td>
+            </tr>
+            <tr>
+              <td>password :</td>
+              <td><%= f.password_field :password, :class => "signuptext" %></td>
+            </tr>
+            <tr>
+              <td>Re :</td>
+              <td><%= f.password_field :password_confirmation, :class => "signuptext" %></td>
+            </tr>
+            <tr>
+              <td colspan="2"><%= submit_tag("Join!", :class=> "signupbtn") %></td>
+            </tr>
+          </table>
         <% end %>
       </div>
     </div>
     <div id="backgroundPopup"></div>
 
     <div id="loading">
-    <p>로딩중...</p>
-    <%= image_tag("ajax-loader.gif", {:class => "ajax-loader"}) %>
+      <p>로딩중...</p>
+      <%= image_tag("ajax-loader.gif", {:class => "ajax-loader"}) %>
     </div>
 
 

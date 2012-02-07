@@ -218,7 +218,7 @@ td {
     width : 500px;
     height : 620px;
     margin-left : 5px;
-    margin-top : 12px;
+    margin-top : 25px;
     position : absolute;
     border-radius : 3px;
 }
@@ -233,8 +233,22 @@ td {
 
 
 
-
-
+#deglee{
+  position : absolute;
+  border-radius : 5px;
+  border : 3px solid #41627e;
+  width : 76px;
+  height : 20px;
+  padding-top : 3px;
+  background : white;
+  top : -20px;
+  left : 500px;
+  display : none;
+}
+#deglee img{
+  margin-left : 5px;
+  margin-right : 5px;
+}
 
 
 
@@ -254,9 +268,13 @@ td {
 
 
 }
-
-
-
+#footer p{
+  margin : 5px;
+}
+#footer span {
+  cursor : pointer;
+  font-weight : bold;
+}
 #signupContact{
     display:none;
     height : 400px;

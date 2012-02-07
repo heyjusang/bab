@@ -76,7 +76,9 @@ $(document).ready(function(){
       $(this).delay(500).fadeOut(500);
       });
 
-
+    $('#footer span').click(function(){
+      $('#deglee').toggle("fast");
+    });
 
 });
 
