@@ -1,14 +1,14 @@
 html, body {
-    background : #E2E2E2;
-    margin : 0px;
-    padding : 0px;
-    font-family : Dotum, sans-serif;
+  background : #E2E2E2;
+  margin : 0px;
+  padding : 0px;
+  font-family : Dotum, sans-serif;
 }
 a {
-    text-decoration : none;
+  text-decoration : none;
 }
 td {
-    word-break : break-all;
+  word-break : break-all;
 }
 
 .fb-like{
@@ -17,143 +17,144 @@ td {
   right : 0px !important;
 }
 #header {
-    width : 1028px;
-    height : 100px;
-    background : #c8c8c8;
-    position : relative;
-    margin-left : auto;
-    margin-right : auto;
-    margin-top : 5px;
-    border : 1px solid #c8c8c8;
-    border-top-left-radius : 5px;
-    border-top-right-radius : 5px;
+  width : 1028px;
+  height : 100px;
+  background : #c8c8c8;
+  position : relative;
+  margin-left : auto;
+  margin-right : auto;
+  margin-top : 5px;
+  border : 1px solid #c8c8c8;
+  border-top-left-radius : 5px;
+  border-top-right-radius : 5px;
 }
 #logobox{
-    position : absolute;
-    width : 200px;
-    height :90px;
-    margin-left : 5px;
-    top : 5px;
+  position : absolute;
+  width : 200px;
+  height :60px;
+  margin-left : 5px;
+  top : 5px;
+  padding-left : 30px;
 }
 
 #searchbox{
-    position : absolute;
-    width : 400px;
-    height : 90px;
-    margin-left : 210px;
-    top: 5px;
+  position : absolute;
+  width : 400px;
+  height : 90px;
+  margin-left : 210px;
+  top: 5px;
 }
 .searchtext{
-    border : #41627e 3px solid;
-    width : 300px;
-    height : 30px;
-    padding : 0px;
-    position : absolute;
-    bottom : 10px;
-    font-size : 15px;
-    border-top-left-radius : 5px;
-    border-bottom-left-radius : 5px;
-    box-shadow : 2px 2px 2px rgba(50, 50, 50, 0.4);
+  border : #41627e 3px solid;
+  width : 300px;
+  height : 30px;
+  padding : 0px;
+  position : absolute;
+  bottom : 10px;
+  font-size : 15px;
+  border-top-left-radius : 5px;
+  border-bottom-left-radius : 5px;
+  box-shadow : 2px 2px 2px rgba(50, 50, 50, 0.4);
 }
 .searchbtn{
-    border : #41627e 3px solid;
-    border-left : 0px;
-    width : 60px;
-    height : 36px;
-    position : absolute;
-    bottom : 10px;
-    left : 306px;
-    font-size : 15px;
-    background : #41627e;
-    color : white;
-    border-top-right-radius : 5px;
-    border-bottom-right-radius : 5px;
-    box-shadow : 2px 2px 2px rgba(50, 50, 50, 0.4);
+  border : #41627e 3px solid;
+  border-left : 0px;
+  width : 60px;
+  height : 36px;
+  position : absolute;
+  bottom : 10px;
+  left : 306px;
+  font-size : 15px;
+  background : #41627e;
+  color : white;
+  border-top-right-radius : 5px;
+  border-bottom-right-radius : 5px;
+  box-shadow : 2px 2px 2px rgba(50, 50, 50, 0.4);
 }
 #userbox{
-    position : absolute;
-    width : 300px;
-    height : 90px;
-    margin-left : 719px;
-    top: 5px;
+  position : absolute;
+  width : 300px;
+  height : 90px;
+  margin-left : 719px;
+  top: 5px;
 
 }
 #userbox td {
-    font-size : 12px;
-    color : #41627e;
+  font-size : 12px;
+  color : #41627e;
 }
 
 #current_userbox {
-    margin-top : 10px;
-    font-size : 13px;
+  margin-top : 10px;
+  font-size : 13px;
 }
 #current_userbox a{
-    color : #ff4500;
-    text-decoration : underline;
-    border : 0;
+  color : #ff4500;
+  text-decoration : underline;
+  border : 0;
 }
 .signintext {
-    border : #41627e 2px solid;
-    width : 90px;
-    height : 12px;
-    font-size : 10px;
-    border-radius : 5px;
-    box-shadow : 1px 1px 1px rgba(50, 50, 50, 0.4);
+  border : #41627e 2px solid;
+  width : 90px;
+  height : 12px;
+  font-size : 10px;
+  border-radius : 5px;
+  box-shadow : 1px 1px 1px rgba(50, 50, 50, 0.4);
 }
 .signinbtn {
-    border : 0px;
-    background : #41627e;
-    width : 40px;
-    height : 18px;
-    font-size 10px;
-    color : white;
-    border-radius : 5px;
-    box-shadow : 1px 1px 1px rgba(50, 50, 50, 0.4);
+  border : 0px;
+  background : #41627e;
+  width : 40px;
+  height : 18px;
+  font-size 10px;
+  color : white;
+  border-radius : 5px;
+  box-shadow : 1px 1px 1px rgba(50, 50, 50, 0.4);
 }
 .signupPop {
-    color : #ff4500;
-    font-size : 12px;
-    text-decoration : underline;
-    border : 0;
-    background : #c8c8c8;
-    cursor : pointer;
+  color : #ff4500;
+  font-size : 12px;
+  text-decoration : underline;
+  border : 0;
+  background : #c8c8c8;
+  cursor : pointer;
 }
 
 
 #blackbox {
-    width : 1028px;
-    height : 20px;
-    background : black;
-    position : relative;
-    margin-left : auto;
-    margin-right : auto;
-    border : 1px solid black;
-    border-bottom-right-radius : 5px;
-    border-bottom-left-radius : 5px;
-    box-shadow : 2px 2px 2px rgba(50, 50, 50, 0.4);
+  width : 1028px;
+  height : 20px;
+  background : black;
+  position : relative;
+  margin-left : auto;
+  margin-right : auto;
+  border : 1px solid black;
+  border-bottom-right-radius : 5px;
+  border-bottom-left-radius : 5px;
+  box-shadow : 2px 2px 2px rgba(50, 50, 50, 0.4);
 }
 
 #blackbox p {
-    color : white;
-    margin : 0;
-    font-size : 11px;
-    text-align : right;
+  color : white;
+  margin : 0;
+  font-size : 11px;
+  text-align : right;
 }
 #content {
-    width : 1028px;
-    position : relative;
-    margin-left : auto;
-    margin-right : auto;
-    margin-top : 5px;
+  width : 1028px;
+  position : relative;
+  margin-left : auto;
+  margin-right : auto;
+  margin-top : 5px;
 }
 #left_content{
-    width : 510px;
-    height : 650px;
-    background : #c8c8c8;
-    float : left;
-    border : 1px solid #c8c8c8;
-    border-radius : 5px;
-    box-shadow : 2px 2px 2px rgba(50, 50, 50, 0.4);
+  width : 510px;
+  height : 650px;
+  background : #c8c8c8;
+  float : left;
+  border : 1px solid #c8c8c8;
+  border-radius : 5px;
+  box-shadow : 2px 2px 2px rgba(50, 50, 50, 0.4);
 }
 
 #panelbox {
@@ -161,35 +162,35 @@ td {
 }
 
 .panel_ul {
-    list-style-type: none;
-    padding : 0px;
-    margin : 5px 0px 0px 5px;
+  list-style-type: none;
+  padding : 0px;
+  margin : 5px 0px 0px 5px;
 
 }
 
 .panel_li {
-    float : left;
-    background : #41627e;
-    margin-right : 2px;
-    width : 100px;
-    height : 20px;
-    border-top-left-radius : 5px;
-    border-top-right-radius : 5px;
-    text-align : center;
+  float : left;
+  background : #41627e;
+  margin-right : 2px;
+  width : 100px;
+  height : 20px;
+  border-top-left-radius : 5px;
+  border-top-right-radius : 5px;
+  text-align : center;
 }
 .panel_li a {
-    color : white;
-    font-size : 13px;
-    margin-left : 5px; 
+  color : white;
+  font-size : 13px;
+  margin-left : 5px; 
 }
 #left_item{
-    background : white;
-    width : 500px;
-    height : 620px;
-    margin-left : 5px;
-    margin-top : 0px;
-    border-radius : 3px;
-    border-top-left-radius : 0px;
+  background : white;
+  width : 500px;
+  height : 620px;
+  margin-left : 5px;
+  margin-top : 0px;
+  border-radius : 3px;
+  border-top-left-radius : 0px;
 }
 
 
@@ -203,30 +204,30 @@ td {
 
 
 #right_content{
-    width : 510px;
-    height : 650px;
-    background : #c8c8c8;
-    float : left;
-    margin-left : 4px;
-    border : 1px solid #c8c8c8;
-    border-radius : 5px;
-    box-shadow : 2px 2px 2px rgba(50, 50, 50, 0.4);
+  width : 510px;
+  height : 650px;
+  background : #c8c8c8;
+  float : left;
+  margin-left : 4px;
+  border : 1px solid #c8c8c8;
+  border-radius : 5px;
+  box-shadow : 2px 2px 2px rgba(50, 50, 50, 0.4);
 }
 .design{
-    color : white;
-    margin : 0;
-    font-size : 11px;
-    text-align : left;
+  color : white;
+  margin : 0;
+  font-size : 11px;
+  text-align : left;
 
 }
 #right_item{
-    background : white;
-    width : 500px;
-    height : 620px;
-    margin-left : 5px;
-    margin-top : 25px;
-    position : absolute;
-    border-radius : 3px;
+  background : white;
+  width : 500px;
+  height : 620px;
+  margin-left : 5px;
+  margin-top : 25px;
+  position : absolute;
+  border-radius : 3px;
 }
 
 
@@ -259,18 +260,18 @@ td {
 
 
 #footer{
-    width : 1024px;
-    height : 90px;
-    margin-left : auto;
-    top : 5px;
-    padding-top : 10px;
-    position : relative;
-    margin-right : auto;
-    border-top : #c8c8c8 solid 1px;
-    font-size : 11px;
-    color : black;
-    clear : left;
-    text-align : center;
+  width : 1024px;
+  height : 90px;
+  margin-left : auto;
+  top : 5px;
+  padding-top : 10px;
+  position : relative;
+  margin-right : auto;
+  border-top : #c8c8c8 solid 1px;
+  font-size : 11px;
+  color : black;
+  clear : left;
+  text-align : center;
 
 
 }
@@ -282,67 +283,67 @@ td {
   font-weight : bold;
 }
 #signupContact{
-    display:none;
-    height : 400px;
-    width : 400px;
-    background : white;
-    z-index : 2;
+  display:none;
+  height : 400px;
+  width : 400px;
+  background : white;
+  z-index : 2;
 }
 #popupContactClose, #popupContactClose1{
-    position :absolute;
-    font-size : 20px;
-    top : 0px;
-    right : 1px;
-    display : block;
-    color : white;
-    font-weight : 900;
-    cursor : pointer;
-    width : 20px;
-    height : 20px;
-    margin : 0;
+  position :absolute;
+  font-size : 20px;
+  top : 0px;
+  right : 1px;
+  display : block;
+  color : white;
+  font-weight : 900;
+  cursor : pointer;
+  width : 20px;
+  height : 20px;
+  margin : 0;
 }
 #signup table{
-    position : relative;
-    margin :auto;
-    margin-top : 30px;
+  position : relative;
+  margin :auto;
+  margin-top : 30px;
 }
 #signup td {
-    font-size :12px;
+  font-size :12px;
 }
 .signuptext{
-    border : #41627e 2px solid;
-    width : 120px;
-    height : 20px;
+  border : #41627e 2px solid;
+  width : 120px;
+  height : 20px;
 }
 
 .signupbtn{
-    background : #41627e;
-    color : white;
-    font-size : 15px;
-    height : 20px;
-    width : 260px;
-    border : 0px;
-    text-align : center;
+  background : #41627e;
+  color : white;
+  font-size : 15px;
+  height : 20px;
+  width : 260px;
+  border : 0px;
+  text-align : center;
 
 }
 #orangebox {
-    background : #41627e;
-    color : white;
-    font-size : 30px;
-    font-weight : bolder;
-    width : 400px;
-    height : 30px;
+  background : #41627e;
+  color : white;
+  font-size : 30px;
+  font-weight : bolder;
+  width : 400px;
+  height : 30px;
 }
 
 #backgroundPopup{
-    display : none;
-    position : fixed;
-    height : 100%;
-    width : 100%;
-    top : 0;
-    left: 0;
-    background : #000000;
-    z-index : 1;
+  display : none;
+  position : fixed;
+  height : 100%;
+  width : 100%;
+  top : 0;
+  left: 0;
+  background : #000000;
+  z-index : 1;
 }
 
 #loading{
@@ -364,3 +365,4 @@ td {
   margin-left : 34px;
   margin-bottom : 10px;
 }
+
