@@ -1,7 +1,10 @@
 function contactPage(){
   changeLeftHash("contact");
+  
 } 
-function loadContactPage(){  $.ajax({
+function loadContactPage(){  
+  $('#loading').show();
+  $.ajax({
   url : '/bab/new_contact',
   type : 'GET',
   dataType : 'html',
@@ -9,6 +12,7 @@ function loadContactPage(){  $.ajax({
   success: function(data){
     $('#left_item').html(''); 
     $('#left_item').html(data);
+    $('#loading').delay(500).fadeOut(500);
   }
 
 
@@ -23,6 +27,7 @@ function showRes(id){
 }
 
 function loadShowRes(id){
+  $('#loading').show();
   $.ajax({
     url: '/bab/view_res?res_id=' + id,
     type : 'GET',
@@ -34,6 +39,7 @@ function loadShowRes(id){
       $('#menuContact').remove();
       $('#right_item').html(data);
       resProfile();
+    $('#loading').delay(500).fadeOut(500);
     }
   });
 
@@ -68,6 +74,7 @@ function changeRightHash(obj,id){
 }
 
 function selectRes(){
+  $('#loading').show();
 
   changeLeftHash("select");
 }
@@ -81,6 +88,7 @@ function loadSelectRes(){
       $('#left_item').html('');
       $('#left_item').html(data);
       selectSetting();
+    $('#loading').delay(500).fadeOut(500);
   $('#select_help').click(function(){
       window.open("/bab/select_help","help","height=720,width=550,modal=yes,alwaysRaised=yes");
   });
@@ -89,6 +97,7 @@ function loadSelectRes(){
 
 }
 function selectResult(){
+  $('#loading').show();
   var query_arr =[];
   $("input.type").each(function(i,elem){
     var aaa = $(elem).attr('id');
@@ -105,6 +114,7 @@ function selectResult(){
     success : function(data){
       $('#left_item').html('');
       $('#left_item').html(data);
+    $('#loading').delay(500).fadeOut(500);
   $('#select_result_help').click(function(){
       window.open("/bab/select_result_help","help","height=720,width=550,modal=yes,alwaysRaised=yes");
   });
@@ -119,6 +129,7 @@ function addCandidate(){
 }
 
 function selectRole(){
+  $('#loading').show();
   $('#decide_btn').remove();
   $('.role_form').remove();
   randomElements = jQuery('#candidate_list .people').get().sort(function(){
@@ -137,8 +148,10 @@ function selectRole(){
   $('#casher_people').append('<span id="casher">회계</span>');
   $('#order_people').append('<span id="order">주문</span>');
 
+    $('#loading').delay(500).fadeOut(500);
 }
 function mainPage(){
+  $('#loading').show();
   $.ajax({
     url : '/bab/main',
     type : 'GET',
@@ -159,11 +172,13 @@ function mainPage(){
       $('#right_item').html(data);
     }
   });
+    $('#loading').delay(500).fadeOut(500);
 }
 function moreComment(index){
   changeRightHash('more_comment',index);
 }
 function loadMoreComment(index){
+  $('#loading').show();
   $.ajax({
     url : '/bab/more_comment?res_id=' + index,
     type : 'GET',
@@ -172,6 +187,7 @@ function loadMoreComment(index){
     success : function(data){
       $('#right_item').html('');
       $('#right_item').html(data);
+    $('#loading').delay(500).fadeOut(500);
 
     }
   });
@@ -180,6 +196,7 @@ function showMain(){
   changeLeftHash("main");
 }
 function loadShowMain(){
+  $('#loading').show();
   $.ajax({
     url : '/bab/main',
     type : 'GET',
@@ -188,12 +205,14 @@ function loadShowMain(){
     success:function(data){
       $('#left_item').html('');
       $('#left_item').html(data);
+    $('#loading').delay(500).fadeOut(500);
 
     }
 
   });
 }
 function todayRes(){
+  $('#loading').show();
   $.ajax({
     url : '/bab/today_res',
     type : 'GET',
@@ -202,6 +221,7 @@ function todayRes(){
     success:function(data){
       $('#right_item').html('');
       $('#right_item').html(data);
+    $('#loading').delay(500).fadeOut(500);
     }
   });
 }
@@ -269,6 +289,7 @@ function evRes(id){
   changeRightHash("ev_res", id);
 }
 function loadEvRes(id){
+  $('#loading').show();
   $.ajax({
     url: '/evaluate/new_ev?res_id=' + id,
     type : 'POST',
@@ -281,6 +302,7 @@ function loadEvRes(id){
       $('#right_item').html(data);
       prepareSliders();
       reviewCount();
+    $('#loading').delay(500).fadeOut(500);
     }
   });
 
@@ -299,6 +321,7 @@ function searchRes(keyword){
   changeLeftHash("search?" + text);
 }
 function loadSearchRes(keyword){
+  $('#loading').show();
   if (keyword == null){
     var text = $('.searchtext').val();
 
@@ -319,6 +342,7 @@ function loadSearchRes(keyword){
       $("a.next_page").wrap('<div class="moreview" />');
       $('#resultview').tinyscrollbar();
       searchScroll();
+    $('#loading').delay(500).fadeOut(500);
     }
 
   });
@@ -334,6 +358,7 @@ function searchScroll(){
   });
   $(window).unbind('.infscr');
   $("a.next_page").click(function(){
+  $('#loading').show();
     $(document).trigger('retrieve.infscr');
     $(".pagination").css({
       "display" : ""
@@ -341,6 +366,7 @@ function searchScroll(){
     $('.overview').ajaxComplete(function(){
 
       $('#resultview').tinyscrollbar_update('bottom');
+    $('#loading').delay(500).fadeOut(500);
     });
 
     return false;

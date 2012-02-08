@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
     validates_uniqueness_of :username
     validates_uniqueness_of :mailname
     validates_confirmation_of :password
-    validates_presence_of :password_confirmation
     has_many :evaluations
     has_many :goodbads
     has_many :contact

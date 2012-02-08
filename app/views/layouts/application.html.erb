@@ -8,6 +8,9 @@
     <%= stylesheet_link_tag    "view_res" %>
     <%= stylesheet_link_tag    "bab.css.scss" %>
     <%= stylesheet_link_tag    "evaluate" %>
+    <!--[if lte IE 8]>
+    <%= stylesheet_link_tag    "IE.css" %>
+    <![endif]-->
     <%= javascript_include_tag "jquery-1.7.1.min.js" %>
     <%= javascript_include_tag "jquery-ui-1.8.17.custom.min.js" %>
     <%= javascript_include_tag "jquery.infinitescroll.js" %>
@@ -94,6 +97,7 @@
         </div>
       </div>
       <div id="right_content">
+        <span id="please">여러분의 활발한 평가 참여가 질 높은 서비스를 만듭니다.</span>
         <div id="right_item">
         </div>
       </div>
@@ -127,6 +131,7 @@
         <%= form_for(:user, :url => {:controller => "user", :action => "create" }) do |f| %>
           <%= hidden_field_tag :authorize_token, "token" %>
           <%= hidden_field_tag :authorized, "false" %>
+          <%= hidden_field_tag :mailcheck, "false" %>
           <table>
             <tr>
               <td>ID :</td>

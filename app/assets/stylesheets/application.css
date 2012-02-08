@@ -213,6 +213,13 @@ td {
   border-radius : 5px;
   box-shadow : 2px 2px 2px rgba(50, 50, 50, 0.4);
 }
+#please{
+  position : absolute;
+  font-size : 11px;
+  margin-top : 5px;
+  margin-left : 210px;
+  color : white;
+}
 .design{
   color : white;
   margin : 0;
@@ -360,7 +367,7 @@ td {
 }
 
 #loading{
-  display :block;
+  display :none;
   width : 100px;
   height  :100px;
   background : white;

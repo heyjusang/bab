@@ -11,6 +11,7 @@ class UserController < ApplicationController
         params[:user][:password_confirmation] = Digest::SHA256.hexdigest(params[:user][:password_confirmation])
         params[:user][:authorize_token]  = Digest::SHA256.hexdigest(Time.now.to_s+rand().to_s)
         params[:user][:authorized] = false
+        params[:user][:mailcheck] = false
         user = User.new(params[:user])
         if User.first(:conditions => {:username => params[:user][:username]})
           redirect_to "/", :notice => "이미 있는 아이디 입니다."
@@ -26,8 +27,7 @@ class UserController < ApplicationController
 
 
         if user.save
-           AuthorityMailer.confirm_email(user).deliver
-            redirect_to "/", :notice => "스누메일에 접속하여 인증해 주세요."
+            redirect_to "/", :notice => "스누메일에 접속하여 인증해 주세요. 서버가 느려서 늦게 갈 수도 있어요..^^;"
 
         end
     end
