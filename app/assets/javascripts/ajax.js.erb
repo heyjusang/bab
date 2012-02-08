@@ -81,6 +81,9 @@ function loadSelectRes(){
       $('#left_item').html('');
       $('#left_item').html(data);
       selectSetting();
+  $('#select_help').click(function(){
+      window.open("/bab/select_help","help","height=720,width=550,modal=yes,alwaysRaised=yes");
+  });
     }
   });
 
@@ -102,6 +105,9 @@ function selectResult(){
     success : function(data){
       $('#left_item').html('');
       $('#left_item').html(data);
+  $('#select_result_help').click(function(){
+      window.open("/bab/select_result_help","help","height=720,width=550,modal=yes,alwaysRaised=yes");
+  });
     }
   });
 
@@ -617,6 +623,11 @@ $(function(){
   $(window).bind('hashchange', function() {
     detectHash();
   });
+
+
+
+
+
 
 });
 

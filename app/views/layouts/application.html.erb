@@ -125,6 +125,8 @@
           <p id="popupContactClose">x</p>
         </div>
         <%= form_for(:user, :url => {:controller => "user", :action => "create" }) do |f| %>
+          <%= hidden_field_tag :authorize_token, "token" %>
+          <%= hidden_field_tag :authorized, "false" %>
           <table>
             <tr>
               <td>ID :</td>
@@ -147,6 +149,9 @@
             </tr>
           </table>
         <% end %>
+      </div>
+      <div id="signupinfo">
+        회원가입을 위해서는 스누메일 인증과정을 거쳐야 합니다.
       </div>
     </div>
     <div id="backgroundPopup"></div>

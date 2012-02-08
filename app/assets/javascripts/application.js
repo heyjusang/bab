@@ -67,7 +67,7 @@ $(document).ready(function(){
 
     
 /////////////////////////////////////////////////////////////
-
+  
 
     centerPopup('#loading');
     $('#loading').ajaxStart(function() {
@@ -79,6 +79,9 @@ $(document).ready(function(){
     $('#footer span').click(function(){
       $('#deglee').toggle("fast");
     });
+
+
+
 
 });
 

@@ -1,6 +1,6 @@
 #encoding = UTF-8
 class BabController < ApplicationController
-  skip_before_filter :require_login, :only => [:index, :main, :today_res, :search, :select, :select_result, :new_contact, :create_contact, :deny_access]
+  skip_before_filter :require_login, :only => [:index, :main, :today_res, :search, :select, :select_result, :new_contact, :create_contact, :deny_access, :select_help, :select_result_help]
 
   def index
 
@@ -171,4 +171,13 @@ class BabController < ApplicationController
     
     redirect_to :action => "index", :controller => "bab" 
   end
+
+  def select_help
+    render :layout => false
+  end
+  def select_result_help
+    render :layout => false
+  
+  end
+
 end

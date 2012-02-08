@@ -16,7 +16,7 @@
     <span>맛 :</span> <%= ((@final_sel.tastepoint).round(1)/(@final_sel.count).round(1)).round(1) %> <span>속도 :</span> <%= ((@final_sel.speedpoint).round(1)/(@final_sel.count).round(1)).round(1) %> <span>양 :</span> <%= ((@final_sel.amountpoint).round(1)/(@final_sel.count).round(1)).round(1) %> <span>서비스 :</span> <%= ((@final_sel.servicepoint).round(1)/(@final_sel.count).round(1)).round(1) %> 
   </div>
 </div>
-
+<span id="select_result_help"><%= image_tag("question.png", :size =>"12x12") %> 이건 또 뭐?</span>
 <div id="select_role">
     <div id="role_name">역할분담</div>
     <div id="role_bar">

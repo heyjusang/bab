@@ -241,7 +241,15 @@ a.next_page{
     background : #41627e;
   }
 }
-
+#select_help{
+  position : absolute;
+  font-size : 11px;
+  color : #bdbabd;
+  cursor : pointer;
+  margin-top : 1px;
+  margin-left : 385px;
+  border-bottom : 1px solid #bdbabd;
+}
 #select_level{
   position : relative;
   width : 490px;
@@ -270,6 +278,8 @@ a.next_page{
   border-radius : 5px;
   }
 }
+
+
 .priority_text{
   display :none;
 }
@@ -365,7 +375,15 @@ a.next_page{
 }
 
 //////////////////////select_result////////////////
-
+#select_result_help{
+  position : absolute;
+  font-size : 11px;
+  color : #bdbabd;
+  cursor : pointer;
+  margin-top : 1px;
+  margin-left : 400px;
+  border-bottom : 1px solid #bdbabd;
+}
 #recommend {
   margin-left : auto;
   margin-right : auto;
