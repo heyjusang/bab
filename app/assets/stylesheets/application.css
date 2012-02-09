@@ -32,9 +32,9 @@ td {
   position : absolute;
   width : 200px;
   height :60px;
-  margin-left : 5px;
   top : 5px;
-  padding-left : 30px;
+  margin-top : 20px;
+  margin-left : 10px;
 }
 
 #searchbox{
@@ -384,5 +384,9 @@ td {
 .ajax-loader{
   margin-left : 34px;
   margin-bottom : 10px;
+}
+/* alert*/
+#dialog-message{
+  font-size : 12px;
 }
 

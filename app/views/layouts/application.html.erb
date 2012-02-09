@@ -20,11 +20,24 @@
     <%= csrf_meta_tags %>
     <% if flash[:notice] %>
       <script type="text/javascript">
-        alert("<%= flash[:notice] %>");
+        $(function(){
+        $('#dialog:ui-dialog').dialog("destroy");
+        $('#dialog-message').dialog({
+          modal : true,
+          buttons : {
+              Ok: function(){
+                $(this).dialog("close");
+          }
+        }
+        });
+        });
       </script>
-    <% end %>
+        <% end %>
   </head>
   <body>
+    <div id="dialog-message" title="알림">
+      <p> <%= flash[:notice] %> </p>
+    </div>
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -35,7 +48,7 @@
                 }(document, 'script', 'facebook-jssdk'));</script>
     <div id="header">
       <div id="logobox">
-        <%= link_to image_tag("logo.png", :size => "100x90"), "/" %>
+        <%= link_to image_tag("logo.png", :size => "200x60"), "/" %>
       </div>
 
       <div id="searchbox">

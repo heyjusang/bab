@@ -73,9 +73,7 @@ $(document).ready(function(){
     $('#footer span').click(function(){
       $('#deglee').toggle("fast");
     });
-
-
-
-
+   
+        
 });
 
