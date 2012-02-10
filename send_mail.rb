@@ -1,4 +1,4 @@
-user = User.where("authorized = ?", false).order('created_at ASC limit 3')
+user = User.where("mailcheck = ?", false).order('created_at ASC limit 3')
 
 user.each do |u|
   AuthorityMailer.confirm_email(u).deliver
