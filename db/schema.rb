@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(:version => 20120205071842) do
     t.text     "content"
     t.integer  "user_id"
     t.string   "mail"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "evaluations", :force => true do |t|
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(:version => 20120205071842) do
     t.integer  "amount"
     t.integer  "service"
     t.string   "review"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "goodbads", :force => true do |t|
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(:version => 20120205071842) do
     t.integer  "user_id"
     t.boolean  "good"
     t.boolean  "bad"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "menus", :force => true do |t|
@@ -50,15 +50,15 @@ ActiveRecord::Schema.define(:version => 20120205071842) do
     t.integer  "dislike"
     t.integer  "restaurant_id"
     t.boolean  "setmenu"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "recommendations", :force => true do |t|
     t.string   "date"
     t.integer  "res_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "restaurants", :force => true do |t|
@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(:version => 20120205071842) do
     t.datetime "avatar_updated_at"
     t.text     "resinfo"
     t.string   "restype"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(:version => 20120205071842) do
     t.string   "authorize_token"
     t.boolean  "authorized"
     t.boolean  "mailcheck"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
 end
