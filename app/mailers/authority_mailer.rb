@@ -5,7 +5,7 @@ class AuthorityMailer < ActionMailer::Base
 
   def confirm_email(user)
     @user = user
-    @url = "http://co9901.cafe24.com:9902/authorize/confirm?user=#{@user.username}&authorized_token=#{@user.authorize_token}"
+    @url = "http://co9901.cafe24.com/authorize/confirm?user=#{@user.username}&authorized_token=#{@user.authorize_token}"
     mail(:to => "#{user.mailname}@snu.ac.kr", :subject => "밥통 인증 메일")
   end
 
