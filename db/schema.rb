@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20120205071842) do
 
   create_table "menus", :force => true do |t|
     t.string   "menuname"
-    t.integer  "price"
+    t.string   "price"
     t.integer  "like"
     t.integer  "dislike"
     t.integer  "restaurant_id"

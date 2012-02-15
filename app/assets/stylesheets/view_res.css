@@ -141,10 +141,12 @@
 #orangebox_menu{
     background : #41627e;
     color : white;
-    font-size : 25px;
+    font-size : 20px;
+    padding-top : 5px;
     font-weight : bolder;
-    width : 695px;
-    height : 32px;
+    width : 690px;
+    height : 27px;
+    padding-left : 5px;
     border-top-left-radius : 3px;
     border-top-right-radius : 3px;
 }
@@ -157,6 +159,7 @@
 #menupane table{
     border-left : #ff8200 solid 3px;
     margin : 2px;
+    margin-left : 10px;
     border-spacing : 0px;
     border-collapse : collapse;
     font-size : 13px;
@@ -165,7 +168,7 @@
 }
 
 .menu_table_col1{
-    width : 140px;
+    width : 205px;
     height : 20px;
 
 }
@@ -174,7 +177,7 @@
     width : 53px;
 }
 .menu_table_col3{
-    width : 25px;
+    width : 45px;
 }
 
 .set_table_col1{
