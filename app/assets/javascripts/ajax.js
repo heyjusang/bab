@@ -500,9 +500,9 @@ function likeThisMenu(item){
   $('#menupane .menu_table'+item.id+' #dislike_count_td').html('');
   ///////////////////////////////////////
   $('#menupane .menu_table'+item.id+' #like_td').append('<a href="#" onclick="cancelGoodMenu('+item.id+');return false;">cancel</a>');
-  $('#menupane .menu_table'+item.id+' #like_count_td').append(item.like);
+  $('#menupane .menu_table'+item.id+' #like_count_td').append(item.liking);
   $('#menupane .menu_table'+item.id+' #dislike_td').append('<a href="#" onclick="badMenu('+item.id+');return false;">dislike</a>');
-  $('#menupane .menu_table'+item.id+' #dislike_count_td').append(item.dislike);
+  $('#menupane .menu_table'+item.id+' #dislike_count_td').append(item.disliking);
 }
 
 function dislikeThisMenu(item){
@@ -512,9 +512,9 @@ function dislikeThisMenu(item){
   $('#menupane .menu_table'+item.id+' #dislike_count_td').html('');
   ///////////////////////////////////////
   $('#menupane .menu_table'+item.id+' #like_td').append('<a href="#" onclick="goodMenu('+item.id+');return false;">like</a>');
-  $('#menupane .menu_table'+item.id+' #like_count_td').append(item.like);
+  $('#menupane .menu_table'+item.id+' #like_count_td').append(item.liking);
   $('#menupane .menu_table'+item.id+' #dislike_td').append('<a href="#" onclick="cancelBadMenu('+item.id+');return false;">cancel</a>');
-  $('#menupane .menu_table'+item.id+' #dislike_count_td').append(item.dislike);
+  $('#menupane .menu_table'+item.id+' #dislike_count_td').append(item.disliking);
 
 }
 ///////////////////////////////////
@@ -523,7 +523,7 @@ function cancelLike(item){
   $('#menupane .menu_table'+item.id+' #like_count_td').html('');
   /////////////////////////
   $('#menupane .menu_table'+item.id+' #like_td').append('<a href="#" onclick="goodMenu('+item.id+');return false;">like</a>');
-  $('#menupane .menu_table'+item.id+' #like_count_td').append(item.like);
+  $('#menupane .menu_table'+item.id+' #like_count_td').append(item.liking);
 
 }
 function cancelDislike(item){
@@ -531,7 +531,7 @@ function cancelDislike(item){
   $('#menupane .menu_table'+item.id+' #dislike_count_td').html('');
   ///////////////////////////////////////
   $('#menupane .menu_table'+item.id+' #dislike_td').append('<a href="#" onclick="badMenu('+item.id+');return false;">dislike</a>');
-  $('#menupane .menu_table'+item.id+' #dislike_count_td').append(item.dislike);
+  $('#menupane .menu_table'+item.id+' #dislike_count_td').append(item.disliking);
 
 }
 //////////////////////////////////////

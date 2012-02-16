@@ -108,14 +108,14 @@
             <td class="menu_table_col2" id="like_td">
               <%= link_to_function("like", "goodMenu(#{dish['menu'].id})") %>
             </td>
-            <td class="menu_table_col3" id="like_count_td"><%= dish['menu'].like %></td>
+            <td class="menu_table_col3" id="like_count_td"><%= dish['menu'].liking %></td>
           </tr>
           <tr>
             <td class="menu_table_col1"><%= dish['menu'].price %></td>
             <td class="menu_table_col2" id="dislike_td">
               <%= link_to_function("dislike", "badMenu(#{dish['menu'].id})") %>
             </td>
-            <td class="menu_table_col3" id="dislike_count_td"><%= dish['menu'].dislike %></td>
+            <td class="menu_table_col3" id="dislike_count_td"><%= dish['menu'].disliking %></td>
           </tr>
         </table>
       <% else %>
@@ -126,14 +126,14 @@
               <td class="menu_table_col2" id="like_td">
                 <%= link_to_function("cancel", "cancelGoodMenu(#{dish['menu'].id})") %>
               </td>
-              <td class="menu_table_col3" id="like_count_td"><%= dish['menu'].like %></td>
+              <td class="menu_table_col3" id="like_count_td"><%= dish['menu'].liking %></td>
             </tr>
             <tr>
               <td class="menu_table_col1"><%= dish['menu'].price %></td>
               <td class="menu_table_col2" id="dislike_td">
                 <%= link_to_function("dislike", "badMenu(#{dish['menu'].id})") %>
               </td>
-              <td class="menu_table_col3" id="dislike_count_td"><%= dish['menu'].dislike %></td>
+              <td class="menu_table_col3" id="dislike_count_td"><%= dish['menu'].disliking %></td>
             </tr>
           </table>
 
@@ -144,14 +144,14 @@
               <td class="menu_table_col2" id="like_td">
                 <%= link_to_function("like", "goodMenu(#{dish['menu'].id})") %>
               </td>
-              <td class="menu_table_col3" id="like_count_td"><%= dish['menu'].like %></td>
+              <td class="menu_table_col3" id="like_count_td"><%= dish['menu'].liking %></td>
             </tr>
             <tr>
               <td class="menu_table_col1"><%= dish['menu'].price %></td>
               <td class="menu_table_col2" id="dislike_td">
                 <%= link_to_function("cancel", "cancelBadMenu(#{dish['menu'].id})") %>
               </td>
-              <td class="menu_table_col3" id="dislike_count_td"><%= dish['menu'].dislike %></td>
+              <td class="menu_table_col3" id="dislike_count_td"><%= dish['menu'].disliking %></td>
             </tr>
           </table>
 
@@ -162,14 +162,14 @@
               <td class="menu_table_col2" id="like_td">
                 <%= link_to_function("like", "goodMenu(#{dish['menu'].id})") %>
               </td>
-              <td class="menu_table_col3" id="like_count_td"><%= dish['menu'].like %></td>
+              <td class="menu_table_col3" id="like_count_td"><%= dish['menu'].liking %></td>
             </tr>
             <tr>
               <td class="menu_table_col1"><%= dish['menu'].price %></td>
               <td class="menu_table_col2" id="dislike_td">
                 <%= link_to_function("dislike", "badMenu(#{dish['menu'].id})") %>
               </td>
-              <td class="menu_table_col3" id="dislike_count_td"><%= dish['menu'].dislike %></td>
+              <td class="menu_table_col3" id="dislike_count_td"><%= dish['menu'].disliking %></td>
             </tr>
           </table>
 
@@ -188,14 +188,14 @@
               <td class="set_table_col2" id="like_td">
                 <%= link_to_function("like", "goodMenu(#{dish['menu'].id})") %>
               </td>
-              <td class="set_table_col3" id="like_count_td"><%= dish['menu'].like %></td>
+              <td class="set_table_col3" id="like_count_td"><%= dish['menu'].liking %></td>
             </tr>
             <tr>
               <td class="set_table_col1"><%= dish['menu'].price %></td>
               <td class="set_table_col2" id="dislike_td">
                 <%= link_to_function("dislike", "badMenu(#{dish['menu'].id})") %>
               </td>
-              <td class="set_table_col3" id="dislike_count_td"><%= dish['menu'].dislike %></td>
+              <td class="set_table_col3" id="dislike_count_td"><%= dish['menu'].disliking %></td>
             </tr>
           </table>
         <% else %>
@@ -206,14 +206,14 @@
                 <td class="set_table_col2" id="like_td">
                   <%= link_to_function("cancel", "cancelGoodMenu(#{dish['menu'].id})") %>
                 </td>
-                <td class="set_table_col3" id="like_count_td"><%= dish['menu'].like %></td>
+                <td class="set_table_col3" id="like_count_td"><%= dish['menu'].liking %></td>
               </tr>
               <tr>
                 <td class="set_table_col1"><%= dish['menu'].price %></td>
                 <td class="set_table_col2" id="dislike_td">
                   <%= link_to_function("dislike", "badMenu(#{dish['menu'].id})") %>
                 </td>
-                <td class="set_table_col3" id="dislike_count_td"><%= dish['menu'].dislike %></td>
+                <td class="set_table_col3" id="dislike_count_td"><%= dish['menu'].disliking %></td>
               </tr>
             </table>
 
@@ -224,14 +224,14 @@
                 <td class="set_table_col2" id="like_td">
                   <%= link_to_function("like", "goodMenu(#{dish['menu'].id})") %>
                 </td>
-                <td class="set_table_col3" id="like_count_td"><%= dish['menu'].like %></td>
+                <td class="set_table_col3" id="like_count_td"><%= dish['menu'].liking %></td>
               </tr>
               <tr>
                 <td class="set_table_col1"><%= dish['menu'].price %></td>
                 <td class="set_table_col2" id="dislike_td">
                   <%= link_to_function("cancel", "cancelBadMenu(#{dish['menu'].id})") %>
                 </td>
-                <td class="set_table_col3" id="dislike_count_td"><%= dish['menu'].dislike %></td>
+                <td class="set_table_col3" id="dislike_count_td"><%= dish['menu'].disliking %></td>
               </tr>
             </table>
 
@@ -242,14 +242,14 @@
                 <td class="set_table_col2" id="like_td">
                   <%= link_to_function("like", "goodMenu(#{dish['menu'].id})") %>
                 </td>
-                <td class="set_table_col3" id="like_count_td"><%= dish['menu'].like %></td>
+                <td class="set_table_col3" id="like_count_td"><%= dish['menu'].liking %></td>
               </tr>
               <tr>
                 <td class="set_table_col1"><%= dish['menu'].price %></td>
                 <td class="set_table_col2" id="dislike_td">
                   <%= link_to_function("dislike", "badMenu(#{dish['menu'].id})") %>
                 </td>
-                <td class="set_table_col3" id="dislike_count_td"><%= dish['menu'].dislike %></td>
+                <td class="set_table_col3" id="dislike_count_td"><%= dish['menu'].disliking %></td>
               </tr>
             </table>
 

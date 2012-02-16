@@ -9,8 +9,8 @@
       <th style="width:40px;">Num</th>
       <th>Name</th>
       <th>Price</th>
-      <th>like</th>
-      <th>dislike</th>
+      <th>liking</th>
+      <th>disliking</th>
       <th>setmenu</th>
       <th>tool</th>
     </tr>
@@ -19,8 +19,8 @@
       <td><%= menu.id %></td>
       <td><%= menu.menuname %> </td>
       <td><%= menu.price %></td>
-      <td><%= menu.like %></td>
-      <td><%= menu.dislike %></td>
+      <td><%= menu.liking %></td>
+      <td><%= menu.disliking %></td>
       <td><%= menu.setmenu %></td>
       <td>
         <%= button_to "del", admin_menu_path(:id => menu.id), {:method => :delete} %>

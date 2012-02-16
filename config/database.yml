@@ -13,10 +13,11 @@ development:
   encoding: utf8
   reconnect: false
   database: bab_co9901
+  host: co9901.cafe24.com 
   pool: 5
   username: co9901
   password: dlwntkd
-  socket: /var/lib/mysql/mysql.sock
+#  socket: /var/lib/mysql/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

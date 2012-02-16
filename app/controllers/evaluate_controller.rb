@@ -80,10 +80,10 @@ class EvaluateController < ApplicationController
 
             if goodbad.bad == true
                 goodbad.bad = false
-                menu.dislike = menu.dislike - 1
+                menu.disliking = menu.disliking - 1
             end
 
-            menu.like = menu.like + 1
+            menu.liking = menu.liking + 1
         end
         goodbad.save
         menu.save
@@ -111,10 +111,10 @@ class EvaluateController < ApplicationController
 
             if goodbad.good == true
                 goodbad.good = false
-                menu.like = menu.like - 1
+                menu.liking = menu.liking - 1
             end
 
-            menu.dislike = menu.dislike + 1
+            menu.disliking = menu.disliking + 1
         end
 
         goodbad.save
@@ -129,7 +129,7 @@ class EvaluateController < ApplicationController
         menu = Menu.find(params[:menu_id])
         if goodbad.good == true
         goodbad.good = false
-        menu.like = menu.like - 1
+        menu.liking = menu.liking - 1
         end
         goodbad.save
         menu.save
@@ -143,7 +143,7 @@ class EvaluateController < ApplicationController
         menu = Menu.find(params[:menu_id])
         if goodbad.bad == true
         goodbad.bad = false
-        menu.dislike = menu.dislike - 1
+        menu.disliking = menu.disliking - 1
         end
         goodbad.save
         menu.save
