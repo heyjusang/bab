@@ -17,11 +17,9 @@ class BabController < ApplicationController
     @new_evaluations = Evaluation.order('created_at desc limit 3')
     render :layout => false
   end  
-  def view_res
-    @restaurant = Restaurant.find(params[:res_id])
-    @ev_temps = Evaluation.find(:all, :order => "created_at desc", :conditions => ['restaurant_id = ?', params[:res_id]], :limit => 3)
-    @menus = Menu.where(:restaurant_id => params[:res_id])
-    @menu_view_res = @menus.sort_by{"|m| (m.liking-m.disliking)"}.first(1)
+  def view_menu
+    @num = params[:res_id]
+    @menus = Menu.where(:restaurant_id => params[:res_id]).order("liking+disliking DESC")
     @menus_all = []
     @set_all = []
     @menus.each do |m|
@@ -30,13 +28,35 @@ class BabController < ApplicationController
       menu['menu'] = m
       @goodbad = m.goodbads.first(:conditions => ['user_id = ?', session[:user_id]])
       menu['goodbad'] = @goodbad
-
       if m.setmenu == false
       @menus_all << menu
       elsif m.setmenu == true
         @set_all << menu
       end
-    end
+    end 
+    render :layout => false
+  end
+  def view_res
+    @restaurant = Restaurant.find(params[:res_id])
+    @ev_temps = Evaluation.find(:all, :order => "created_at desc", :conditions => ['restaurant_id = ?', params[:res_id]], :limit => 3)
+    # @menus = Menu.where(:restaurant_id => params[:res_id])
+    # @menu_view_res = @menus.sort_by{"|m| (m.liking-m.disliking)"}.first(1)
+     @menu_view_res = Menu.where(:restaurant_id => params[:res_id]).order("liking-disliking DESC").limit(1)
+    #@menus_all = []
+    #@set_all = []
+    #@menus.each do |m|
+     # menu = {}
+      #goodbad = {}
+      #menu['menu'] = m
+      #@goodbad = m.goodbads.first(:conditions => ['user_id = ?', session[:user_id]])
+      #menu['goodbad'] = @goodbad
+
+      #if m.setmenu == false
+      #@menus_all << menu
+      #elsif m.setmenu == true
+       # @set_all << menu
+      #end
+    #end
 
     render :layout => false
 
