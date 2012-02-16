@@ -136,8 +136,8 @@ a {
 }
 
 .result_img_td {
-  width : 117px;
-  height : 110px;
+  width : 100px;
+  height : 100px;
   .search_image{
     width : 100px;
     height : 100px;
@@ -146,7 +146,7 @@ a {
   }
 }
 .result_resname_td{
-  width : 330px;
+  width : 340px;
   text-align : right;
   font-weight : bold;
   font-size : 15px;
@@ -505,6 +505,7 @@ a.next_page{
   color  :#41627e;
   background : white;
   margin-left : -5px;
+  padding-top : 3px;
   border-left : 1px solid #41627e;
   cursor : pointer;
 }
