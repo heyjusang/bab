@@ -6,8 +6,8 @@ class Admin::MenusController < Admin::AdminController
 
     def create
         menu = Menu.new(params[:menu])
-        menu.like = 0
-        menu.dislike = 0
+        menu.liking = 0
+        menu.disliking = 0
         restaurant = Restaurant.find(params[:restaurant_id])
         menu.restaurant_id = restaurant.id
 

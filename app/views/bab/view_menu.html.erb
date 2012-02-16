@@ -1,0 +1,158 @@
+<div id="menuwrapper">
+  <a href="#" id="back_btn" onclick="showRes(<%= @num %>); return false;"><%= image_tag("back.png", :size => "30x30") %></a>
+  <div id="menu_title">
+    menu
+  </div>
+  <div id="menupane" class="clearfix">
+    <% @menus_all.each do |dish| %>
+      <% if dish['goodbad'].nil? %>
+        <table class="menu_table<%= dish['menu'].id %>">
+          <tr>
+            <td class="menu_table_col1"><%= dish['menu'].menuname %></td>
+          </tr>
+          <tr>
+            <td class="menu_table_col1"><%= dish['menu'].price %></td>
+          </tr>
+          <tr>
+            <td class="menu_point">
+              <a href="#" onclick="goodMenu(<%= dish['menu'].id %>); return false;"><%= image_tag("like.png", :size => "18x18") %> <%= dish['menu'].liking %></a>
+              <a href="#" onclick="badMenu(<%= dish['menu'].id %>); return false;"><%= image_tag("dislike.png", :size => "18x18") %> <%= dish['menu'].disliking %></a>
+            </td>
+          </tr>
+        </table>
+      <% else %>
+        <% if dish['goodbad'].good == true && dish['goodbad'].bad == false %>
+          <table class="menu_table<%= dish['menu'].id %>">
+            <tr>
+              <td class="menu_table_col1"><%= dish['menu'].menuname %></td>
+            </tr>
+            <tr>
+              <td class="menu_table_col1"><%= dish['menu'].price %></td>
+            </tr>
+            <tr>
+              <td class="menu_point">
+                <a href="#" onclick="cancelGoodMenu(<%= dish['menu'].id %>); return false;"><%= image_tag("like_sel.png", :size => "18x18") %> <%= dish['menu'].liking %></a>
+                <a href="#" onclick="badMenu(<%= dish['menu'].id %>); return false;"><%= image_tag("dislike.png", :size => "18x18") %> <%= dish['menu'].disliking %></a>
+              </td>
+            </tr>
+          </table>
+
+        <% elsif dish['goodbad'].bad == true && dish['goodbad'].good == false %>
+          <table class="menu_table<%= dish['menu'].id %>">
+            <tr>
+              <td class="menu_table_col1"><%= dish['menu'].menuname %></td>
+            </tr>
+            <tr>
+              <td class="menu_table_col1"><%= dish['menu'].price %></td>
+            </tr>
+            <tr>
+              <td class="menu_point">
+                <a href="#" onclick="goodMenu(<%= dish['menu'].id %>); return false;"><%= image_tag("like.png", :size => "18x18") %> <%= dish['menu'].liking %></a>
+                <a href="#" onclick="cancelBadMenu(<%= dish['menu'].id %>); return false;"><%= image_tag("dislike_sel.png", :size => "18x18") %> <%= dish['menu'].disliking %></a>
+              </td>
+            </tr>
+          </table>
+
+        <% elsif dish['goodbad'].bad == false && dish['goodbad'].good == false %>
+          <table class="menu_table<%= dish['menu'].id %>">
+            <tr>
+              <td class="menu_table_col1"><%= dish['menu'].menuname %></td>
+            </tr>
+            <tr>
+              <td class="menu_table_col1"><%= dish['menu'].price %></td>
+            </tr>
+            <tr>
+              <td class="menu_point">
+                <a href="#" onclick="goodMenu(<%= dish['menu'].id %>); return false;"><%= image_tag("like.png", :size => "18x18") %> <%= dish['menu'].liking %></a>
+                <a href="#" onclick="badMenu(<%= dish['menu'].id %>); return false;"><%= image_tag("dislike.png", :size => "18x18") %> <%= dish['menu'].disliking %></a>
+              </td>
+            </tr>
+          </table>
+
+        <% end %>
+      <% end %>
+    <% end %>
+
+
+    <%# setmenu %>
+    <% if @set_all.count != 0 %> 
+      <% @set_all.each do |dish| %>
+        <% if dish['goodbad'].nil? %>
+          <table class="menu_table<%= dish['menu'].id %>">
+            <tr>
+              <td class="set_table_col1"><%= dish['menu'].menuname %></td>
+            </tr>
+            <tr>
+              <td class="set_table_col1"><%= dish['menu'].price %></td>
+            </tr>
+            <tr>
+              <td class="menu_point">
+                <a href="#" onclick="goodMenu(<%= dish['menu'].id %>); return false;"><%= image_tag("like.png", :size => "18x18") %> <%= dish['menu'].liking %></a>
+                <a href="#" onclick="badMenu(<%= dish['menu'].id %>); return false;"><%= image_tag("dislike.png", :size => "18x18") %> <%= dish['menu'].disliking %></a>
+              </td>
+            </tr>
+          </table>
+        <% else %>
+          <% if dish['goodbad'].good == true && dish['goodbad'].bad == false %>
+            <table class="menu_table<%= dish['menu'].id %>">
+              <tr>
+                <td class="set_table_col1"><%= dish['menu'].menuname %></td>
+              </tr>
+              <tr>
+                <td class="set_table_col1"><%= dish['menu'].price %></td>
+              </tr>
+              <tr>
+                <td class="menu_point">
+                  <a href="#" onclick="cancelGoodMenu(<%= dish['menu'].id %>); return false;"><%= image_tag("like_sel.png", :size => "18x18") %> <%= dish['menu'].liking %></a>
+                  <a href="#" onclick="badMenu(<%= dish['menu'].id %>); return false;"><%= image_tag("dislike.png", :size => "18x18") %> <%= dish['menu'].disliking %></a>
+                </td>
+              </tr>
+            </table>
+
+          <% elsif dish['goodbad'].bad == true && dish['goodbad'].good == false %>
+            <table class="menu_table<%= dish['menu'].id %>">
+              <tr>
+                <td class="set_table_col1"><%= dish['menu'].menuname %></td>
+              </tr>
+              <tr>
+                <td class="set_table_col1"><%= dish['menu'].price %></td>
+              </tr>
+              <tr>
+                <td class="menu_point">
+                  <a href="#" onclick="goodMenu(<%= dish['menu'].id %>); return false;"><%= image_tag("like.png", :size => "18x18") %> <%= dish['menu'].liking %></a>
+                  <a href="#" onclick="cancelBadMenu(<%= dish['menu'].id %>); return false;"><%= image_tag("dislike_sel.png", :size => "18x18") %> <%= dish['menu'].disliking %></a>
+                </td>
+              </tr>
+            </table>
+
+          <% elsif dish['goodbad'].bad == false && dish['goodbad'].good == false %>
+            <table class="menu_table<%= dish['menu'].id %>">
+              <tr>
+                <td class="set_table_col1"><%= dish['menu'].menuname %></td>
+              </tr>
+              <tr>
+                <td class="set_table_col1"><%= dish['menu'].price %></td>
+              </tr>
+              <tr>
+                <td class="menu_point">
+                  <a href="#" onclick="goodMenu(<%= dish['menu'].id %>); return false;"><%= image_tag("like.png", :size => "18x18") %> <%= dish['menu'].liking %></a>
+                  <a href="#" onclick="badMenu(<%= dish['menu'].id %>); return false;"><%= image_tag("dislike.png", :size => "18x18") %> <%= dish['menu'].disliking %></a>
+                </td>
+              </tr>
+            </table>
+
+          <% end %>
+        <% end %>
+
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+

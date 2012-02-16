@@ -1,9 +1,7 @@
 function contactPage(){
   changeLeftHash("contact");
-  
 } 
 function loadContactPage(){  
-  $('#loading').show();
   $.ajax({
   url : '/bab/new_contact',
   type : 'GET',
@@ -19,15 +17,31 @@ function loadContactPage(){
 });
 
 }
+function viewMenu(id){
+  changeRightHash("view_menu", id);
+}
+function loadViewMenu(id){
+     $.ajax({
+    url: '/bab/view_menu?res_id=' + id,
+    type : 'GET',
+    dataType : 'html',
+    async : false,
+    success: function(data){
+      $('#right_item').html('');
+      $('#right_item').html(data);
+    $('#loading').delay(500).fadeOut(500);
+    }
+  });
 
 
+
+}
 
 function showRes(id){
   changeRightHash("view_res", id);
 }
 
 function loadShowRes(id){
-  $('#loading').show();
   $.ajax({
     url: '/bab/view_res?res_id=' + id,
     type : 'GET',
@@ -35,8 +49,6 @@ function loadShowRes(id){
     async : false,
     success: function(data){
       $('#right_item').html('');
-      $('#menuContact').html('');
-      $('#menuContact').remove();
       $('#right_item').html(data);
       resProfile();
     $('#loading').delay(500).fadeOut(500);
@@ -45,6 +57,7 @@ function loadShowRes(id){
 
 }
 function changeLeftHash(obj){
+  $('#loading').show();
   var args = window.location.hash.split('/');
   if (args[2] == undefined){
     var arg3 = "";
@@ -58,6 +71,7 @@ function changeLeftHash(obj){
   location.href = newHash;
 }
 function changeRightHash(obj,id){
+  $('#loading').show();
   var args = window.location.hash.split('/');
   if (args[1] == undefined){
     var arg2 = "main";
@@ -74,7 +88,6 @@ function changeRightHash(obj,id){
 }
 
 function selectRes(){
-  $('#loading').show();
 
   changeLeftHash("select");
 }
@@ -178,7 +191,6 @@ function moreComment(index){
   changeRightHash('more_comment',index);
 }
 function loadMoreComment(index){
-  $('#loading').show();
   $.ajax({
     url : '/bab/more_comment?res_id=' + index,
     type : 'GET',
@@ -196,7 +208,6 @@ function showMain(){
   changeLeftHash("main");
 }
 function loadShowMain(){
-  $('#loading').show();
   $.ajax({
     url : '/bab/main',
     type : 'GET',
@@ -289,7 +300,6 @@ function evRes(id){
   changeRightHash("ev_res", id);
 }
 function loadEvRes(id){
-  $('#loading').show();
   $.ajax({
     url: '/evaluate/new_ev?res_id=' + id,
     type : 'POST',
@@ -297,8 +307,6 @@ function loadEvRes(id){
     async : false,
     success:function(data) {
       $('#right_item').html('');
-      $('#menuContact').html('');
-      $('#menuContact').remove();
       $('#right_item').html(data);
       prepareSliders();
       reviewCount();
@@ -321,7 +329,6 @@ function searchRes(keyword){
   changeLeftHash("search?" + text);
 }
 function loadSearchRes(keyword){
-  $('#loading').show();
   if (keyword == null){
     var text = $('.searchtext').val();
 
@@ -494,44 +501,32 @@ function reviewCount(){
 
 ////////////////////////////////////
 function likeThisMenu(item){
-  $('#menupane .menu_table'+item.id+' #like_td').html('');
-  $('#menupane .menu_table'+item.id+' #like_count_td').html('');
-  $('#menupane .menu_table'+item.id+' #dislike_td').html('');
-  $('#menupane .menu_table'+item.id+' #dislike_count_td').html('');
+  $('#menupane .menu_table'+item.id+' .menu_point').html('');
   ///////////////////////////////////////
-  $('#menupane .menu_table'+item.id+' #like_td').append('<a href="#" onclick="cancelGoodMenu('+item.id+');return false;">cancel</a>');
-  $('#menupane .menu_table'+item.id+' #like_count_td').append(item.like);
-  $('#menupane .menu_table'+item.id+' #dislike_td').append('<a href="#" onclick="badMenu('+item.id+');return false;">dislike</a>');
-  $('#menupane .menu_table'+item.id+' #dislike_count_td').append(item.dislike);
+  $('#menupane .menu_table'+item.id+' .menu_point').append('<a href="#" onclick="cancelGoodMenu('+item.id+'); return false;"><img alt="Like_sel" src="/assets/like_sel.png" height="18" width="18"> '+ item.liking +'</a>');
+  $('#menupane .menu_table'+item.id+' .menu_point').append(' <a href="#" onclick="badMenu('+item.id+'); return false;"><img alt="Dislike" src="/assets/dislike.png" height="18" width="18"> '+ item.disliking +'</a>');
 }
 
 function dislikeThisMenu(item){
-  $('#menupane .menu_table'+item.id+' #like_td').html('');
-  $('#menupane .menu_table'+item.id+' #like_count_td').html('');
-  $('#menupane .menu_table'+item.id+' #dislike_td').html('');
-  $('#menupane .menu_table'+item.id+' #dislike_count_td').html('');
+  $('#menupane .menu_table'+item.id+' .menu_point').html('');
   ///////////////////////////////////////
-  $('#menupane .menu_table'+item.id+' #like_td').append('<a href="#" onclick="goodMenu('+item.id+');return false;">like</a>');
-  $('#menupane .menu_table'+item.id+' #like_count_td').append(item.like);
-  $('#menupane .menu_table'+item.id+' #dislike_td').append('<a href="#" onclick="cancelBadMenu('+item.id+');return false;">cancel</a>');
-  $('#menupane .menu_table'+item.id+' #dislike_count_td').append(item.dislike);
+  $('#menupane .menu_table'+item.id+' .menu_point').append('<a href="#" onclick="goodMenu('+item.id+'); return false;"><img alt="Like" src="/assets/like.png" height="18" width="18"> '+ item.liking +'</a>');
+  $('#menupane .menu_table'+item.id+' .menu_point').append(' <a href="#" onclick="cancelBadMenu('+item.id+'); return false;"><img alt="Dislike_sel" src="/assets/dislike_sel.png" height="18" width="18"> '+ item.disliking +'</a>');
 
 }
 ///////////////////////////////////
 function cancelLike(item){
-  $('#menupane .menu_table'+item.id+' #like_td').html('');
-  $('#menupane .menu_table'+item.id+' #like_count_td').html('');
+  $('#menupane .menu_table'+item.id+' .menu_point').html('');
   /////////////////////////
-  $('#menupane .menu_table'+item.id+' #like_td').append('<a href="#" onclick="goodMenu('+item.id+');return false;">like</a>');
-  $('#menupane .menu_table'+item.id+' #like_count_td').append(item.like);
+  $('#menupane .menu_table'+item.id+' .menu_point').append('<a href="#" onclick="goodMenu('+item.id+'); return false;"><img alt="Like" src="/assets/like.png" height="18" width="18"> '+ item.liking +'</a>');
+  $('#menupane .menu_table'+item.id+' .menu_point').append(' <a href="#" onclick="badMenu('+item.id+'); return false;"><img alt="Dislike" src="/assets/dislike.png" height="18" width="18"> '+ item.disliking +'</a>');
 
 }
 function cancelDislike(item){
-  $('#menupane .menu_table'+item.id+' #dislike_td').html('');
-  $('#menupane .menu_table'+item.id+' #dislike_count_td').html('');
+  $('#menupane .menu_table'+item.id+' .menu_point').html('');
   ///////////////////////////////////////
-  $('#menupane .menu_table'+item.id+' #dislike_td').append('<a href="#" onclick="badMenu('+item.id+');return false;">dislike</a>');
-  $('#menupane .menu_table'+item.id+' #dislike_count_td').append(item.dislike);
+  $('#menupane .menu_table'+item.id+' .menu_point').append('<a href="#" onclick="goodMenu('+item.id+'); return false;"><img alt="Like" src="/assets/like.png" height="18" width="18"> '+ item.liking +'</a>');
+  $('#menupane .menu_table'+item.id+' .menu_point').append(' <a href="#" onclick="badMenu('+item.id+'); return false;"><img alt="Dislike" src="/assets/dislike.png" height="18" width="18"> '+ item.disliking +'</a>');
 
 }
 //////////////////////////////////////
@@ -554,23 +549,7 @@ function resProfile(){
     value : 10*($('#prog_service p').text())
   });
   //////////////////////////////////////////////////////////
-  $("#menuPop").click(function(){
-    centerPopup('#menuContact');
-    loadPopup('#menuContact');
-  });
-  $("#popupContactClose1").click(function(){
-    disablePopup('#menuContact');
-  });
-  $('html').keydown(function(e){
-    if(e.keyCode==27 && popupStatus==1){
-      $('#backgroundPopup').fadeOut("slow");
-      $('#menuContact').fadeOut("slow");
-      popupStatus = 0;
-    } 
-  });
-
-
-
+ 
 
 }
 ///////////////////////////////////////////////////////////////
@@ -608,7 +587,7 @@ function detectHash(){
     }
     //right
     if ( args[2] != ""  && args[2] != undefined){
-      //view_res, ev_res,more_comment
+      //view_res, ev_res,more_comment, view_menu
       var options = args[2].split("&");
       var right = options[0].split("=")[0];
       var right_id = options[0].split("=")[1];
@@ -620,6 +599,10 @@ function detectHash(){
       else if ( right == "ev_res"){
         //ev_res
         loadEvRes(right_id);
+      }
+      else if (right == "view_menu"){
+        //view_menu
+        loadViewMenu(right_id);
       }
       else if( right =="more_comment"){
         //more_comment

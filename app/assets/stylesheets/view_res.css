@@ -94,6 +94,10 @@
     margin : 0px;
     cursor : pointer;
 }
+.view_res_img {
+  width : 120px;
+  height : 120px;
+}
 #review_box{
     margin : 5px;
     position : relative;
@@ -127,34 +131,37 @@
 #review_td {
     height : 60px;
 }
-
-#menuContact{
-    display:none;
-    height : 650px;
-    width : 695px;
-    background : white;
-    z-index :2;
-    box-shadow : 2px 2px 2px rgba(50,50,50,0.4);
-    border-radius : 3px;
+/* view_menu */
+#menuwrapper{
+    height : 600px;
+    width : 490px;
+    position : relative;
+    margin-left : auto;
+    margin-right : auto;
 }
-
-#orangebox_menu{
-    background : #41627e;
-    color : white;
-    font-size : 20px;
-    padding-top : 5px;
-    font-weight : bolder;
-    width : 690px;
-    height : 27px;
-    padding-left : 5px;
-    border-top-left-radius : 3px;
-    border-top-right-radius : 3px;
+#back_btn{
+  position : absolute;
+  top : 5px;
+  left : 10px;
+}
+#menu_title{
+  font-size : 30px;
+  width : 350px;
+  background : #41627e;
+  margin-top : 5px;
+  height : 35px;
+  text-align : center;
+  color : white;
+  position : relative;
+  margin-left : auto;
+  margin-right : auto;
+  border-radius : 5px;
 }
 #menupane {
-  width : 695px;
-  height : 600px;
+  width : 490px;
+  height : 550px;
   overflow-y : scroll;
-  margin-top : 10px;
+  margin-top : 5px;
 }
 #menupane table{
     border-left : #ff8200 solid 3px;
@@ -168,35 +175,21 @@
 }
 
 .menu_table_col1{
-    width : 205px;
+    width : 210px;
     height : 20px;
 
 }
-
-.menu_table_col2{
-    width : 53px;
+#menupane table a{
+  font-weight : normal;
 }
-.menu_table_col3{
-    width : 45px;
+#menupane table img{
+  margin-bottom : -3px;
 }
-
 .set_table_col1{
-  width : 550px;
+  width : 438px;
   height : 20px;
 }
 
-.set_table_col2{
-  width : 53px;
-}
-
-.set_table_col3{
-  width : 25px;
-}
 
 
 
-
-.view_res_img {
-  width : 120px;
-  height : 120px;
-}
