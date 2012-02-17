@@ -73,9 +73,10 @@ td {
 }
 #userbox{
   position : absolute;
-  width : 300px;
+  width : 250px;
+  padding-left : 50px;
   height : 90px;
-  margin-left : 719px;
+  margin-left : 720px;
   top: 5px;
 
 }
