@@ -80,6 +80,12 @@ td {
   top: 5px;
 
 }
+.sel_image{
+  position : absolute;
+  bottom : -59px;
+  z-index : 2;
+  margin-left : 420px;
+}
 #userbox td {
   font-size : 12px;
   color : #41627e;
