@@ -57,7 +57,7 @@ function loadShowRes(id){
 
 }
 function changeLeftHash(obj){
-  $('#loading').show();
+  // $('#loading').show();
   var args = window.location.hash.split('/');
   if (args[2] == undefined){
     var arg3 = "";
@@ -71,7 +71,7 @@ function changeLeftHash(obj){
   location.href = newHash;
 }
 function changeRightHash(obj,id){
-  $('#loading').show();
+  // $('#loading').show();
   var args = window.location.hash.split('/');
   if (args[1] == undefined){
     var arg2 = "main";
@@ -348,8 +348,8 @@ function loadSearchRes(keyword){
 
       $("a.next_page").wrap('<div class="moreview" />');
       $('#resultview').tinyscrollbar();
-      searchScroll();
     $('#loading').delay(500).fadeOut(500);
+      searchScroll();
     }
 
   });
@@ -560,6 +560,7 @@ function resEvaluation(product){
 }
 //////////////////////////////////////////////////////////////
 function detectHash(){
+  $('#loading').show()
   var hash = window.location.hash;
   if (hash != ""){
     //not index
