@@ -110,6 +110,7 @@ function loadSelectRes(){
 
 }
 function selectResult(){
+  changeLeftHash("select_res");
   $('#loading').show();
   var query_arr =[];
   $("input.type").each(function(i,elem){

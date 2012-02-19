@@ -1,6 +1,20 @@
 // Place all the styles related to the bab controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+//application
+#click_sel{
+  position : absolute;
+  margin-top : 6px;
+  font-size : 11px;
+  margin-left : 480px;
+  color : #41627e;
+}
+.sel_image{
+  cursor : pointer;
+}
+//
 .clearfix:after {
   content: ".";
   display: block;
