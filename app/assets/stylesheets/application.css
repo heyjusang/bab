@@ -376,7 +376,7 @@ td {
   display :none;
   width : 100px;
   height  :100px;
-  background : #f0dfd0;
+  opacity : 1;
 
 }
 #loading p{
