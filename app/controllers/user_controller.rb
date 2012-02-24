@@ -60,6 +60,25 @@ class UserController < ApplicationController
        session[:user_id] = nil
        redirect_to "/"
     end
+    def change_passwd
+      render :layout => false
+    end
+    def update_passwd
+      user = User.find(session[:user_id])
+      params[:user][:now_passwd] = Digest::SHA256.hexdigest(params[:user][:now_passwd])
+      params[:user][:want_passwd] = Digest::SHA256.hexdigest(params[:user][:want_passwd])
+      params[:user][:want_passwd_re] = Digest::SHA256.hexdigest(params[:user][:want_passwd_re])
+      if user.password == params[:user][:now_passwd]
+        if params[:user][:want_passwd] == params[:user][:want_passwd_re]
+          user.password = params[:user][:want_passwd]
+          user.save
+          redirect_to "/", :notice => "비밀번호가 성공적으로 변경되었습니다."
+        else
+          redirect_to :back, :notice => "비밀번호 변경 실패!"
+        end
+      else
+        redirect_to :back, :notice => "비밀번호 변경 실패!"
+      end
 
-
+    end
 end

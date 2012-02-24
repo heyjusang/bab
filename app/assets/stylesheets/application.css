@@ -82,9 +82,9 @@ td {
 }
 .sel_image{
   position : absolute;
-  bottom : -59px;
   z-index : 2;
-  margin-left : 420px;
+  left : -37px;
+  top : 30px;
 }
 #userbox td {
   font-size : 12px;

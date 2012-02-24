@@ -1,0 +1,29 @@
+<div id="change_bar">
+  비밀번호 변경
+</div>
+<div id="change_box">
+
+  <%= form_for(:user, :url => {:controller => "user" , :action => "update_passwd"}) do |f| %>
+    <div id="now_passwd_container" class="clearfix">
+      <span class="change_span1">현재 비밀번호</span>
+      <div id="now_passwd_wrapper">
+        <%= f.password_field(:now_passwd, :class => "change_now") %>
+      </div>
+    </div>
+      <div id="want_passwd_container" class="clearfix">
+        <span class="change_span2">바꿀 비밀번호</span>
+        <div id="want_passwd_wrapper">
+          <%= f.password_field(:want_passwd, :class => "change_want") %>
+        </div>
+      </div>
+      <div id="want_passwd_re_container" class="clearfix">
+        <span class="change_span3">재 입 력</span>
+        <div id="want_passwd_re_wrapper">
+          <%= f.password_field(:want_passwd_re, :class => "change_want_re") %>
+        </div>
+      </div>
+
+      <%= submit_tag("변경", :class => "change_submit") %>
+    <% end %>
+
+  </div>

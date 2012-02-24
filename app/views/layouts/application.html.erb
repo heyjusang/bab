@@ -48,7 +48,6 @@
       <div id="logobox">
         <%= link_to image_tag("logo.png",:border => "0", :size => "200x60"), "/" %>
       </div>
-      <a href="#" onclick="selectRes(); return false;"><%= image_tag("select.png",:border => "0", :class => "sel_image") %></a>
       <div id="searchbox">
         <form action ='#' placeholder="검색" name="searchform" onsubmit="searchRes();return false;">
           <input name="search" type="text" class="searchtext" placeholder="검색"/>
@@ -84,6 +83,7 @@
           <div id = "current_userbox">
             <%= @current_user.username %> 님 환영합니다.</br>
             <%= link_to "logout", :action => "logout", :controller => "user" %>
+            <%= link_to_function("비밀번호변경","changePasswd()") %>
           </div>
 
 
@@ -97,7 +97,8 @@
     <div id ="content">
 
       <div id="left_content">
-              <div id="left_item">
+        <a href="#" onclick="selectRes(); return false;"><%= image_tag("select.png",:border => "0", :class => "sel_image") %></a>
+        <div id="left_item">
         </div>
       </div>
       <div id="right_content">
@@ -118,7 +119,7 @@
       <p>
       | <%= link_to_function("개발자 괴롭히기", "contactPage()") %>
       | developed by <span>deglee</span> 
-      | I <%= image_tag("heart.png", :size => "10x10") %> <a href="http://wafflestudio.com" target="_blank">wafflestudio</a>
+      | <a href="http://wafflestudio.com" target="_blank"> I <%= image_tag("heart.png", :size => "10x10") %> wafflestudio</a>
       | 
       </p>
       개발자의 부족한 능력때문에 서비스가 원활하지 않을 수도 있습니다.

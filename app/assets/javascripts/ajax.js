@@ -316,6 +316,25 @@ function loadEvRes(id){
   });
 
 }
+function changePasswd(){
+  changeLeftHash("change_pswd");
+}
+function loadChangePasswd(){
+  $.ajax({
+    url: '/user/change_passwd',
+    type: 'POST',
+    dataType : 'html',
+    async : false,
+    success: function(data){
+      $('#left_item').html('');
+      $('#left_item').html(data);
+      $('#loading').delay(500).fadeOut(500);
+    }
+
+
+  });
+
+};
 
 function searchRes(keyword){
   if (keyword == null){
@@ -587,6 +606,10 @@ function detectHash(){
       //select
       loadSelectRes(); 
     }
+    else if( left == "change_pswd"){
+      loadChangePasswd();
+
+     }
     //right
     if ( args[2] != ""  && args[2] != undefined){
       //view_res, ev_res,more_comment, view_menu
