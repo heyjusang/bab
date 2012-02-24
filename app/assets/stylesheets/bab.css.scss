@@ -9,7 +9,7 @@
   margin-top : 6px;
   font-size : 11px;
   margin-left : 480px;
-  color : #41627e;
+  color : #f23c3c;
 }
 .sel_image{
   cursor : pointer;
@@ -52,15 +52,17 @@ a {
         height : 25px;
     }
     .row2{
-        background : #41627e;
+        background : #f23c3c;
         color : white;
         font-weight : bold;
-        border : #41627e 1px solid;
+        border : #f23c3c 1px solid;
     }
     .row1{
         background : #f7f7f7;
     }
-
+    .row0{
+        background : white;
+    }
     .rank{
         border : #bdbabd 1px solid;
         
@@ -88,13 +90,16 @@ a {
         font-size : 13px;
     }
     .row2 td{
-        background : #41627e;
+        background : #f23c3c;
         color : white;
         font-weight : bold;
-        border : #41627e 1px solid;
+        border : #f23c3c 1px solid;
     }
     .row0 {
         background : #f7f7f7;
+    }
+    .row1 {
+        background : white;
     }
 }
 
@@ -115,14 +120,17 @@ a {
         font-size : 13px;
     }
     .row2 td {
-        background : #41627e;
-        color : white;
+        background : #f23c3c;
+        color : #f0dfd0;
         height : 25px;
         font-weight : bold;
-        border : #41627e 1px solid;
+        border : #f23c3c 1px solid;
     }
     .row1{
         background : #f7f7f7;
+    }
+    .row0{
+        background : white;
     }
 }
 #resultview{
@@ -147,6 +155,7 @@ a {
    margin-left : auto;
    margin-right : auto;
     box-shadow : 2px 2px 2px rgba(50, 50, 50, 0.4);
+    background : white;
 }
 
 .result_img_td {
@@ -167,7 +176,7 @@ a {
   border-bottom : 1px solid #bdbabd;
   height : 30px;
   a{
-    color : #41627e;
+    color : #f23c3c;
   }
 }
 .result_resinfo_td{
@@ -223,7 +232,7 @@ a.next_page{
     color : white;
     float : left;
     padding-top : 18px;
-    background : #41627e;
+    background : #f23c3c;
     border-radius : 5px;
   }
 }
@@ -251,8 +260,8 @@ a.next_page{
     color : white;
     text-align : center;
     font-weight : bold;
-    border : 2px solid #41627e;
-    background : #41627e;
+    border : 2px solid #f23c3c;
+    background : #f23c3c;
   }
 }
 #select_help{
@@ -280,7 +289,7 @@ a.next_page{
     color : white;
     float : left;
     padding-top : 18px;
-    background : #41627e;
+    background : #f23c3c;
     border-radius : 5px;
   }
   #level_container{
@@ -324,7 +333,7 @@ a.next_page{
     }
   }
   hr{
-    border : 1px solid #41627e;;
+    border : 1px solid #f23c3c;;
   }
 }
 .level_point{
@@ -351,7 +360,7 @@ a.next_page{
     color : white;
     float : left;
     padding-top : 18px;
-    background : #41627e;
+    background : #f23c3c;
     border-radius : 5px;
   }
   #type_box{
@@ -378,7 +387,7 @@ a.next_page{
   width : 100px;
   height : 50px;
   border-radius : 5px;
-  background : #41627e;
+  background : #f23c3c;
   border : 0px;
   font-weight : bold;
   font-size : 14px;
@@ -516,11 +525,11 @@ a.next_page{
   border : 0px;
   height : 20px;
   width : 50px;
-  color  :#41627e;
+  color  :#f23c3c;
   background : white;
   margin-left : -5px;
   padding-top : 3px;
-  border-left : 1px solid #41627e;
+  border-left : 1px solid #f23c3c;
   cursor : pointer;
 }
 
@@ -530,7 +539,7 @@ a.next_page{
   height : 20px;
   margin-top : 5px;
   margin-left : 80px;
-  background : #41627e;
+  background : #f23c3c;
   color : white;
   font-weight : bold;
   text-align : center;
@@ -559,6 +568,7 @@ a.next_page{
   font-weight : bold;
   border-radius : 5px;
   position : relative;
+  background : white;
 }
 
 #cleaner_people{
@@ -668,7 +678,7 @@ a.next_page{
   width : 400px;
   top : 10px;
   height : 25px;
-  background : #41627e;
+  background : #f23c3c;
   margin-left : auto;
   margin-right : auto;
   position : relative;
@@ -733,7 +743,7 @@ a.next_page{
   color : white;
   float : left;
   padding-top : 18px;
-  background : #41627e;
+  background : #f23c3c;
   border-radius : 5px;
 }
 
@@ -757,7 +767,7 @@ a.next_page{
   width : 100px;
   height : 50px;
   border-radius : 5px;
-  background : #41627e;
+  background : #f23c3c;
   border : 0px;
   font-weight : bold;
   font-size : 14px;
@@ -790,13 +800,14 @@ a.next_page{
   position : relative;
   margin-left : 100px;
   margin-top : 200px;
-  border : 1px solid #41627e;
+  border : 1px solid #f23c3c;
+  background : white;
   #deny_top{
     position : absolute;
     top : 0px;
     height : 30px;
     width : 100%;
-    background :  #41627e;
+    background :  #f23c3c;
   }
   #deny_text{
     width : 100%;
@@ -811,7 +822,7 @@ a.next_page{
     bottom : 0px;
     height : 30px;
     width : 100%;
-    background :  #41627e;
+    background :  #f23c3c;
 
   }
 }
@@ -823,7 +834,7 @@ a.next_page{
   margin-top : 10px;
   margin-left : 50px;
   height: 25px;
-  background : #41627e;
+  background : #f23c3c;
   border-radius : 5px;
   text-align : center;
   font-size : 14px;
@@ -848,7 +859,7 @@ a.next_page{
   width : 360px;
   height : 50px;
   font-size : 13px;
-  border-bottom : 1px solid #41627e;
+  border-bottom : 1px solid #f23c3c;
   margin-bottom : 5px;
 }
 
@@ -856,7 +867,7 @@ a.next_page{
   width : 400px;
   top : 10px;
   height : 25px;
-  background : #41627e;
+  background : #f23c3c;
   margin-left : auto;
   margin-right : auto;
   position : relative;
@@ -890,7 +901,7 @@ a.next_page{
   color : white;
   float : left;
   padding-top : 18px;
-  background : #41627e;
+  background : #f23c3c;
   border-radius : 5px;
 }
 
@@ -906,7 +917,7 @@ a.next_page{
   width : 100px;
   height : 50px;
   border-radius : 5px;
-  background : #41627e;
+  background : #f23c3c;
   border : 0px;
   font-weight : bold;
   font-size : 14px;

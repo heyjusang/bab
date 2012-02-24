@@ -11,14 +11,19 @@ html, body {
 }
 .ev_table td {
     border : 1px solid #bdbabd;
+
+}
+.ev_table_wrap{
+  background : white;
 }
 #title {
     margin : 0px;
     padding-left : 10px;
-    background : #41627e;
+    background : #229396;
     width : 100%
     height : 50px;
-    font-size : 20px;
+    font-size : 15px;
+    padding-top : 5px;
     color : white;
     font-weight : bold;
     border-top-left-radius : 3px;
@@ -26,7 +31,7 @@ html, body {
 }
 .ev_table_name {
     border : 1px solid black;
-    background : black;
+    background : #f23c3c;
     color : white;
     font-size : 13px;
     width : 318px;
@@ -36,6 +41,7 @@ html, body {
     width : 20px;
     color : red;
     font-size : 13px;
+    background : white;
     text-align : center;
 }
 .ev_point_field {
@@ -47,7 +53,7 @@ html, body {
 }
 .ev_table_content {
     height : 100px;
-
+    background : white;
 }
 
 .ev_table_content #evaluation_review {
@@ -66,7 +72,7 @@ html, body {
 
 #ev_submit {
     border : 0px;
-    background : black;
+    background : #c7c5a7;
     color : red;
     width : 160px;
     height : 80px;

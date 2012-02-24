@@ -8,8 +8,10 @@
 #res_profile table{
     border-spacing : 0px;
     border-collapse : collapse;
-  box-shadow: 2px 2px 2px rgba(50, 50, 50, 0.4);
+    box-shadow: 2px 2px 2px rgba(50, 50, 50, 0.4);
+    background : white;
 }
+
 #res_profile td{
     height : 30px;
     border : 1px solid #bdbabd;
@@ -18,7 +20,7 @@
 }
 
 .table_name {
-    background : black;
+    background : #f23c3c;
     color : white;
     width :  490px;
     font-weight : bold;
@@ -39,7 +41,9 @@
 .table_row1{
     background : #f7f7f7;
 }
-
+.table_row2{
+  background : white;
+}
 .ui-progressbar {
     border : 1px solid #bdbabd;
     height : 20px;
@@ -51,7 +55,7 @@
 }
 .ui-progressbar-value {
     height : 20px;
-    background : #ff8200;
+    background : #229396;
     float : left;
 }
 
@@ -70,7 +74,7 @@
     width : 240px;
     height : 60px;
     position : absolute;
-    background : #41627e;
+    background : #f23c3c;
     text-align : center;
     border-radius : 5px;
     box-shadow: 2px 2px 2px rgba(50, 50, 50, 0.4);
@@ -80,7 +84,7 @@
     box-shadow: 2px 2px 2px rgba(50, 50, 50, 0.4);
     width : 240px;
     height : 60px;
-    background : #ff7200;
+    background : #f23c3c;
     position : absolute;
     left : 250px;
     text-align : center;
@@ -110,9 +114,10 @@
 #review_box td{
     font-size : 13px;
     border : 1px solid #bdbabd;
+
 }
 .table_name2{
-    background : #41627e;
+    background : #f23c3c;
     height : 30px;
     width : 490px;
     color : white;
@@ -131,6 +136,7 @@
 #review_td {
     height : 60px;
 }
+
 /* view_menu */
 #menuwrapper{
     height : 600px;
@@ -147,7 +153,7 @@
 #menu_title{
   font-size : 30px;
   width : 350px;
-  background : #41627e;
+  background : #f23c3c;
   margin-top : 5px;
   height : 35px;
   text-align : center;
