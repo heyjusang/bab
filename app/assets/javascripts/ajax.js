@@ -316,6 +316,22 @@ function loadEvRes(id){
   });
 
 }
+function findPasswd(){
+  changeLeftHash("find_pswd");
+}
+function loadFindPasswd(){
+  $.ajax({
+  url: '/user/find_passwd',
+  type: 'POST',
+  dataType : 'html',
+  async : false,
+  success: function(data){
+    $('#left_item').html('');
+    $('#left_item').html(data);
+    $('#loading').delay(500).fadeOut(500);
+  }
+  });
+}
 function changePasswd(){
   changeLeftHash("change_pswd");
 }
@@ -334,7 +350,7 @@ function loadChangePasswd(){
 
   });
 
-};
+}
 
 function searchRes(keyword){
   if (keyword == null){
@@ -607,8 +623,13 @@ function detectHash(){
       loadSelectRes(); 
     }
     else if( left == "change_pswd"){
+      //change
       loadChangePasswd();
 
+     }
+     else if(left =="find_pswd"){
+      //find
+      loadFindPasswd();
      }
     //right
     if ( args[2] != ""  && args[2] != undefined){

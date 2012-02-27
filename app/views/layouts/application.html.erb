@@ -46,7 +46,7 @@
                 }(document, 'script', 'facebook-jssdk'));</script>
     <div id="header">
       <div id="logobox">
-        <%= link_to image_tag("logo.png",:border => "0", :size => "200x60"), "/" %>
+        <%= link_to image_tag("logo.png",:border => "0", :size => "159x113"), "/" %>
       </div>
       <div id="searchbox">
         <form action ='#' placeholder="검색" name="searchform" onsubmit="searchRes();return false;">
@@ -72,7 +72,7 @@
                   <td><%= submit_tag("login" ,{:class=>"signinbtn"}) %></td>
                 </tr>
                 <tr>
-                  <td colspan="3"><input type="button" class="signupPop" value="아직 회원이 아니세요?"></td>
+                  <td colspan="3"><input type="button" class="signupPop" value="회원가입"> <%= link_to_function("비밀번호찾기","findPasswd()") %></td>
                 </tr>
               </table>
             <% end %>

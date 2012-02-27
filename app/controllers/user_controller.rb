@@ -1,6 +1,6 @@
 #encoding = UTF-8
 class UserController < ApplicationController
-    skip_before_filter :require_login
+    skip_before_filter :require_login, :except => [:change_passwd, :update_passwd]
     skip_before_filter :check_login
     def new
         @user = User.new
@@ -80,5 +80,26 @@ class UserController < ApplicationController
         redirect_to :back, :notice => "비밀번호 변경 실패!"
       end
 
+    end
+    def find_passwd
+      render :layout => false
+    end
+    
+    def send_passwd
+      user = User.where('username = ?', params[:user][:username]).first
+      if user.nil?
+        redirect_to "/", :notice => "없는 아이디입니다."
+      else
+        if user.mailname == params[:user][:mailname]
+          new_passwd = (0...15).map{ ('a'..'z').to_a[rand(26)] }.join
+          user.authorize_token = new_passwd
+          user.password = Digest::SHA256.hexdigest(new_passwd)
+          user.mailcheck = false
+          user.save
+          redirect_to "/", :notice => "새 비밀번호가 메일로 보내졌습니다. 아마 곧."
+        else
+          redirect_to :back, :notice => "아이디와 메일이 일치하지 않습니다."
+        end
+      end
     end
 end

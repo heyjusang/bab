@@ -30,10 +30,8 @@ td {
 }
 #logobox{
   position : absolute;
-  width : 200px;
-  height :60px;
-  top : 5px;
-  margin-top : 20px;
+  width : 160px;
+  height :113px;
   margin-left : 10px;
 }
 
@@ -66,7 +64,7 @@ td {
   left : 306px;
   font-size : 15px;
   background : #f23c3c;
-  color : f0dfd0;
+  color : white;
   border-top-right-radius : 5px;
   border-bottom-right-radius : 5px;
   box-shadow : 2px 2px 2px rgba(50, 50, 50, 0.4);
@@ -95,10 +93,11 @@ td {
   margin-top : 10px;
   font-size : 13px;
 }
-#current_userbox a{
+#userbox a{
   color : #ff4500;
   text-decoration : underline;
   border : 0;
+  font-weight : normal;
 }
 .signintext {
   border : #f23c3c 2px solid;
