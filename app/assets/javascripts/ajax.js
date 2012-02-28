@@ -351,7 +351,6 @@ function loadChangePasswd(){
   });
 
 }
-
 function searchRes(keyword){
   if (keyword == null){
     var text = $('.searchtext').val();
@@ -364,6 +363,7 @@ function searchRes(keyword){
 
   changeLeftHash("search?" + text);
 }
+
 function loadSearchRes(keyword){
   if (keyword == null){
     var text = $('.searchtext').val();
@@ -372,9 +372,8 @@ function loadSearchRes(keyword){
   else {
     var text = keyword;
   }
-
   $.ajax({
-    url: '/bab/search?&search=' + text, 
+    url: '/bab/search?&search=' + text , 
     type : 'GET',
     dataType : 'html',
     async : false,
