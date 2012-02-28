@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Babtong</title>
+    <title>Baptong</title>
     <%= yield :head %>
     <%= stylesheet_link_tag    "application" %>
     <%= stylesheet_link_tag    "jquery_need" %>
@@ -46,7 +46,7 @@
                 }(document, 'script', 'facebook-jssdk'));</script>
     <div id="header">
       <div id="logobox">
-        <%= link_to image_tag("logo.png",:border => "0", :size => "200x60"), "/" %>
+        <%= link_to image_tag("logo.png",:border => "0", :size => "159x113"), "/" %>
       </div>
       <div id="searchbox">
         <form action ='#' placeholder="검색" name="searchform" onsubmit="searchRes();return false;">
@@ -72,7 +72,7 @@
                   <td><%= submit_tag("login" ,{:class=>"signinbtn"}) %></td>
                 </tr>
                 <tr>
-                  <td colspan="3"><input type="button" class="signupPop" value="아직 회원이 아니세요?"></td>
+                  <td colspan="3"><input type="button" class="signupPop" value="회원가입"> <%= link_to_function("비밀번호찾기","findPasswd()") %></td>
                 </tr>
               </table>
             <% end %>
@@ -92,7 +92,8 @@
       </div>
       <div class="fb-like" data-href="http://www.facebook.com/pages/%EB%B0%A5%ED%86%B5/163827883731978" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="arial"></div>
     </div>
-    <div id ="blackbox">
+    <div id ="blackbox" style="color : #229396; font-size : 11px;">
+      아 내가 생각해도 졸라 허졉하다...죄송해요..제가 아직 어려서..
     </div>
     <div id ="content">
 

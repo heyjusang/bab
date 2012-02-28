@@ -1,0 +1,23 @@
+<div id="find_bar">
+  비밀번호 찾기
+</div>
+<div id="find_box">
+  <%= form_for(:user, :url => {:controller => "user" , :action => "send_passwd"}) do |f| %>
+    <div id="find_username_container" class="clearfix">
+      <span class="find_span1">아이디</span>
+      <div id="find_username_wrapper">
+        <%= f.text_field(:username, :class => "find_username") %>
+      </div>
+    </div>
+      <div id="find_mailname_container" class="clearfix">
+        <span class="find_span2">이메일</span>
+        <div id="find_mailname_wrapper">
+          <%= f.text_field(:mailname, :class => "find_mailname") %> @snu.ac.kr
+        </div>
+      </div>
+      <%= submit_tag("메일 보내기", :class => "find_submit") %>
+    <% end %>
+
+
+
+</div>

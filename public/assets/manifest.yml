@@ -79,12 +79,13 @@ img_res/흑룡강.png: img_res/흑룡강-3f4
 img_res/흑룡강.png: img_res/흑룡강-3f489be630764538ba259a4c164bb2a0.png
 like.png: like-5fe74efc818cf1de84c53ed96d74eaa2.png
 like_sel.png: like_sel-e0d514c01ad4c12cf4bd7cf3ef6ba165.png
-logo.png: logo-c6d251398f98f3dbab1d3a6af9ef746c.png
+logo.png: logo-77d642485235f0c27e2bd50189a0f6e2.png
 question.png: question-973bb4711c0b3955ac28c2b291208589.png
 rails.png: rails-782b548cc1ba7f898cdad2d9eb8420d2.png
 select.png: select-f5f464b86b65b5b10e29a807a7fa6143.png
 select_help.png: select_help-5b0cd8a3f46ae9baed1d3d3d263e7dcc.png
 select_result_help.png: select_result_help-1f7fab684dd9828ff6239cf9c8581a2d.png
+show.png: show-76513b479453fc6e94b2144372a67c48.png
 star.gif: star-fa951ca0ce92f92de972a10dccf4def2.gif
 application.js: application-5d1304d65341455b6098798499327e6b.js
-application.css: application-c538a32ec10dd942ad5f902d443c3d49.css
+application.css: application-66faed7f70dce69c3086edabff3430a1.css

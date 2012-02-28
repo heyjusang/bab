@@ -121,7 +121,7 @@ a {
     }
     .row2 td {
         background : #f23c3c;
-        color : #f0dfd0;
+        color : white;
         height : 25px;
         font-weight : bold;
         border : #f23c3c 1px solid;
@@ -133,6 +133,13 @@ a {
         background : white;
     }
 }
+#resulttype{
+  width : 500px;
+}
+.type_button{
+  float : left;
+}
+
 #resultview{
   width : 500px;
   clear : both;
@@ -935,3 +942,82 @@ a.next_page{
   background : #e6e6e6;
 }
 
+#find_bar{
+  width : 400px;
+  top : 10px;
+  height : 25px;
+  background : #f23c3c;
+  margin-left : auto;
+  margin-right : auto;
+  position : relative;
+  text-align : center;
+  font-size : 15px;
+  color : white;
+  font-weight : bold;
+  padding-top : 5px;
+}
+#find_box{
+  width : 500px;
+  height : 500px;
+  margin-top : 20px;
+
+}
+#find_username_container, #find_mailname_container{
+  position : relative;
+  margin-left : auto;
+  margin-right : auto;
+  width : 400px;
+  height : 60px;
+  margin-bottom : 10px;
+
+}
+.find_span1, .find_span2{
+  font-size : 10px;
+  width : 75px;
+  height : 30px;
+  text-align : center;
+  font-weight : bold;
+  color : white;
+  float : left;
+  padding-top : 18px;
+  background : #f23c3c;
+  border-radius : 5px;
+}
+#find_username_wrapper,#find_mailname_wrapper{
+  float : left;
+  width : 315px;
+  margin-left :10px;
+  height : 48px;
+  background : #e6e6e6;
+  border-radius : 5px;
+  font-size : 13px;
+}
+.find_submit{
+  width : 100px;
+  height : 50px;
+  border-radius : 5px;
+  background : #f23c3c;
+  border : 0px;
+  font-weight : bold;
+  font-size : 14px;
+  color : white;
+  margin-top : 20px;
+  margin-left : 200px;
+  cursor : pointer;
+}
+.find_username{
+  width : 295px;
+  height : 30px;
+  margin-left : 5px;
+  margin-top : 5px;
+  border : 0px;
+  background : #e6e6e6;
+}
+.find_mailname{
+  width : 200px;
+  height : 30px;
+  margin-left : 5px;
+  margin-top : 5px;
+  border : 0px;
+  background : #e6e6e6;
+}

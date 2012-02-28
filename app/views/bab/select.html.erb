@@ -98,6 +98,10 @@
   <%= label_tag(:dosirak, "도시락") %>
     </div>
     <div class="type_check">
+      <%= check_box_tag(:korea,"1", false, {:class => 'type'}) %>
+  <%= label_tag(:korea, "한식") %>
+    </div>
+    <div class="type_check">
       <%= check_box_tag(:etc,"1", false, {:class => 'type'}) %>
   <%= label_tag(:etc, "기타") %>
     </div>
