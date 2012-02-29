@@ -1,0 +1,48 @@
+<div id="resulttype" class="celarfix">
+  <div class ="type_button" id="type_all">
+    <%= link_to_function("전체","showAll('all')") %>
+  </div>
+  <div class ="type_button" id="type_chinese">
+    <%= link_to_function("중식","showAll('chinese')") %>
+  </div>
+  <div class ="type_button" id="type_chicken">
+    <%= link_to_function("치킨","showAll('chicken')") %>
+  </div>
+  <div class ="type_button" id="type_pizza">
+    <%= link_to_function("피자","showAll('pizza')") %>
+  </div>
+  <div class ="type_button" id="type_korea">
+    <%= link_to_function("한식","showAll('korea')") %>
+  </div>
+  <div class ="type_button" id="type_dosirak">
+    <%= link_to_function("도시락","showAll('dosirak')") %>
+  </div>
+  <div class ="type_button" id="type_etc">
+    <%= link_to_function("기타","showAll('etc')") %>
+  </div>
+
+</div>
+<div id="resultview" class="show_veiw_box">
+  <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+  
+  <div class="viewport" id="show_all_box">
+    <div class="overview">
+  <% @results.each do |res| %>
+    <table class="result_table" id="show_all_table">
+      <tr>
+        <td rowspan="2" class="result_img_td" id="show_all_img_td">  
+          <%= image_tag(res.avatar.url, {:class => "search_image",:id => "show_all_img"}) %>
+        </td>
+        <td class="result_resname_td" id="show_all_resname"><%= link_to_function(res.resname, "showRes(#{res.id})") %></td>
+      </tr>
+      <tr>
+        <td class="result_respoint_td"><%= ((res.tastepoint).round(1)/(res.count).round(1)).round(1) %> <span>/</span> <%= ((res.speedpoint).round(1)/(res.count).round(1)).round(1) %> <span>/</span> <%= ((res.amountpoint).round(1)/(res.count).round(1)).round(1) %> <span>/</span> <%= ((res.servicepoint).round(1)/(res.count).round(1)).round(1) %> </td>
+      </tr>
+
+    </table>
+
+  <% end %>
+  </div>
+</div>
+</div>
+<%= will_paginate @results,{:next_label => 'More'} %>

@@ -351,6 +351,27 @@ function loadChangePasswd(){
   });
 
 }
+function showAll(type){
+  changeLeftHash("showall?" + type);
+}
+function loadShowAll(type){
+  $.ajax({
+    url: '/bab/show_all?&type=' + type, 
+    type : 'GET',
+    dataType : 'html',
+    async : false,
+    success: function(data) {
+      $('#left_item').html('');
+      $('#left_item').html(data);
+
+      $("a.next_page").wrap('<div class="moreview" />');
+      $('#resultview').tinyscrollbar();
+    $('#loading').delay(500).fadeOut(500);
+      searchScroll();
+    }
+
+  });
+}
 function searchRes(keyword){
   if (keyword == null){
     var text = $('.searchtext').val();
@@ -373,7 +394,7 @@ function loadSearchRes(keyword){
     var text = keyword;
   }
   $.ajax({
-    url: '/bab/search?&search=' + text , 
+    url: '/bab/search?&search=' + text, 
     type : 'GET',
     dataType : 'html',
     async : false,
@@ -389,7 +410,6 @@ function loadSearchRes(keyword){
 
   });
 }
-
 function searchScroll(){
   $('.overview').infinitescroll({
 
@@ -608,6 +628,11 @@ function detectHash(){
       var keyword = command.split("?")[1];
 
       loadSearchRes(keyword);
+    }
+    else if(left =="showall"){
+      //showall
+      var type = command.split("?")[1];
+      loadShowAll(type); 
     }
     else if(left == "contact"){
       //contact

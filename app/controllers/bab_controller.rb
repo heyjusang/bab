@@ -1,6 +1,6 @@
 #encoding = UTF-8
 class BabController < ApplicationController
-  skip_before_filter :require_login, :only => [:index, :main, :today_res, :search, :select, :select_result, :new_contact, :create_contact, :deny_access, :select_help, :select_result_help]
+  skip_before_filter :require_login, :only => [:index, :main, :today_res, :search, :show_all,:select, :select_result, :new_contact, :create_contact, :deny_access, :select_help, :select_result_help]
 
   def index
 
@@ -69,7 +69,24 @@ class BabController < ApplicationController
     render :layout => false
 
   end
-
+  def show_all
+    if params[:type] == 'chinese'
+      @results = Restaurant.where("restype = ?", "중식").paginate(:page => params[:page], :per_page => 12)
+    elsif params[:type] == "chicken"
+      @results = Restaurant.where("restype =?","치킨").paginate(:page => params[:page], :per_page => 12)
+    elsif params[:type] == "pizza"
+      @results = Restaurant.where("restype =?","피자").paginate(:page => params[:page], :per_page => 12)
+    elsif params[:type] == "korea"
+      @results = Restaurant.where("restype = ?","한식").paginate(:page => params[:page], :per_page => 12)
+    elsif params[:type] == "dosirak"
+      @results = Restaurant.where("restype = ?","도시락").paginate(:page => params[:page], :per_page => 12)
+    elsif params[:type] == "etc"
+      @results = Restaurant.where("restype = ?","기타").paginate(:page => params[:page], :per_page => 12)
+    else
+      @results = Restaurant.paginate(:page => params[:page], :per_page => 12)
+    end
+    render :layout => false
+  end
   def search
       @results = Restaurant.where('resname LIKE ? ',"%#{params[:search]}%").paginate(:page => params[:page], :per_page => 4)
     render :layout => false
