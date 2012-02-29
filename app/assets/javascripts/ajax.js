@@ -356,14 +356,13 @@ function showAll(type){
 }
 function loadShowAll(type){
   $.ajax({
-    url: '/bab/show_all?&type=' + type, 
+    url: '/bab/show_all?&page=1&type=' + type, 
     type : 'GET',
     dataType : 'html',
     async : false,
     success: function(data) {
       $('#left_item').html('');
       $('#left_item').html(data);
-
       $("a.next_page").wrap('<div class="moreview" />');
       $('#resultview').tinyscrollbar();
     $('#loading').delay(500).fadeOut(500);
@@ -412,27 +411,26 @@ function loadSearchRes(keyword){
 }
 function searchScroll(){
   $('.overview').infinitescroll({
-
+    debug : true,
     navSelector : "div.pagination",
     nextSelector : "div.pagination a.next_page",
-    itemSelector : "#resultview table",
-    donetext : "더 이상 검색결과가 없습니다.",
+    itemSelector : "#resultview table"
   });
-  $(window).unbind('.infscr');
-  $("a.next_page").click(function(){
-  $('#loading').show();
-    $(document).trigger('retrieve.infscr');
-    $(".pagination").css({
-      "display" : ""
+
+  $('a.next_page').click(function(e){
+
+    e.preventDefault();
+    $('.overview').infinitescroll('retrieve');
+    $(this).css('display','block');
+    $('.pagination').css('display','block');
     });
+    
     $('.overview').ajaxComplete(function(){
 
       $('#resultview').tinyscrollbar_update('bottom');
-    $('#loading').delay(500).fadeOut(500);
     });
 
     return false;
-  });
   $(document).ajaxError(function(e,xhr,opt){
     if (xhr.status == 404)
       $('div.moreview').remove();
