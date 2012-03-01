@@ -127,25 +127,25 @@ class BabController < ApplicationController
     ########################################select type##
     @selected = []
     if (params[:chinese] == "1")
-      @selected.concat(Restaurant.where('restype = ? ' , '중식'))
+      @selected += Restaurant.where('restype = ? ' , '중식').to_ary
     end
     if (params[:pizza] == "1")
-      @selected.concat(Restaurant.where('restype = ?', '피자'))
+      @selected += Restaurant.where('restype = ?', '피자').to_ary
     end
     if (params[:chicken] == "1")
-      @selected.concat(Restaurant.where('restype = ?', '치킨'))
+      @selected += Restaurant.where('restype = ?', '치킨').to_ary
     end
     if (params[:dosirak] == "1")
-      @selected.concat(Restaurant.where('restype = ?', '도시락'))
+      @selected += Restaurant.where('restype = ?', '도시락').to_ary
     end
     if (params[:korea] == "1")
-      @selected.concat(Restaurant.where('restype = ?', '한식'))
+      @selected += Restaurant.where('restype = ?', '한식').to_ary
     end
     if (params[:etc] == "1")
-      @selected.concat(Restaurant.where('restype = ?', '기타'))
+      @selected += Restaurant.where('restype = ?', '기타').to_ary
     end
     if (@selected.count == 0)
-      @selected.concat(Restaurant.all)
+      @selected += Restaurant.all
     end
     ######################################################
     ############################priority select###########
@@ -154,40 +154,43 @@ class BabController < ApplicationController
     p3 = params[:priority_3] 
     p4 = params[:priority_4]
 
+    Rails.logger.info "======= selected rest==========="
+    Rails.logger.info @selected
+
 
 
     if (params["#{p1}_level"] == "0")
-      filtering_1 = @selected.sort_by{"|f1| (f1.#{p1}point/f1.count)"}.first(10)
+       filtering_1 = @selected.randomize{"|f1| (f1.#{p1}point/f1.count)"}.first(10)
     elsif (params["#{p1}_level"] == "1")
-      filtering_1 = @selected.sort_by{"|f1| f1.count"}.first(10)
+      filtering_1 = @selected.randomize{"|f1| f1.count"}.first(10)
     elsif (params["#{p1}_level"] == "2")
-      filtering_1 = @selected.sort_by{"|f1| -(f1.#{p1}point/f1.count)"}.first(10)
+      filtering_1 = @selected.randomize{"|f1| -(f1.#{p1}point/f1.count)"}.first(10)
     end 
     if (params["#{p2}_level"] == "0")
-      filtering_2 = filtering_1.sort_by{"|f1| (f1.#{p2}point/f1.count)"}.first(7)
+      filtering_2 = filtering_1.randomize{"|f1| (f1.#{p2}point/f1.count)"}.first(7)
     elsif (params["#{p2}_level"] == "1")
-      filtering_2 = filtering_1.sort_by{"|f1| f1.count"}.first(7)
+      filtering_2 = filtering_1.randomize{"|f1| f1.count"}.first(7)
     elsif (params["#{p2}_level"] == "2")
-      filtering_2 = filtering_1.sort_by{"|f1| -(f1.#{p2}point/f1.count)"}.first(7)
+      filtering_2 = filtering_1.randomize{"|f1| -(f1.#{p2}point/f1.count)"}.first(7)
     end 
     if (params["#{p3}_level"] == "0")
-      filtering_3 = filtering_2.sort_by{"|f1| (f1.#{p3}point/f1.count)"}.first(5)
+      filtering_3 = filtering_2.randomize{"|f1| (f1.#{p3}point/f1.count)"}.first(5)
     elsif (params["#{p3}_level"] == "1")
-      filtering_3 = filtering_2.sort_by{"|f1| f1.count"}.first(5)
+      filtering_3 = filtering_2.randomize{"|f1| f1.count"}.first(5)
     elsif (params["#{p3}_level"] == "2")
-      filtering_3 = filtering_2.sort_by{"|f1| -(f1.#{p3}point/f1.count)"}.first(5)
+      filtering_3 = filtering_2.randomize{"|f1| -(f1.#{p3}point/f1.count)"}.first(5)
     end 
     if (params["#{p4}_level"] == "0")
-      filtering_4 = filtering_3.sort_by{"|f1| (f1.#{p4}point/f1.count)"}.first(3)
+      filtering_4 = filtering_3.randomize{"|f1| (f1.#{p4}point/f1.count)"}.first(3)
     elsif (params["#{p4}_level"] == "1")
-      filtering_4 = filtering_3.sort_by{"|f1| f1.count"}.first(3)
+      filtering_4 = filtering_3.randomize{"|f1| f1.count"}.first(3)
     elsif (params["#{p4}_level"] == "2")
-      filtering_4 = filtering_3.sort_by{"|f1| -(f1.#{p4}point/f1.count)"}.first(3)
+      filtering_4 = filtering_3.randomize{"|f1| -(f1.#{p4}point/f1.count)"}.first(3)
     end 
     ######################################################
     @final_sel = filtering_4.sample
     @final_menus = Menu.where(:restaurant_id => @final_sel.id)
-    @menu_final_res = @final_menus.sort_by{"|m| (m.liking-m.disliking)"}.first(1)
+    @menu_final_res = @final_menus.randomize{"|m| (m.liking-m.disliking)"}.first(1)
     render :layout => false
   end
   
