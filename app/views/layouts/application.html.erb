@@ -19,18 +19,32 @@
     <% if flash[:notice] %>
       <script type="text/javascript">
         $(function(){
-        $('#dialog:ui-dialog').dialog("destroy");
-        $('#dialog-message').dialog({
-          modal : true,
-          buttons : {
+          $('#dialog:ui-dialog').dialog("destroy");
+          $('#dialog-message').dialog({
+            modal : true,
+            buttons : {
               Ok: function(){
                 $(this).dialog("close");
-          }
-        }
-        });
+              }
+            }
+          });
         });
       </script>
-        <% end %>
+    <% end %>
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-29701516-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    <meta name="google-site-verification" content="EgYVfdgc27BI87hn20qqfGZ10WDGIqjxqxINZO9bqho" />
   </head>
   <body>
     <div id="dialog-message" title="알림">
@@ -38,12 +52,12 @@
     </div>
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-              js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1";
-                fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));</script>
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
     <div id="header">
       <div id="logobox">
         <%= link_to image_tag("logo.png",:border => "0", :size => "159x113"), "/" %>

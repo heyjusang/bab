@@ -12,13 +12,17 @@
   color : #f23c3c;
 }
 .sel_image{
+  position : absolute; 
   cursor : pointer;
+  z-index : 2;
+  top : -45px;
+  left : 300px;
 }
 .show_image{
   position : absolute;
   z-index : 2;
-  left : -37px;
-  top : 140px;
+  left : 390px;
+  top : -45px;
   cursor : pointer;
 }
 //
