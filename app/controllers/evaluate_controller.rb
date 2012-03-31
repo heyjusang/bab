@@ -27,8 +27,8 @@ class EvaluateController < ApplicationController
     def create_ev
       evaluation = Evaluation.new(params[:evaluation])
 
-      if (evaluation.review.length<10) || (evaluation.review.length>100)
-        redirect_to :back, :notice => "리뷰는 10자 이상,100자이하로 써주세요..." 
+      if (evaluation.review.length<10) || (evaluation.review.length>140)
+        redirect_to :back, :notice => "리뷰는 10자 이상,140자이하로 써주세요..." 
       else
 
 
